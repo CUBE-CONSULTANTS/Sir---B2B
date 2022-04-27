@@ -1,0 +1,294 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+>
+	<Dialog
+		title="Dettaglio RIGA - PANTALONE SYMBOL BANDE - Codice precedente 30814AB,30814ABG,30814B,30814BG"
+		stretch="true"
+	>
+		<l:VerticalLayout
+			class="sapUiContentPadding"
+			width="100%"
+		>
+			<l:content>
+				<Label
+					text="Articolo"
+					labelFor="filterDateRangeSelection"
+					class="sapUiSmallMarginBegin"
+				/>
+				<Panel>
+					<Input
+						id="articolo"
+						width="50%"
+						class="sapUiSmallMarginEnd"
+						value="{/SelectedItems}"
+					/>
+					<Button
+						text="Cerca"
+						press="onOpenDialogFilterItems"
+						class="sapUiLargeMarginEnd"
+					/>
+					<Button
+						id="ricercaAvanzata"
+						text="Ricerca avanzata"
+						icon="sap-icon://search"
+						class="sapUiLargeMarginEnd"
+						press="AdvancedSearch"
+					/>
+					<Button
+						text="Dispon. Prodotto"
+						icon="sap-icon://write-new"
+						press="onOpenDialogProductAvailability"
+					/>
+				</Panel>
+			</l:content>
+			<Panel>
+				<Text
+					class=".chooseColor sapUiTinyMarginEnd sapUiTinyMarginBottom"
+					text="Seleziona un colore"
+				/>
+				<core:Icon
+					id="colorSelected"
+					src="sap-icon://color-fill"
+					tooltip="Seleziona un colore"
+					color="{/SelectedColor}"
+					press=".onOpenColor"
+				/>
+				<Text
+					class="sapUiTinyMarginBegin"
+					text="{/SelectedName}"
+				/>
+				<CustomListItem>
+					<HBox
+						items="{
+							path: 'Clothing>/sizes/sizes1'
+						}"
+						id="idList"
+						class="sapUiTinyMargin"
+					>
+						<VBox>
+							<Text
+								class="sapUiMediumMarginBegin"
+								text=" {Clothing>key}"
+							/>
+							<StepInput
+								id="stepInput"
+								value="{Clothing>quantita}"
+								min="0"
+								max="{Clothing>max}"
+								width="10%"
+								change=".onChangeValueItems"
+							/>
+							<Text
+								class="sapUiMediumMarginBegin"
+								text="{Clothing>count}"
+							/>
+						</VBox>
+					</HBox>
+				</CustomListItem>
+				<CustomListItem>
+					<HBox
+						width="50%"
+						items="{
+							path: 'Clothing>/sizes/sizes2'
+						}"
+						id="idList2"
+						class="sapUiTinyMargin"
+					>
+						<VBox>
+							<Text
+								class="sapUiMediumMarginBegin"
+								text=" {Clothing>key}"
+							/>
+							<StepInput
+								id="stepInput2"
+								value="{Clothing>quantita}"
+								min="0"
+								max="{Clothing>max}"
+								width="10%"
+								change=".onChangeValueItems"
+							/>
+							<Text
+								class="sapUiMediumMarginBegin"
+								text="{Clothing>count}"
+							/>
+						</VBox>
+					</HBox>
+					<Text
+						text="Totale: "
+						class="sapUiSmallMarginTop sapUiSmallMarginBegin sapUiTinyMarginEnd"
+					/>
+					<Text
+						id="totalItems2"
+						text="{Clothing>/sizes/totale}"
+						class="sapUiSmallMarginTop"
+					/>
+				</CustomListItem>
+			</Panel>
+			<Panel>
+				<Label
+					design="Bold"
+					text="Articolo venduto a pacchi di 12"
+				/>
+			</Panel>
+			<Panel>
+				<HBox>
+					<Title
+						id="prezzo"
+						text="Prezzo Listino {Clothing>/sizes/prezzo}€ -  Quantità: {Clothing>/sizes/totale} Totale: {Clothing>/sizes/calcolo} "
+					/>
+				</HBox>
+			</Panel>
+			<Panel
+				class="sapUiContentPadding"
+				headerText="{i18n>ObjectCommentsTabTitle}"
+			>
+				<content>
+					<Title
+						text="Commento"
+						class="sapUiSmallMarginTop sapUiTinyMarginBottom"
+					/>
+					<FeedInput showIcon="false"/>
+				</content>
+			</Panel>
+			<IconTabBar
+				expandable="false"
+				id="idIconTabBarMulti2"
+				class="sapUiResponsiveContentPadding"
+				headerMode="Inline"
+			>
+				<items>
+					<IconTabFilter
+						text="Storico Ordini"
+						icon="sap-icon://list"
+						design="Horizontal"
+					>
+						<Label text="Ultimi ordini per questo articolo"/>
+						<Table
+							mode="MultiSelect"
+							id="idProductsTable"
+							width="auto"
+							items="{
+								path: 'Clothing>/lastOrder'
+							}"
+						>
+							<columns>
+								<Column width="12em">
+									<Text text="Articolo"/>
+								</Column>
+								<Column
+									minScreenWidth="Tablet"
+									demandPopin="true"
+								>
+									<Text text="Descrizione"/>
+								</Column>
+								<Column
+									minScreenWidth="Desktop"
+									demandPopin="true"
+								>
+									<Text text="Q.Tà"/>
+								</Column>
+								<Column
+									minScreenWidth="Desktop"
+									demandPopin="true"
+								>
+									<Text text="Prezzo"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem vAlign="Middle">
+									<cells>
+										<Text text="{Clothing>ID}"/>
+										<Text text="{Clothing>description}"/>
+										<Text text="{Clothing>quantity}"/>
+										<VBox>
+											<HBox justifyContent="SpaceBetween">
+												<Label
+													width="100%"
+													text="{Clothing>list}"
+												/>
+												<Text
+													text="{Clothing>listId}"
+													width="5rem"
+												/>
+											</HBox>
+											<HBox justifyContent="SpaceBetween">
+												<Label text="{Clothing>sale}"/>
+												<Text
+													text="{Clothing>saleId}"
+													width="5rem"
+												/>
+											</HBox>
+											<HBox justifyContent="SpaceBetween">
+												<Label text="{Clothing>priceSale}"/>
+												<Text
+													text="{Clothing>priceSaleId}"
+													width="5rem"
+												/>
+											</HBox>
+											<HBox justifyContent="SpaceBetween">
+												<Label text="{Clothing>total}"/>
+												<Text
+													text="{Clothing>totalId}"
+													width="5rem"
+												/>
+											</HBox>
+										</VBox>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+			<Panel>
+				<VBox>
+					<Title text="Consegna"/>
+					<HBox width="100%">
+						<Text
+							text="Consegna gg"
+							id="text3"
+							class="sapUiMediumMarginEnd"
+						/>
+						<Text
+							text="Dt. rich. cons."
+							id="text4"
+						/>
+					</HBox>
+					<HBox width="12%">
+						<StepInput
+							value="0"
+							min="0"
+							max="{max}"
+							width="5%"
+							class="sapUiSmallMarginEnd"
+							id="calculateDays"
+						/>
+						<DatePicker
+							id="DP3"
+							placeholder="Enter Date"
+							width="9rem"
+							displayFormat="short"
+							class="sapUiSmallMarginBottom"
+						/>
+					</HBox>
+				</VBox>
+			</Panel>
+		</l:VerticalLayout>
+		<beginButton>
+			<Button
+				type="Accept"
+				text="OK"
+				press="onAddItem"
+			/>
+		</beginButton>
+		<endButton>
+			<Button
+				type="Reject"
+				text="Annulla"
+				press=".onCloseFilterOptionsDialogCancel"
+			/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

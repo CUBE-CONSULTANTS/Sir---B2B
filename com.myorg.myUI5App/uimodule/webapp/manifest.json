@@ -1,0 +1,139 @@
+{
+  "_version": "1.12.0",
+  "sap.app": {
+    "dataSources": {
+      "Clothing": {
+        "uri": "model/Clothing.json",
+        "type": "JSON"
+      },
+      "Nationalities": {
+        "uri": "model/Nationalities.json",
+        "type": "JSON"
+      }
+    },
+    "id": "com.myorg.myUI5App",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json"
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.60.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.table": {}
+        
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.myorg.myUI5App.i18n.i18n"
+        }
+      },
+      "Clothing": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "Clothing"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "com.myorg.myUI5App.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "MainView",
+          "pattern": "MainView",
+          "target": [
+            "MainView"
+          ]
+        },
+        {
+          "name": "Home",
+          "pattern": "Home",
+          "target": [
+            "Home"
+          ]
+        },
+        {
+          "name": "Order",
+          "pattern": "Order",
+          "target": [
+            "Order"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetMainView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "MainView",
+          "viewName": "MainView"
+        },
+        "Home": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Home",
+          "viewName": "Home"
+        },
+        "Order": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Order",
+          "viewName": "Order"
+        }
+
+      }
+    },
+    "rootView": {
+      "viewName": "com.myorg.myUI5App.view.MainView",
+      "type": "XML",
+      "async": true,
+      "id": "MainView"
+    }
+  }
+}

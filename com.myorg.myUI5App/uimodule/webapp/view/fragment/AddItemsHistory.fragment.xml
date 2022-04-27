@@ -1,0 +1,49 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+>
+	<Dialog
+		title="Aggiungi articolo da storico"
+		stretch="true"
+	>
+		<l:VerticalLayout
+			class="sapUiContentPadding"
+			width="100%"
+		>
+			<l:content>
+				<Label
+					text="Filtro per articolo"
+					labelFor="filterDateRangeSelection"
+					class="sapUiSmallMarginBegin"
+				/>
+				<Panel>
+					<Input
+						width="50%"
+						class="sapUiLargeMarginEnd"
+						id="articolo1"
+						value="{/SelectedItems}"
+					/>
+					<Button
+						text="Cerca"
+						press="onOpenDialogFilterItems"
+					/>
+				</Panel>
+			</l:content>
+		</l:VerticalLayout>
+		<beginButton>
+			<Button
+				type="Accept"
+				text="Salva"
+			/>
+		</beginButton>
+		<endButton>
+			<Button
+				type="Reject"
+				text="Annulla"
+				press=".onCloseFilterOptionsDialogCancel"
+			/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

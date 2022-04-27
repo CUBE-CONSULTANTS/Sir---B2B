@@ -1,0 +1,291 @@
+<mvc:View
+	controllerName="com.myorg.myUI5App.controller.Order"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:t="sap.ui.table"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+	xmlns:l="sap.ui.layout"
+>
+	<Page
+		id="page"
+		showHeader="true"
+		showNavButton="true"
+		navButtonPress="onNavHome"
+	>
+		<HBox backgroundDesign="Solid">
+			<Image
+				src="icon/logo.png"
+				width="100%"
+				height="100%"
+			/>
+		</HBox>
+		<content>
+			<VBox fitContainer="true">
+				<f:SimpleForm
+					id=""
+					minWidth="1024"
+					maxContainerCols="2"
+					editable="false"
+					layout="ResponsiveGridLayout"
+					labelSpanL="3"
+					labelSpanM="4"
+					emptySpanL="0"
+					emptySpanM="0"
+					columnsL="2"
+					columnsM="2"
+				>
+					<f:content>
+						<core:Title text="Riepilogo"/>
+						<Label text="Committente"/>
+						<Text text="0012057884 - LUCART SPA"/>
+						<Label
+							text="Indirizzo Spedizione"
+							class="sapUiTinyMargin"
+						/>
+						<HBox
+							width="100%"
+							class="addressContainer"
+						>
+							<Select
+								width="100%"
+								forceSelection="false"
+								selectedKey="{/SelectAdd}"
+								items="{
+									path: '/Address',
+									sorter: {
+										path: 'Name'
+									}
+								}"
+							>
+								<core:Item
+									key="{id}"
+									text="{Name}"
+								/>
+							</Select>
+							<Button
+								class="sapUiTinyMarginBeginEnd"
+								icon="sap-icon://add"
+								press=".openDialogAddAddress"
+							/>
+							<Button
+								icon="sap-icon://show"
+								press=".openDialogViewAddress"
+							/>
+						</HBox>
+						<Label
+							class="sapUiTinyMarginTop"
+							text="Rif. Ordine"
+						/>
+						<Input width="50%"/>
+						<core:Title/>
+						<VBox>
+							<Label text="Indirizzo committente"/>
+							<HBox width="100%">
+								<Text
+									width="100%"
+									text=""
+								/>
+							</HBox>
+							<Text
+								text=""
+								class="sapUiMediumMarginTop "
+							/>
+							<HBox>
+								<Label
+									class="sapUiTinyMargin"
+									text="Data rif. ordine"
+									labelFor="DP1"
+								/>
+								<DatePicker
+									id="DP1"
+									placeholder="Enter Date"
+									width="12rem"
+									class="sapUiTinyMarginBottom"
+								/>
+							</HBox>
+						</VBox>
+					</f:content>
+					<f:layoutData>
+						<FlexItemData
+							shrinkFactor="0"
+							backgroundDesign="Solid"
+							styleClass="sapContrastPlus"
+						/>
+					</f:layoutData>
+				</f:SimpleForm>
+				<IconTabBar
+					upperCase="true"
+					expandable="false"
+				>
+					<items>
+						<IconTabFilter text="Items"/>
+						<IconTabFilter text="Note">
+							<Title text="Dati Generali Ordine N. 590362"/>
+							<l:VerticalLayout
+								class="sapUiContentPadding"
+								width="100%"
+							>
+								<Text
+									text="Aggiungi nota"
+									class="sapUiTinyMarginTop"
+								/>
+								<TextArea
+									id="textArea"
+									value="{/value}"
+									width="100%"
+									height="6rem"
+								/>
+								<Button
+									press="onAddNote"
+									text="Aggiungi"
+								/>
+								<Title
+									text=""
+									id="testoCommento"
+								/>
+							</l:VerticalLayout>
+						</IconTabFilter>
+					</items>
+					<content>
+						<OverflowToolbar class="sapUiSmallMarginBottom">
+							<Button
+								text="Aggiungi articolo"
+								icon="sap-icon://add"
+								press="onOpenDialogAddItems"
+							/>
+							<Button
+								class="sapUiSmallMarginBegin"
+								text="Aggiungi articolo da storico"
+								icon="sap-icon://add"
+								press="addItemsHistory"
+							/>
+							<ToolbarSpacer/>
+							<Button
+								icon="sap-icon://edit"
+								text="Modifica"
+								press="onOpenDialogEditItems"
+								enabled="{dropDownModel>/Enabled}"
+							/>
+							<Button
+								icon="sap-icon://delete"
+								text="Elimina"
+								press="onDeleteRow"
+								enabled="{dropDownModel>/Enabled}"
+							/>
+							<Button
+								icon="sap-icon://copy"
+								text="Copia"
+								press="onOpenDialogCopyItems"
+								enabled="{dropDownModel>/Enabled}"
+							/>
+							<Button
+								icon="sap-icon://user-edit"
+								text="Aggiungi personalizzazione"
+								enabled="{dropDownModel>/Enabled}"
+								press="onOpenAddPers"
+							/>
+						</OverflowToolbar>
+						<t:TreeTable
+							id="TreeTableBasic"
+							rowSelectionChange="onPressRow"
+							enableSelectAll="false"
+							ariaLabelledBy="title"
+							rows="{
+								path: 'Clothing>/catalog/clothing',
+								parameters: {
+									arrayNames: ['categories']
+								}
+							}"
+						>
+							<t:columns>
+								<t:Column width="18%">
+									<Label text="Articolo"/>
+									<t:template>
+										<HBox>
+											<Image
+												height="100%"
+												width="100%"
+												src="{Clothing>IMG}"
+											/>
+											<Text
+												class="sapUiSmallMarginBegin sapUiMediumMarginTop"
+												text="{Clothing>ID}"
+											/>
+										</HBox>
+										<!-- <Text
+											class="sapUiSmallMarginBegin "
+											text="{Clothing>ID}"
+										/> -->
+									</t:template>
+								</t:Column>
+								<t:Column width="auto">
+									<Label text="Descrizione"/>
+									<t:template>
+										<Text text="{Clothing>description}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="10%">
+									<Label text="Q.tà"/>
+									<t:template>
+										<Text text="{Clothing>quantity}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="auto">
+									<Label text="Consegna"/>
+									<t:template>
+										<VBox>
+											<Text text="{Clothing>days}"/>
+											<Text text="{Clothing>date}"/>
+										</VBox>
+									</t:template>
+								</t:Column>
+								<t:Column width="20%">
+									<Label text="Prezzo"/>
+									<t:template>
+										<VBox>
+											<HBox justifyContent="SpaceBetween">
+												<Label
+													width="100%"
+													text="{Clothing>list}"
+												/>
+												<Text
+													text="{Clothing>listId}"
+													width="5rem"
+												/>
+											</HBox>
+											<HBox justifyContent="SpaceBetween">
+												<Label text="{Clothing>sale}"/>
+												<Text
+													text="{Clothing>saleId}"
+													width="5rem"
+												/>
+											</HBox>
+											<HBox justifyContent="SpaceBetween">
+												<Label text="{Clothing>priceSale}"/>
+												<Text
+													text="{Clothing>priceSaleId}"
+													width="5rem"
+												/>
+											</HBox>
+											<HBox justifyContent="SpaceBetween">
+												<Label text="{Clothing>total}"/>
+												<Text
+													text="{Clothing>totalId}"
+													width="5rem"
+												/>
+											</HBox>
+										</VBox>
+									</t:template>
+								</t:Column>
+							</t:columns>
+						</t:TreeTable>
+					</content>
+				</IconTabBar>
+			</VBox>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,140 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+>
+	<Dialog
+		title="Aggiungi personalizzazione"
+		stretch="true"
+	>
+		<l:VerticalLayout
+			class="sapUiContentPadding"
+			width="100%"
+		>
+			<l:content>
+				<Label
+					labelFor="filterDateRangeSelection"
+					class="sapUiSmallMarginBegin"
+				/>
+				<Panel>
+					<Input
+						width="50%"
+						class="sapUiLargeMarginEnd"
+					/>
+					<Button
+						text="Ricerca avanzata"
+						press="onOpenDialogSearchFile"
+					/>
+					<Button
+						class="sapUiSmallMarginBegin"
+						text="Visualizza documenti grafici"
+						press="openFileDocument"
+					/>
+				</Panel>
+			</l:content>
+			<IconTabBar
+				expandable="false"
+				class="sapUiResponsiveContentPadding"
+				headerMode="Inline"
+			>
+				<items>
+					<IconTabFilter
+						text="Storico Ordini"
+						icon="sap-icon://list"
+						design="Horizontal"
+					>
+						<Label text="Ultimi ordini per questo articolo"/>
+						<Table
+							mode="MultiSelect"
+							width="auto"
+							growing="true"
+							growingThreshold="2"
+							items="{
+								path: 'Clothing>/lastOrder'
+							}"
+						>
+							<columns>
+								<Column width="12em">
+									<Text text="Articolo"/>
+								</Column>
+								<Column
+									minScreenWidth="Tablet"
+									demandPopin="true"
+								>
+									<Text text="Descrizione"/>
+								</Column>
+								<Column
+									minScreenWidth="Desktop"
+									demandPopin="true"
+								>
+									<Text text="Q.Tà"/>
+								</Column>
+								<Column
+									minScreenWidth="Desktop"
+									demandPopin="true"
+								>
+									<Text text="Prezzo"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem vAlign="Middle">
+									<cells>
+										<Text text="{Clothing>id}"/>
+										<Text text="{Clothing>description}"/>
+										<Text text="{Clothing>quantity}"/>
+										<VBox>
+											<HBox justifyContent="SpaceBetween">
+												<Label
+													width="100%"
+													text="{Clothing>list}"
+												/>
+												<Text
+													text="{Clothing>listId}"
+													width="5rem"
+												/>
+											</HBox>
+											<HBox justifyContent="SpaceBetween">
+												<Label text="{Clothing>sale}"/>
+												<Text
+													text="{Clothing>saleId}"
+													width="5rem"
+												/>
+											</HBox>
+											<HBox justifyContent="SpaceBetween">
+												<Label text="{Clothing>priceSale}"/>
+												<Text
+													text="{Clothing>priceSaleId}"
+													width="5rem"
+												/>
+											</HBox>
+											<HBox justifyContent="SpaceBetween">
+												<Label text="{Clothing>total}"/>
+												<Text
+													text="{Clothing>totalId}"
+													width="5rem"
+												/>
+											</HBox>
+										</VBox>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:VerticalLayout>
+		<beginButton>
+			<Button
+				type="Accept"
+				text="Salva"
+			/>
+		</beginButton>
+		<endButton>
+			<Button
+				type="Reject"
+				text="Annulla"
+				press=".onCloseFilterOptionsDialogCancel"
+			/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

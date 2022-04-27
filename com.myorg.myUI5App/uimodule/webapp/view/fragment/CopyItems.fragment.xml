@@ -1,0 +1,173 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+>
+	<Dialog
+		title="Dettaglio RIGA - PANTALONE SYMBOL BANDE - Codice precedente 30814AB,30814ABG,30814B,30814BG"
+		stretch="true"
+	>
+		<l:VerticalLayout
+			class="sapUiContentPadding"
+			width="100%"
+		>
+			<l:content>
+				<Label
+					text="Articolo"
+					labelFor="filterDateRangeSelection"
+					class="sapUiSmallMarginBegin"
+				/>
+				<Panel>
+					<Input
+						width="50%"
+						class="sapUiSmallMarginEnd"
+						value="{/SelectedItems}"
+					/>
+					<Button
+						text="Cerca"
+						press="onOpenDialogFilterItems"
+						class="sapUiLargeMarginEnd"
+					/>
+					<Button
+						text="Ricerca avanzata"
+						icon="sap-icon://search"
+						class="sapUiLargeMarginEnd"
+						press="AdvancedSearch"
+					/>
+					<Button
+						text="Dispon. Prodotto"
+						icon="sap-icon://write-new"
+						press="onOpenDialogProductAvailability"
+					/>
+				</Panel>
+			</l:content>
+			<Panel>
+				<Text
+					class=".chooseColor sapUiTinyMarginEnd sapUiTinyMarginBottom"
+					text="Seleziona un colore"
+				/>
+				<core:Icon
+					id="colorSelectedCopy"
+					src="sap-icon://color-fill"
+					tooltip="Seleziona un colore"
+					color="{/SelectedColor}"
+					press=".onOpenColor"
+				/>
+				<Text
+					class="sapUiTinyMarginBegin"
+					text="{/SelectedName}"
+				/>
+				<CustomListItem>
+					<HBox
+						items="{
+							path: 'Clothing>/sizes'
+						}"
+						id="idListCopy"
+						class="sapUiTinyMargin"
+					>
+						<VBox>
+							<Text
+								class="sapUiMediumMarginBegin"
+								text=" {/key}"
+							/>
+							<StepInput
+								id="stepInputCopy"
+								value="{/quantita}"
+								min="0"
+								max="{/max}"
+								width="10%"
+								change=".onChangeValueItems"
+							/>
+							<Text
+								class="sapUiMediumMarginBegin"
+								text="{/count}"
+							/>
+						</VBox>
+					</HBox>
+					<Text
+						text="Totale: "
+						class="sapUiSmallMarginTop sapUiSmallMarginBegin sapUiTinyMarginEnd"
+					/>
+					<Text
+						id="totalItemsCopy"
+						text="{/totale}"
+						class="sapUiSmallMarginTop"
+					/>
+				</CustomListItem>
+			</Panel>
+			<Panel>
+				<Label
+					design="Bold"
+					text="Articolo venduto a pacchi di 12"
+				/>
+			</Panel>
+			<Panel>
+				<HBox>
+					<Title
+						id="prezzoCopy"
+						text="Prezzo Listino {/prezzo}€ -  Quantità: {/totale} Totale: {/calcolo} "
+					/>
+				</HBox>
+			</Panel>
+			<Panel
+				class="sapUiContentPadding"
+				headerText="{i18n>ObjectCommentsTabTitle}"
+			>
+				<content>
+					<Title
+						text="Commento"
+						class="sapUiSmallMarginTop sapUiTinyMarginBottom"
+					/>
+					<FeedInput showIcon="false"/>
+				</content>
+			</Panel>
+			<Panel>
+				<VBox>
+					<Title text="Consegna"/>
+					<HBox width="100%">
+						<Text
+							text="Consegna gg"
+							id="text3Copy"
+							class="sapUiMediumMarginEnd"
+						/>
+						<Text
+							text="Dt. rich. cons."
+							id="text4Copy"
+						/>
+					</HBox>
+					<HBox width="12%">
+						<StepInput
+							value="0"
+							min="0"
+							max="{max}"
+							width="5%"
+							class="sapUiSmallMarginEnd"
+							id="calculateDaysCopy"
+						/>
+						<DatePicker
+							id="DP3Copy"
+							placeholder="Enter Date"
+							width="9rem"
+							displayFormat="short"
+							change="handleChange"
+							class="sapUiSmallMarginBottom"
+						/>
+					</HBox>
+				</VBox>
+			</Panel>
+		</l:VerticalLayout>
+		<beginButton>
+			<Button
+				type="Accept"
+				text="OK"
+			/>
+		</beginButton>
+		<endButton>
+			<Button
+				type="Reject"
+				text="Annulla"
+				press=".onCloseFilterOptionsDialogCancel"
+			/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

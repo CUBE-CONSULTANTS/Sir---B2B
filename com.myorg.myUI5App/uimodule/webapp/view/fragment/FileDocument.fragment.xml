@@ -1,0 +1,75 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+>
+	<Dialog
+		title="Documenti grafici"
+		stretch="true"
+	>
+		<l:VerticalLayout
+			class="sapUiContentPadding"
+			width="100%"
+		>
+			<Table>
+				<columns>
+					<Column width="12em">
+						<Text text="Tipo documento"/>
+					</Column>
+					<Column width="12em">
+						<Text text="Descrizione"/>
+					</Column>
+					<Column width="12em">
+						<Text text="Data"/>
+					</Column>
+					<Column width="12em">
+						<Text text="Nome file"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells>
+							<core:Icon src="sap-icon://pdf-attachment"/>
+							<Text text=""/>
+							<Text text="12/09/2019"/>
+							<Link
+								text="057884.pdf"
+								press="handleLinkPress"
+							/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<ScrollContainer
+				height="100%"
+				width="100%"
+				horizontal="true"
+				vertical="true"
+			>
+				<FlexBox
+					direction="Column"
+					renderType="Div"
+					class="sapUiSmallMargin"
+				>
+					<PDFViewer
+						visible="{/visible}"
+						source="{/Source}"
+						title="{/Title}"
+						height="{/Height}"
+					>
+						<layoutData>
+							<FlexItemData growFactor="1"/>
+						</layoutData>
+					</PDFViewer>
+				</FlexBox>
+			</ScrollContainer>
+		</l:VerticalLayout>
+		<endButton>
+			<Button
+				type="Reject"
+				text="Annulla"
+				press=".onCloseFilterOptionsDialogCancel"
+			/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

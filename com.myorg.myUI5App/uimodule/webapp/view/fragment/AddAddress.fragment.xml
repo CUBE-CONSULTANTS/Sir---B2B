@@ -1,0 +1,127 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+>
+	<Dialog title="Aggiungi Indirizzo">
+		<VBox
+			class=""
+			width="100%"
+		>
+			<f:Form
+				id="formAdd"
+				editable="true"
+			>
+				<f:layout>
+					<f:ResponsiveGridLayout
+						labelSpanXL="4"
+						labelSpanL="4"
+						labelSpanM="12"
+						labelSpanS="12"
+						adjustLabelSpan="false"
+						emptySpanXL="0"
+						emptySpanL="0"
+						emptySpanM="0"
+						emptySpanS="0"
+						columnsXL="2"
+						columnsL="2"
+						columnsM="2"
+						singleContainerFullSize="false"
+					/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement label="Ragione Sociale">
+								<f:fields>
+									<Input
+										required="true"
+										value="{SupplierName}"
+										id="nameAdd"
+									/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="CAP">
+								<f:fields>
+									<Input value=""/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Provincia">
+								<f:fields>
+									<ComboBox items="{
+										path: '/provinces',
+										sorter: {
+											path: 'Name'
+										}
+									}">
+										<items>
+											<core:Item
+												text="{Name}"
+												key="{id}"
+											/>
+										</items>
+									</ComboBox>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement label="Indirizzo">
+								<f:fields>
+									<Input
+										required="true"
+										value="{Url}"
+									/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Nazione">
+								<f:fields>
+									<ComboBox
+										selectedKey="{/SelectNat}"
+										items="{
+											path: '/Nationalities',
+											sorter: {
+												path: 'Name'
+											}
+										}"
+									>
+										<items>
+											<core:Item
+												text="{Name}"
+												key="{id}"
+											/>
+										</items>
+									</ComboBox>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Comune">
+								<f:fields>
+									<ComboBox value=""/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Nota Segnacollo">
+								<f:fields>
+									<Input value="{City}"/>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</VBox>
+		<beginButton>
+			<Button
+				type="Accept"
+				text="Salva"
+			/>
+		</beginButton>
+		<endButton>
+			<Button
+				type="Reject"
+				text="Annulla"
+				press=".onCloseFilterOptionsDialogCancel"
+			/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
