@@ -4,13 +4,15 @@ sap.ui.define([
     "sap/ui/core/Fragment",
     "sap/m/PDFViewer",
     "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator"
 
 ], function (
     Controller,
     JSONModel,
     Fragment,
     PDFViewer,
-    Filter
+    Filter,
+    FilterOperator
 ) {
     "use strict";
 
@@ -186,6 +188,7 @@ sap.ui.define([
                     controller: this,
                     id: this.getView().getId()
                 }).then(function (fr) {
+                    fr.attachAfterOpen(this.onDialogAfterOpen, this);
                     fr.setModel(this.getOwnerComponent().getModel("Clothing"), "Clothing")
                     fr.setModel(this.getView().getModel("dropDownModel"))
                     this._oDialog = fr
@@ -224,13 +227,7 @@ sap.ui.define([
                             var id = sap.ui.getCore().byId("idProductsTable");
                             var articolo = this.getView().getModel("dropDownModel").getProperty("/SelectedItems");
                             id.getBinding("items").filter([new sap.ui.model.Filter("ID", sap.ui.model.FilterOperator.EQ, articolo)])
-                            // var table = this.getView().byId("TreeTableBasic");
-                            // var oSelectedItem = table.getContextByIndex(table.getSelectedIndex()).getObject()
-                            // var input = sap.ui.getCore().byId("articolo");
-                            // var button = sap.ui.getCore().byId("ricercaAvanzata");
-                            // input.setValue(oSelectedItem.ID);
-                            // input.setEnabled(false);
-                            // button.setEnabled(false);
+
                         }
                     }, this)
                     fr.setModel(this.getOwnerComponent().getModel("Clothing"), "Clothing")
@@ -383,6 +380,7 @@ sap.ui.define([
         onAddItem: function (oEvent) {
             debugger
             var oModelTable = this.getView().getModel("Clothing").getProperty("/catalog/clothing/categories");
+            var oModelTreeTable = this.getView().getModel("Clothing").getProperty("/catalog/clothing/itemsTreeTable");
             var oModelSizes = this.getView().getModel("Clothing").getProperty("/sizes");
             var codiceId = this.getView().getModel("dropDownModel").getProperty("/SelectedItems");
             var lastOrder = this.getView().getModel("Clothing");
@@ -415,13 +413,13 @@ sap.ui.define([
                         newItems.categories.push({ "ID": newItems.ID + taglia.key, "description": newItems.description + taglia.key, "quantity": taglia.quantita, "size": taglia.key, "days": "Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": oModelSizes.prezzo, "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato", "priceSaleId": "7,30", "total": "Totale", "totalId": oModelSizes.calcolo })
                     }
                 }
-                oModelTable.push(newItems);
+                oModelTreeTable.push(newItems);
             } else {
                 for (let i = 0; i < itemsSelected.length; i++) {
                     var sPath = itemsSelected[i].getBindingContextPath()
                     var CurrentItem = lastOrder.getProperty(sPath);
 
-                    oModelTable.push(CurrentItem);
+                    oModelTreeTable.push(CurrentItem);
                 }
 
             }
@@ -436,6 +434,7 @@ sap.ui.define([
 
         onOpenDialogEditItems: function (oEvent) {
             debugger
+
             var table = this.getView().byId("TreeTableBasic");
             var oSelectedItem = table.getContextByIndex(table.getSelectedIndex()).getObject()
             var oSelectedItemCategories = table.getContextByIndex(table.getSelectedIndex()).getObject().categories
@@ -651,6 +650,43 @@ sap.ui.define([
         },
         addItemsHistory: function () {
             this._getDialogItemsHistory();
+        },
+        onFilterInvoices: function (oEvent) {
+            debugger;
+            var aFilter = [];
+            if (sQuery) {
+                aFilter.push(new Filter("ID", FilterOperator.Contains, sQuery));
+            }
+
+            var oTable = sap.ui.getCore().byId("tableHistory");
+            var oBinding = oTable.getBinding("items");
+            oBinding.filter(aFilter);
+        },
+
+
+
+
+        onAddHistoryItems: function () {
+            debugger
+            var oModelTable = this.getView().getModel("Clothing").getProperty("/catalog/clothing/categories");
+            var oModelTreeTable = this.getView().getModel("Clothing").getProperty("/catalog/clothing/itemsTreeTable");
+            var oModelSizes = this.getView().getModel("Clothing").getProperty("/sizes");
+            var codiceId = this.getView().getModel("dropDownModel").getProperty("/SelectedItems");
+            var lastOrder = this.getView().getModel("Clothing");
+            var descrizione = oModelTable.filter(items => items.ID == codiceId)[0]
+            var itemsSelected = sap.ui.getCore().byId("tableHistory").getSelectedItems();
+
+            for (let i = 0; i < itemsSelected.length; i++) {
+                var sPath = itemsSelected[i].getBindingContextPath()
+                var CurrentItem = lastOrder.getProperty(sPath);
+
+                oModelTreeTable.push(CurrentItem);
+            }
+            var modelClothing = this.getView().getModel("Clothing");
+            modelClothing.updateBindings(true);
+
+            this._oDialogItemsHistory.close()
+
         }
     });
 });

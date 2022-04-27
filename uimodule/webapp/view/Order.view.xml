@@ -84,27 +84,18 @@
 						<core:Title/>
 						<VBox>
 							<Label text="Indirizzo committente"/>
-							<HBox width="100%">
-								<Text
-									width="100%"
-									text=""
-								/>
-							</HBox>
-							<Text
-								text=""
-								class="sapUiMediumMarginTop "
-							/>
-							<HBox>
+							<Text text=""/>
+							<HBox class="sapUiMediumMarginTop">
 								<Label
-									class="sapUiTinyMargin"
-									text="Data rif. ordine"
+									class="sapUiTinyMarginTop"
+									text="Data rif. ordine:"
 									labelFor="DP1"
 								/>
 								<DatePicker
 									id="DP1"
 									placeholder="Enter Date"
 									width="12rem"
-									class="sapUiTinyMarginBottom"
+									class="sapUiTinyMarginBegin"
 								/>
 							</HBox>
 						</VBox>
@@ -195,7 +186,7 @@
 							enableSelectAll="false"
 							ariaLabelledBy="title"
 							rows="{
-								path: 'Clothing>/catalog/clothing',
+								path: 'Clothing>/catalog/clothing/itemsTreeTable',
 								parameters: {
 									arrayNames: ['categories']
 								}
@@ -283,6 +274,12 @@
 								</t:Column>
 							</t:columns>
 						</t:TreeTable>
+						<HBox
+							class="sapUiSmallMarginTop"
+							justifyContent="End"
+						>
+							<Button text="Salva"/>
+						</HBox>
 					</content>
 				</IconTabBar>
 			</VBox>

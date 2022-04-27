@@ -2,7 +2,8 @@
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
-	xmlns:f="sap.ui.layout.form"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:f="sap.f"
 >
 	<Dialog
 		title="Dettaglio RIGA"
@@ -44,12 +45,12 @@
 						design="Horizontal"
 					>
 						<VBox class="sapUiSmallMargin">
-							<f:Form
+							<form:Form
 								id="FormChange"
 								editable="true"
 							>
-								<f:layout>
-									<f:ResponsiveGridLayout
+								<form:layout>
+									<form:ResponsiveGridLayout
 										labelSpanXL="4"
 										labelSpanL="4"
 										labelSpanM="12"
@@ -64,17 +65,17 @@
 										columnsM="2"
 										singleContainerFullSize="false"
 									/>
-								</f:layout>
-								<f:formContainers>
-									<f:FormContainer title="">
-										<f:formElements>
-											<f:FormElement label="Codice">
-												<f:fields>
+								</form:layout>
+								<form:formContainers>
+									<form:FormContainer title="">
+										<form:formElements>
+											<form:FormElement label="Codice">
+												<form:fields>
 													<Input value=""/>
-												</f:fields>
-											</f:FormElement>
-											<f:FormElement label="Categoria">
-												<f:fields>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement label="Categoria">
+												<form:fields>
 													<Select
 														id="category"
 														selectedKey="{Country}"
@@ -94,10 +95,10 @@
 															/>
 														</items>
 													</Select>
-												</f:fields>
-											</f:FormElement>
-											<f:FormElement>
-												<f:fields>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement>
+												<form:fields>
 													<HBox
 														justifyContent="End"
 														width="46%"
@@ -107,19 +108,19 @@
 															text="Con Ordini"
 														/>
 													</HBox>
-												</f:fields>
-											</f:FormElement>
-										</f:formElements>
-									</f:FormContainer>
-									<f:FormContainer>
-										<f:formElements>
-											<f:FormElement label="Descrizione">
-												<f:fields>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+									</form:FormContainer>
+									<form:FormContainer>
+										<form:formElements>
+											<form:FormElement label="Descrizione">
+												<form:fields>
 													<Input value="{Url}"/>
-												</f:fields>
-											</f:FormElement>
-											<f:FormElement label="Serie">
-												<f:fields>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement label="Serie">
+												<form:fields>
 													<Select
 														id="serie"
 														selectedKey=""
@@ -127,12 +128,12 @@
 														<items>
 														</items>
 													</Select>
-												</f:fields>
-											</f:FormElement>
-										</f:formElements>
-									</f:FormContainer>
-								</f:formContainers>
-							</f:Form>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+									</form:FormContainer>
+								</form:formContainers>
+							</form:Form>
 							<Button
 								text="Cerca"
 								class="sapUiSmallMarginBegin"

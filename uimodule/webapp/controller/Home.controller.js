@@ -10,8 +10,18 @@ sap.ui.define([
     return Controller.extend("com.myorg.myUI5App.controller.Home", {
 
         goToOrder: function () {
+
+            this.getView().getModel("Clothing").setProperty("/catalog/clothing/itemsTreeTable", []);
+
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("Order");
+            debugger
+        },
+        goToModication: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("Order");
+            var categories = this.getView().getModel("Clothing").getProperty("/catalog/clothing/categories")
+            this.getView().getModel("Clothing").setProperty("/catalog/clothing/itemsTreeTable", categories);
         },
         goToLogin: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);

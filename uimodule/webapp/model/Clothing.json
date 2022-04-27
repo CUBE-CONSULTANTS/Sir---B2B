@@ -27,10 +27,11 @@
           {"ID":"MC1151Q746","description": "PANTALONE SYMBOL BANDE,NAVY,46", "quantity":10, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
           {"ID":"MC1151Q748", "description": "PANTALONE SYMBOL BANDE,NAVY,48", "quantity":25, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"},
           {"ID":"MC1151Q750", "description": "PANTALONE SYMBOL BANDE,NAVY,48", "quantity":25, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"}
-        ]}
-        ]}
-
-    },
+    ]}
+        ],
+      "itemsTreeTable": []
+    }
+},
   "sizes": [
     {"key": "38"},
     {"key": "40"},
