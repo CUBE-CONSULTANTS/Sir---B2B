@@ -79,7 +79,7 @@
 							<items>
 								<ColumnListItem vAlign="Middle">
 									<cells>
-										<Text text="{Clothing>id}"/>
+										<Text text="{Clothing>ID}"/>
 										<Text text="{Clothing>description}"/>
 										<Text text="{Clothing>quantity}"/>
 										<VBox>

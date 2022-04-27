@@ -19,16 +19,88 @@
 					class="sapUiSmallMarginBegin"
 				/>
 				<Panel>
-					<Input
+					<SearchField
 						width="50%"
-						class="sapUiLargeMarginEnd"
-						id="articolo1"
-						value="{/SelectedItems}"
+						search="onFilterInvoices"
 					/>
-					<Button
-						text="Cerca"
-						press="onOpenDialogFilterItems"
-					/>
+				</Panel>
+				<Panel>
+					<Table
+						id="tableHistory"
+						rememberSelections="false"
+						mode="SingleSelectLeft"
+						items="{
+							path: 'Clothing>/lastOrder'
+						}"
+					>
+						<columns>
+							<Column width="12em">
+								<Text text="Articolo"/>
+							</Column>
+							<Column
+								minScreenWidth="Tablet"
+								demandPopin="true"
+							>
+								<Text text="Descrizione"/>
+							</Column>
+							<Column
+								minScreenWidth="Desktop"
+								demandPopin="true"
+								hAlign="End"
+							>
+								<Text text="Q.Tà"/>
+							</Column>
+							<Column
+								minScreenWidth="Desktop"
+								demandPopin="true"
+								hAlign="Center"
+							>
+								<Text text="Prezzo"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem vAlign="Middle">
+								<cells>
+									<Text text="{Clothing>ID}"/>
+									<Text text="{Clothing>description}"/>
+									<Text text="{Clothing>quantity}"/>
+									<VBox>
+										<HBox justifyContent="SpaceBetween">
+											<Label
+												width="100%"
+												text="{Clothing>list}"
+											/>
+											<Text
+												text="{Clothing>listId}"
+												width="5rem"
+											/>
+										</HBox>
+										<HBox justifyContent="SpaceBetween">
+											<Label text="{Clothing>sale}"/>
+											<Text
+												text="{Clothing>saleId}"
+												width="5rem"
+											/>
+										</HBox>
+										<HBox justifyContent="SpaceBetween">
+											<Label text="{Clothing>priceSale}"/>
+											<Text
+												text="{Clothing>priceSaleId}"
+												width="5rem"
+											/>
+										</HBox>
+										<HBox justifyContent="SpaceBetween">
+											<Label text="{Clothing>total}"/>
+											<Text
+												text="{Clothing>totalId}"
+												width="5rem"
+											/>
+										</HBox>
+									</VBox>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
 				</Panel>
 			</l:content>
 		</l:VerticalLayout>
@@ -36,6 +108,7 @@
 			<Button
 				type="Accept"
 				text="Salva"
+				press="onAddHistoryItems"
 			/>
 		</beginButton>
 		<endButton>
