@@ -1,0 +1,138 @@
+{
+  "catalog": {
+    "clothing": {
+      "categories": [
+        {"ID": "MC1151Q7","description": "PANTALONE SYMBOL BANDE,NAVY", "categories": [
+          {"ID":" MC1151Q744 ","IMG": "https://www.conbipel.com/on/demandware.static/-/Sites-conbipel_master/default/dw3f3c430a/images/12155153_01.jpg", "description": "PANTALONE SYMBOL BANDE,NAVY,44", "quantity":10, "size":44, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
+          {"ID":"MC1151Q746", "description": "PANTALONE SYMBOL BANDE,NAVY,46" , "quantity":10, "size":46, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale" , "totalId": "73,00"},
+          {"ID":"MC1151Q748", "description": "PANTALONE SYMBOL BANDE,NAVY,48" , "quantity":25, "size":48, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"},
+          {"ID":"MC1151Q750", "description": "PANTALONE SYMBOL BANDE,NAVY,50", "quantity":25, "size":50, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato", "priceSaleId" : "7,30" ,"total": "Totale", "totalId": "182,50" }
+        ]},
+        {"ID": "MC3011J5", "description": "T-SHIRT SAMBA,ARANCIO", "categories": [
+          {"ID":"MC3011J5S",  "description": "T-SHIRT SAMBA,ARANCIO,S", "quantity":20, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "5,20",  "sale": "Sconto", "saleId": "72,12%", "priceSale": "Prezzo Scontato","priceSaleId" : "1.45" , "total": "Totale", "totalId": "29,00"},
+          {"ID":"MC3011J5M",  "description": "T-SHIRT SAMBA,ARANCIO,M", "quantity":40, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "5,20",  "sale": "Sconto", "saleId": "72,12%", "priceSale": "Prezzo Scontato","priceSaleId" : "1.45" , "total": "Totale", "totalId": "58,00"},
+          {"ID":"MC3011J5L",  "description": "T-SHIRT SAMBA,ARANCIO,L", "quantity":70, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "5,20",  "sale": "Sconto", "saleId": "72,12%", "priceSale": "Prezzo Scontato","priceSaleId" : "1.45" , "total": "Totale", "totalId": "101,50"},
+          {"ID":"MC3011J5XL",  "description": "T-SHIRT SAMBA,ARANCIO,XL", "quantity":40, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "5,20", "sale": "Sconto", "saleId": "72,12%", "priceSale": "Prezzo Scontato","priceSaleId" : "1.45" , "total": "Totale", "totalId": "58,00"},
+          {"ID":"MC3011J5XX",  "description": "T-SHIRT SAMBA,ARANCIO,XX", "quantity":30, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "5,20", "sale": "Sconto", "saleId": "72,12%", "priceSale": "Prezzo Scontato","priceSaleId" : "1.45" , "total": "Totale", "totalId": "43,50"},
+          {"ID":"MC3011J53X",  "description": "T-SHIRT SAMBA,ARANCIO,3X", "quantity":10, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "5,20", "sale": "Sconto", "saleId": "72,12%", "priceSale": "Prezzo Scontato","priceSaleId" : "1.45" , "total": "Totale", "totalId": "14,50"}
+        ]},
+          {"ID": "MC1151Q7","description": "PANTALONE SYMBOL BANDE,NAVY", "categories": [
+          {"ID":" MC1151Q744 ", "description": "PANTALONE SYMBOL BANDE,NAVY,44", "quantity":10, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
+          {"ID":"MC1151Q746","description": "PANTALONE SYMBOL BANDE,NAVY,46" , "quantity":10, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
+          {"ID":"MC1151Q748", "description": "PANTALONE SYMBOL BANDE,NAVY,48", "quantity":25, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"},
+          {"ID":"MC1151Q750", "description": "PANTALONE SYMBOL BANDE,NAVY,48", "quantity":25, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"}
+        ]},
+            {"ID": "MC1151Q7","description": "PANTALONE SYMBOL BANDE,NAVY", "categories": [
+          {"ID":" MC1151Q744 ", "description": "PANTALONE SYMBOL BANDE,NAVY,44", "quantity":10, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
+          {"ID":"MC1151Q746","description": "PANTALONE SYMBOL BANDE,NAVY,46", "quantity":10, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
+          {"ID":"MC1151Q748", "description": "PANTALONE SYMBOL BANDE,NAVY,48", "quantity":25, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"},
+          {"ID":"MC1151Q750", "description": "PANTALONE SYMBOL BANDE,NAVY,48", "quantity":25, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"}
+        ]}
+        ]}
+
+    },
+  "sizes": [
+    {"key": "38"},
+    {"key": "40"},
+    {"key": "42"},
+    {"key": "44"},
+    {"key": "46"},
+    {"key": "48"},
+    {"key": "50"},
+    {"key": "52"},
+    {"key": "54"},
+    {"key": "56"}
+  ],
+    "lastOrder" :[ {"ID": "MC1151Q7","description": "PANTALONE SYMBOL BANDE,NAVY", "quantity": 70,"list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale" , "totalId": "73,00" , "categories": [
+          {"ID":" MC1151Q744 ","IMG": "https://www.conbipel.com/on/demandware.static/-/Sites-conbipel_master/default/dw3f3c430a/images/12155153_01.jpg", "description": "PANTALONE SYMBOL BANDE,NAVY,44", "quantity":10, "size":44, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
+          {"ID":"MC1151Q746", "description": "PANTALONE SYMBOL BANDE,NAVY,46" , "quantity":10, "size":46, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale" , "totalId": "73,00"},
+          {"ID":"MC1151Q748", "description": "PANTALONE SYMBOL BANDE,NAVY,48" , "quantity":25, "size":48, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"},
+          {"ID":"MC1151Q750", "description": "PANTALONE SYMBOL BANDE,NAVY,50", "quantity":25, "size":50, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato", "priceSaleId" : "7,30" ,"total": "Totale", "totalId": "182,50" }
+        ]},
+        {"ID": "MC3011J5", "description": "T-SHIRT SAMBA,ARANCIO", "quantity": 70,"list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale" , "totalId": "73,00", "categories": [
+          {"ID":"MC3011J5S",  "description": "T-SHIRT SAMBA,ARANCIO,S", "quantity":20, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "5,20",  "sale": "Sconto", "saleId": "72,12%", "priceSale": "Prezzo Scontato","priceSaleId" : "1.45" , "total": "Totale", "totalId": "29,00"},
+          {"ID":"MC3011J5M",  "description": "T-SHIRT SAMBA,ARANCIO,M", "quantity":40, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "5,20",  "sale": "Sconto", "saleId": "72,12%", "priceSale": "Prezzo Scontato","priceSaleId" : "1.45" , "total": "Totale", "totalId": "58,00"},
+          {"ID":"MC3011J5L",  "description": "T-SHIRT SAMBA,ARANCIO,L", "quantity":70, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "5,20",  "sale": "Sconto", "saleId": "72,12%", "priceSale": "Prezzo Scontato","priceSaleId" : "1.45" , "total": "Totale", "totalId": "101,50"},
+          {"ID":"MC3011J5XL",  "description": "T-SHIRT SAMBA,ARANCIO,XL", "quantity":40, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "5,20", "sale": "Sconto", "saleId": "72,12%", "priceSale": "Prezzo Scontato","priceSaleId" : "1.45" , "total": "Totale", "totalId": "58,00"},
+          {"ID":"MC3011J5XX",  "description": "T-SHIRT SAMBA,ARANCIO,XX", "quantity":30, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "5,20", "sale": "Sconto", "saleId": "72,12%", "priceSale": "Prezzo Scontato","priceSaleId" : "1.45" , "total": "Totale", "totalId": "43,50"},
+          {"ID":"MC3011J53X",  "description": "T-SHIRT SAMBA,ARANCIO,3X", "quantity":10, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "5,20", "sale": "Sconto", "saleId": "72,12%", "priceSale": "Prezzo Scontato","priceSaleId" : "1.45" , "total": "Totale", "totalId": "14,50"}
+        ]},
+          {"ID": "MC1151Q7","description": "PANTALONE SYMBOL BANDE,NAVY","quantity": 70,"list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale" , "totalId": "73,00", "categories": [
+          {"ID":" MC1151Q744 ", "description": "PANTALONE SYMBOL BANDE,NAVY,44", "quantity":10, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
+          {"ID":"MC1151Q746","description": "PANTALONE SYMBOL BANDE,NAVY,46" , "quantity":10, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
+          {"ID":"MC1151Q748", "description": "PANTALONE SYMBOL BANDE,NAVY,48", "quantity":25, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"},
+          {"ID":"MC1151Q750", "description": "PANTALONE SYMBOL BANDE,NAVY,48", "quantity":25, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"}
+        ]},
+            {"ID": "MC1151Q7","description": "PANTALONE SYMBOL BANDE,NAVY", "quantity": 70,"list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale" , "totalId": "73,00", "categories": [
+          {"ID":" MC1151Q744 ", "description": "PANTALONE SYMBOL BANDE,NAVY,44", "quantity":10, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
+          {"ID":"MC1151Q746","description": "PANTALONE SYMBOL BANDE,NAVY,46", "quantity":10, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
+          {"ID":"MC1151Q748", "description": "PANTALONE SYMBOL BANDE,NAVY,48", "quantity":25, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"},
+          {"ID":"MC1151Q750", "description": "PANTALONE SYMBOL BANDE,NAVY,48", "quantity":25, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"}
+        ]} 
+            ],
+   "SearchFile": [
+    {
+      "codice": "PA110001", "description": "ETICHETTA RICAMATA IND. ZONA PETTO"
+    },
+    {
+      "codice": "PA110002", "description": "ETICHETTA RICAMATA IND. ZONA SPALLE"
+    },
+    {
+      "codice": "PA110003", "description": "RICAMO DIRETTO CAPO ZONA PETTO"
+    },
+    {
+      "codice": "PA110004", "description": "RICAMO DIRETTO CAPO ZONA PETTO IGNIFUGO"
+    },
+    {
+      "codice": "PA110005", "description": "RICAMO DIRETTO CASCHETTO O CAPPELLINO"
+    },
+    {
+      "codice": "PA110006", "description": "RICAMO DIRETTO CAPO ZONA SPALLE"
+    },
+    {
+      "codice": "PA110007", "description": "RICAMO DIRETTO CAPO ZONA SPALLE IGNIFUGO"
+    }
+  ],
+  "availableProduct": [
+    {
+      "date": "2021-12-02", "total": 7173, "size38": 65, "size40": 92, "size42": 428, "size44": 928, "size46": 601, "size48": 942, "size50": 1454, "size52": 145, "size54": 57, "size56": 80, "size58": 10, "size60": 50, "size62": 0
+    },
+    {
+      "date": "2021-12-09", "total": 7173, "size38": 100, "size40": 125, "size42": 4575, "size44": 575, "size46": 687, "size48": 243, "size50": 678, "size52": 246, "size54": 888, "size56": 686, "size58": 10, "size60": 54, "size62": 0
+    },
+    {
+      "date": "2022-01-08", "total": 9004, "size38": 664, "size40": 912, "size42": 678, "size44": 457, "size46": 574, "size48": 65, "size50": 245, "size52": 45, "size54": 87, "size56": 65, "size58": 10, "size60": 90, "size62": 0
+    },
+    {
+      "date": "2022-02-14", "total": 5485, "size38": 576, "size40": 64, "size42": 575, "size44": 546, "size46": 5745, "size48": 356, "size50": 2454, "size52": 5485, "size54": 567, "size56": 22, "size58": 5, "size60": 50, "size62": 0
+    },
+    {
+      "date": "2022-03-17", "total": 4788, "size38": 557, "size40": 874, "size42": 457, "size44": 678, "size46": 67, "size48": 678, "size50": 5764, "size52": 57, "size54": 5457, "size56": 2, "size58": 4, "size60": 50, "size62": 0
+    }
+
+  ],
+  "sizes": {
+    "totale": 0,
+    "calcolo": 0,
+    "prezzo": 25.6,
+    "sizes1": [
+                    { "key": "38", "count": "(125)", "quantita": 0, "max": 125 },
+                    { "key": "40", "count": "(41)", "quantita": 0, "max": 41 },
+                    { "key": "42", "count": "(412)", "quantita": 0, "max": 412 },
+                    { "key": "44", "count": "(10)", "quantita": 0, "max": 10 },
+                    { "key": "46", "count": "(45)", "quantita": 0, "max": 45 },
+                    { "key": "48", "count": "(75)", "quantita": 0, "max": 75 },
+                    { "key": "50", "count": "(35)", "quantita": 0, "max": 35 },
+                    { "key": "52", "count": "(24)", "quantita": 0, "max": 24 },
+                    { "key": "54", "count": "(12)", "quantita": 0, "max": 12 }
+    ],
+    "sizes2": [
+                    { "key": "56", "count": "(7)", "quantita": 0, "max": 7 },
+                    { "key": "58", "count": "(547)", "quantita": 0, "max": 547 },
+                    { "key": "60", "count": "(63)", "quantita": 0, "max": 63 },
+                    { "key": "62", "count": "(254)", "quantita": 0, "max": 254 }
+    ]
+  }
+
+
+  }

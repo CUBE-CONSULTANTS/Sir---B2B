@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+	<Popover
+		contentHeight="15rem"
+		contentWidth="15rem"
+		id="colors"
+		title="Colori"
+		class=""
+		placement="Bottom"
+	>
+		<VBox>
+			<List items="{
+				path: '/Colors'
+			}">
+				<CustomListItem
+					type="Active"
+					press=".onChooseColor"
+				>
+					<HBox alignItems="Center">
+						<core:Icon
+							class="colorSelected sapUiMediumMarginEnd sapUiTinyMarginBegin"
+							src="sap-icon://color-fill"
+							color="{id}"
+							height="2rem"
+						/>
+						<Text
+							text="{Name}"
+						/>
+					</HBox>
+				</CustomListItem>
+			</List>
+		</VBox>
+		<endButton>
+			<Button
+				text="Chiudi"
+				press=".onCloseColor"
+			/>
+		</endButton>
+	</Popover>
+</core:FragmentDefinition>

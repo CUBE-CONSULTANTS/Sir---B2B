@@ -1,0 +1,106 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+>
+	<Dialog
+		title="Dettaglio RIGA - PANTALONE SYMBOL BANDE - Codice precedente 30814AB,30814ABG,30814B,30814BG"
+		stretch="true"
+	>
+		<l:VerticalLayout
+			class="sapUiContentPadding"
+			width="100%"
+		>
+			<l:content>
+				<Label
+					labelFor="filterDateRangeSelection"
+					class="sapUiSmallMarginBegin"
+				/>
+				<Panel>
+					<Input
+						width="50%"
+						class="sapUiLargeMarginEnd"
+						value="MC1151"
+						enabled="false"
+					/>
+					<Button
+						text="Ricerca avanzata"
+						enabled="false"
+						press="onOpenDialogFilterItems"
+					/>
+					<Button
+						class="sapUiSmallMarginBegin"
+						text="Dispon. Prodotto"
+						icon="sap-icon://write-new"
+						press="onOpenDialogProductAvailability"
+					/>
+				</Panel>
+			</l:content>
+			<Panel>
+				<VBox>
+					<Text
+						class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+						text="Colore"
+					/>
+				</VBox>
+				<core:Icon
+					class="sapUiTinyMarginEnd sapUiTinyMarginBottom"
+					src="sap-icon://color-fill"
+					tooltip="Seleziona un colore"
+					color="black"
+				/>
+				<Text
+					class="sapUiTinyMarginBegin"
+					text="Q7 - NAVY (M)"
+				/>
+				<CustomListItem>
+					<HBox
+						id="idList"
+						class="sapUiTinyMargin"
+					>
+						<VBox>
+							<Text
+								class="sapUiMediumMarginBegin"
+								text=" {key}"
+							/>
+							<StepInput
+								id="stepInput"
+								value="{quantita}"
+								min="0"
+								max="{max}"
+								width="10%"
+								change=".onChangeValueItems"
+							/>
+							<Text
+								class="sapUiMediumMarginBegin"
+								text="{count}"
+							/>
+						</VBox>
+					</HBox>
+					<Text
+						text="Totale: "
+						class="sapUiSmallMarginTop sapUiSmallMarginBegin sapUiTinyMarginEnd"
+					/>
+					<Text
+						id="totalItems"
+						text="{/totale}"
+						class="sapUiSmallMarginTop"
+					/>
+				</CustomListItem>
+			</Panel>
+		</l:VerticalLayout>
+		<beginButton>
+			<Button
+				type="Accept"
+				text="Salva"
+			/>
+		</beginButton>
+		<endButton>
+			<Button
+				type="Reject"
+				text="Annulla"
+				press=".onCloseFilterOptionsDialogCancel"
+			/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

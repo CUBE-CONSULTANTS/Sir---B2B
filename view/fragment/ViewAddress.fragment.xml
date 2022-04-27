@@ -1,0 +1,133 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+>
+	<Dialog title="Aggiungi Indirizzo">
+		<VBox
+			class=""
+			width="100%"
+		>
+			<f:Form editable="true">
+				<f:layout>
+					<f:ResponsiveGridLayout
+						labelSpanXL="4"
+						labelSpanL="4"
+						labelSpanM="12"
+						labelSpanS="12"
+						adjustLabelSpan="false"
+						emptySpanXL="0"
+						emptySpanL="0"
+						emptySpanM="0"
+						emptySpanS="0"
+						columnsXL="2"
+						columnsL="2"
+						columnsM="2"
+						singleContainerFullSize="false"
+					/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement label="Ragione Sociale">
+								<f:fields>
+									<Input
+										editable="false"
+										required="true"
+										value="LUCART SPA C/A SIG. ROMANIELLO"
+									/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="CAP">
+								<f:fields>
+									<Input
+										editable="false"
+										value="85021"
+									/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Provincia">
+								<f:fields>
+									<Input
+										editable="false"
+										selectedKey="{/SelectPro}"
+										suggestionItems="{
+											path: '/provinces',
+											sorter: {
+												path: 'Name'
+											}
+										}"
+									>
+										<suggestionItems>
+											<core:Item
+												text="{Name}"
+												key="{id}"
+											/>
+										</suggestionItems>
+									</Input>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement label="Indirizzo">
+								<f:fields>
+									<Input
+										editable="false"
+										required="true"
+										value="LOC. SERRA VENTARULI"
+									/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Nazione">
+								<f:fields>
+									<ComboBox
+										editable="false"
+										selectedKey="{/SelectNat}"
+										items="{
+											path: '/Nationalities',
+											sorter: {
+												path: 'Name'
+											}
+										}"
+									>
+										<items>
+											<core:Item
+												text="{Name}"
+												key="{id}"
+											/>
+										</items>
+									</ComboBox>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Comune">
+								<f:fields>
+									<ComboBox
+										editable="false"
+										value="AVIGLIANO"
+									/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Nota Segnacollo">
+								<f:fields>
+									<Input
+										editable="false"
+										value=""
+									/>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</VBox>
+		<endButton>
+			<Button
+				type="Reject"
+				text="Annulla"
+				press=".onCloseViewAddress"
+			/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

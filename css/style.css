@@ -1,0 +1,17 @@
+/* Enter your custom styles here */
+
+#text1, #text2 {
+    font-size: 70%;
+}
+.addressContainer>div:nth-child(1){
+    width: 100% !important;
+
+}
+.chooseColor:hover{
+    background: none;
+    border: none;
+    cursor: pointer !important;
+}
+.colorSelected{
+    font-size: 70%;
+}

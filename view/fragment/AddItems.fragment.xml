@@ -1,0 +1,195 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+>
+	<Dialog
+		title="Dettaglio RIGA"
+		stretch="true"
+	>
+		<l:VerticalLayout
+			class="sapUiContentPadding"
+			width="100%"
+		>
+			<l:content>
+				<Label
+					text="Articolo"
+					labelFor="filterDateRangeSelection"
+					class="sapUiSmallMarginBegin"
+				/>
+				<Panel>
+					<Input
+						width="50%"
+						class="sapUiLargeMarginEnd"
+						id="articolo1"
+						value="{/SelectedItems}"
+					/>
+					<Button
+						text="Cerca"
+						press="onOpenDialogFilterItems"
+					/>
+				</Panel>
+			</l:content>
+			<IconTabBar
+				id="idIconTabBarMulti"
+				class="sapUiResponsiveContentPadding"
+				expanded="{/RicercaAvanzata}"
+				headerMode="Inline"
+			>
+				<items>
+					<IconTabFilter
+						text="Ricerca avanzata"
+						icon="sap-icon://search"
+						design="Horizontal"
+					>
+						<VBox class="sapUiSmallMargin">
+							<f:Form
+								id="FormChange"
+								editable="true"
+							>
+								<f:layout>
+									<f:ResponsiveGridLayout
+										labelSpanXL="4"
+										labelSpanL="4"
+										labelSpanM="12"
+										labelSpanS="12"
+										adjustLabelSpan="false"
+										emptySpanXL="0"
+										emptySpanL="0"
+										emptySpanM="0"
+										emptySpanS="0"
+										columnsXL="2"
+										columnsL="2"
+										columnsM="2"
+										singleContainerFullSize="false"
+									/>
+								</f:layout>
+								<f:formContainers>
+									<f:FormContainer title="">
+										<f:formElements>
+											<f:FormElement label="Codice">
+												<f:fields>
+													<Input value=""/>
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="Categoria">
+												<f:fields>
+													<Select
+														id="category"
+														selectedKey="{Country}"
+													>
+														<items>
+															<core:Item
+																text="ANTINCENDIO"
+																key="ANTINCENDIO"
+															/>
+															<core:Item
+																text="ANTIRUMORE"
+																key="ANTIRUMORE"
+															/>
+															<core:Item
+																text="ATTR. ELETTRICHE"
+																key="ATTRELETTRICHE"
+															/>
+														</items>
+													</Select>
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement>
+												<f:fields>
+													<HBox
+														justifyContent="End"
+														width="46%"
+													>
+														<CheckBox
+															class="sapUiSmallMarginTop"
+															text="Con Ordini"
+														/>
+													</HBox>
+												</f:fields>
+											</f:FormElement>
+										</f:formElements>
+									</f:FormContainer>
+									<f:FormContainer>
+										<f:formElements>
+											<f:FormElement label="Descrizione">
+												<f:fields>
+													<Input value="{Url}"/>
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="Serie">
+												<f:fields>
+													<Select
+														id="serie"
+														selectedKey=""
+													>
+														<items>
+														</items>
+													</Select>
+												</f:fields>
+											</f:FormElement>
+										</f:formElements>
+									</f:FormContainer>
+								</f:formContainers>
+							</f:Form>
+							<Button
+								text="Cerca"
+								class="sapUiSmallMarginBegin"
+								press="onSearchDetailItems"
+							/>
+							<Table
+								visible="false"
+								id="idProductsTable"
+								inset="false"
+								class="sapUiMediumMarginTop"
+								mode="MultiSelect"
+							>
+								<columns>
+									<Column width="12em">
+										<Text text="Codice"/>
+									</Column>
+									<Column
+										minScreenWidth="Tablet"
+										demandPopin="true"
+									>
+										<Text text="Descrizione"/>
+									</Column>
+									<Column
+										minScreenWidth="Desktop"
+										demandPopin="true"
+										hAlign="End"
+									>
+										<Text text="Codice Precedente"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="FA1111"/>
+											<Text text="MASCHERINA RIGIDA CON ELASTICI"/>
+											<Text text="45101"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</VBox>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:VerticalLayout>
+		<beginButton>
+			<Button
+				type="Accept"
+				text="Salva"
+			/>
+		</beginButton>
+		<endButton>
+			<Button
+				type="Reject"
+				text="Annulla"
+				press=".onCloseFilterOptionsDialogCancel"
+			/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

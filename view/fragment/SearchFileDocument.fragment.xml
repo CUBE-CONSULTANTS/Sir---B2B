@@ -1,0 +1,122 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+>
+	<Dialog
+		title="Aggiungi personalizzazione"
+		stretch="true"
+	>
+		<l:VerticalLayout
+			class="sapUiContentPadding"
+			width="100%"
+		>
+			<FlexBox>
+				<items>
+					<VBox class="sapUiSmallMargin">
+						<f:Form editable="true">
+							<f:layout>
+								<f:ResponsiveGridLayout
+									labelSpanXL="4"
+									labelSpanL="4"
+									labelSpanM="12"
+									labelSpanS="12"
+									adjustLabelSpan="false"
+									emptySpanXL="0"
+									emptySpanL="0"
+									emptySpanM="0"
+									emptySpanS="0"
+									columnsXL="2"
+									columnsL="2"
+									columnsM="2"
+									singleContainerFullSize="false"
+								/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer title="">
+									<f:formElements>
+										<f:FormElement label="Codice">
+											<f:fields>
+												<Input value=""/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement>
+											<f:fields>
+												<HBox>
+													<CheckBox
+														class="sapUiSmallMarginTop"
+														text="Con Ordini"
+													/>
+												</HBox>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement>
+											<f:fields>
+												<HBox
+													width="28rem"
+													class="sapUiLargeMarginTop"
+												>
+													<Button text="Cerca"/>
+												</HBox>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement label="Descrizione">
+											<f:fields>
+												<Input value="{Url}"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</VBox>
+				</items>
+			</FlexBox>
+			<Table
+				mode="MultiSelect"
+				width="auto"
+				growing="true"
+				growingScrollToLoad="true"
+				growingThreshold="5"
+				items="{
+					path: 'Clothing>/SearchFile'
+				}"
+			>
+				<columns>
+					<Column width="12em">
+						<Text text="Codice"/>
+					</Column>
+					<Column demandPopin="true">
+						<Text text="Descrizione"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells>
+							<Text text="{Clothing>codice}"/>
+							<Text text="{Clothing>description}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</l:VerticalLayout>
+		<beginButton>
+			<Button
+				type="Accept"
+				text="Salva"
+			/>
+		</beginButton>
+		<endButton>
+			<Button
+				type="Reject"
+				text="Annulla"
+				press=".onCloseFilterOptionsDialogCancel"
+			/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

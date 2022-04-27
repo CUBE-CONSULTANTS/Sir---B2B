@@ -1,0 +1,101 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+	<Dialog
+		title="Disponibilità PRODOTTO MC1151Q738"
+		stretch="true"
+	>
+		<Table
+			id="productAvailable"
+			inset="false"
+			items="{
+				path: 'Clothing>/availableProduct'
+			}"
+		>
+			<columns>
+				<Column width="12em">
+					<Text text="Data"/>
+				</Column>
+				<Column
+					minScreenWidth="Tablet"
+					demandPopin="true"
+				>
+					<Text text="Totale"/>
+				</Column>
+				<Column
+					minScreenWidth="Desktop"
+					demandPopin="true"
+				>
+					<Text text="38"/>
+				</Column>
+				<Column
+					minScreenWidth="Desktop"
+					demandPopin="true"
+				>
+					<Text text="40"/>
+				</Column>
+				<Column>
+					<Text text="42"/>
+				</Column>
+				<Column>
+					<Text text="44"/>
+				</Column>
+				<Column>
+					<Text text="46"/>
+				</Column>
+				<Column>
+					<Text text="48"/>
+				</Column>
+				<Column>
+					<Text text="50"/>
+				</Column>
+				<Column>
+					<Text text="52"/>
+				</Column>
+				<Column>
+					<Text text="54"/>
+				</Column>
+				<Column>
+					<Text text="56"/>
+				</Column>
+				<Column>
+					<Text text="58"/>
+				</Column>
+				<Column>
+					<Text text="60"/>
+				</Column>
+				<Column>
+					<Text text="62"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem vAlign="Middle">
+					<cells>
+						<Text text="{Clothing>date}"/>
+						<Text text="{Clothing>total}"/>
+						<Text text="{Clothing>size38}"/>
+						<Text text="{Clothing>size40}"/>
+						<Text text="{Clothing>size42}"/>
+						<Text text="{Clothing>size44}"/>
+						<Text text="{Clothing>size46}"/>
+						<Text text="{Clothing>size48}"/>
+						<Text text="{Clothing>size50}"/>
+						<Text text="{Clothing>size52}"/>
+						<Text text="{Clothing>size54}"/>
+						<Text text="{Clothing>size56}"/>
+						<Text text="{Clothing>size58}"/>
+						<Text text="{Clothing>size60}"/>
+						<Text text="{Clothing>size62}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<beginButton>
+			<Button
+				text="Chiudi"
+				press="onCloseProd"
+			/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

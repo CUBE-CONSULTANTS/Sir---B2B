@@ -1,0 +1,55 @@
+<mvc:View
+	controllerName="com.myorg.myUI5App.controller.MainView"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page
+					id="page2"
+					title="Login Page"
+					titleAlignment="Center"
+				>
+					<content>
+						<VBox
+							fitContainer="true"
+							justifyContent="Center"
+							alignItems="Center"
+							alignContent="Center"
+						>
+							<items>
+								<Label text="Use your credentials"/>
+								<Input
+									id="username"
+									width="12rem"
+									placeholder="Enter user name"
+								/>
+								<Input
+									id="password"
+									width="12rem"
+									placeholder="Enter password"
+									type="Password"
+								/>
+								<Button
+									width="12rem"
+									text="login"
+									type="Emphasized"
+									press="onSuccessPress"
+								/>
+							</items>
+						</VBox>
+					</content>
+					<footer>
+						<Bar>
+							<contentLeft>
+								<Text text="Hi, User"/>
+							</contentLeft>
+						</Bar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
