@@ -45,7 +45,6 @@
         "sap.m": {},
         "sap.ui.core": {},
         "sap.ui.table": {}
-        
       }
     },
     "contentDensities": {
