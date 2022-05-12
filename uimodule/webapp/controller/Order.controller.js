@@ -4,7 +4,8 @@ sap.ui.define([
     "sap/ui/core/Fragment",
     "sap/m/PDFViewer",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
+    "sap/ui/model/FilterOperator",
+    "sap/m/MessageBox"
 
 ], function (
     Controller,
@@ -12,7 +13,8 @@ sap.ui.define([
     Fragment,
     PDFViewer,
     Filter,
-    FilterOperator
+    FilterOperator,
+    MessageBox
 ) {
     "use strict";
 
@@ -59,8 +61,38 @@ sap.ui.define([
 
             var oDataDropDown = {
                 "Enabled": false,
+                "EnabledCancel": true,
                 "RicercaAvanzata": false,
+                "nextButtonVisible": true,
+                "nextButtonEnabled": false,
+                "backButtonVisible": false,
+                "reviewButtonVisible": false,
+                "finishButtonVisible": false,
+                "TestoColore": "",
+                "visibleCodice": false,
+                "PersonalizzazioneButtonVisible": false,
+                "visibleDescrizione": false,
+                "visibleCategoria": false,
+                "visibleSerie": false,
+                "DisponibilitaButtonVisible": false,
+                "reviewButtonEnabled": true,
                 "SelectedItems": "",
+                "SelectedCodice": "",
+                "SelectedDescrizione": "",
+                "SelectedSeries": "",
+                "SelectedTableCodice": "",
+                "SelectedTableDescription": "",
+                "SelectedTableCodicePrecedente": "",
+                "SelectedQuantita": "",
+                "SelectedQuantitaStorico": false,
+                "prodottoList": "",
+                "prodottoTotale": "",
+                "prodottoPrezzo": "",
+                "prodottoSconto": "",
+
+
+                // "SelectedQuantitaPersonalizz": "",
+                // "VisibleQuantitaPersonalizz": false,
                 "SelectNat": "ITA",
                 "Nationalities": [
                     {
@@ -84,6 +116,7 @@ sap.ui.define([
                         "id": "TUR"
                     }
                 ],
+
                 "SelectPro": "PZ",
                 "provinces": [
                     {
@@ -106,6 +139,21 @@ sap.ui.define([
                         "Name": "Siracusa",
                         "id": "SR"
                     },
+                ],
+                "SelectedCategoria": "AI",
+                "Categories": [{
+                    "Name": "ANTINCENDIO",
+                    "id": "AI"
+                },
+                {
+                    "Name": "ANTIRUMORE",
+                    "id": "AR"
+                },
+                {
+                    "Name": "ATTR. ELETTRICHE",
+                    "id": "AE"
+                },
+
                 ],
                 "SelectedColor": "black",
                 "SelectedName": "",
@@ -135,28 +183,6 @@ sap.ui.define([
                         "id": "black"
                     }
                 ]
-                // "totale": 0,
-                // "calcolo": 0,
-                // "prezzo": 25.6,
-                // "sizes": [
-
-
-                //     { "key": "38", "count": "(125)", "quantita": 0, "max": 125 },
-                //     { "key": "40", "count": "(41)", "quantita": 0, "max": 41 },
-                //     { "key": "42", "count": "(412)", "quantita": 0, "max": 412 },
-                //     { "key": "44", "count": "(10)", "quantita": 0, "max": 10 },
-                //     { "key": "46", "count": "(45)", "quantita": 0, "max": 45 },
-                //     { "key": "48", "count": "(75)", "quantita": 0, "max": 75 },
-                //     { "key": "50", "count": "(35)", "quantita": 0, "max": 35 },
-                //     { "key": "52", "count": "(24)", "quantita": 0, "max": 24 },
-                //     { "key": "54", "count": "(12)", "quantita": 0, "max": 12 },
-                //     { "key": "56", "count": "(7)", "quantita": 0, "max": 7 },
-                //     { "key": "58", "count": "(547)", "quantita": 0, "max": 547 },
-                //     { "key": "60", "count": "(63)", "quantita": 0, "max": 63 },
-                //     { "key": "62", "count": "(254)", "quantita": 0, "max": 254 }
-
-                // ],
-
             };
 
             var oModelDropDown = new JSONModel(oDataDropDown);
@@ -203,7 +229,8 @@ sap.ui.define([
         onOpenDialogAddItems: function () {
             this.getView().getModel("dropDownModel").setProperty("/RicercaAvanzata", false);
             this._getDialog();
-            debugger
+
+            this.handleButtonsVisibility();
 
         },
         onCloseFilterOptionsDialogCancel: function (oEvent) {
@@ -322,6 +349,17 @@ sap.ui.define([
             var sName = this.getView().getModel().getProperty(sPath).Name;
             this.getView().getModel().setProperty("/SelectedName", sName);
             this.byId("colors").close();
+            var testoColore = this.getView().byId("coloreFinale").getText();
+            var totale = this.getView().byId("totalItems2").getText();
+            if (testoColore !== "" && totale > 0) {
+                this.getView().getModel("dropDownModel").setProperty("/reviewButtonEnabled", true);
+                this.getView().getModel("dropDownModel").setProperty("/SelectedQuantitaStorico", false);
+            } else {
+                this.getView().getModel("dropDownModel").setProperty("/reviewButtonEnabled", false);
+            }
+
+
+
         },
         onCloseColor: function () {
             this.byId("colors").close();
@@ -350,7 +388,6 @@ sap.ui.define([
             // oEvent.getSource().getParent().close();
         },
         onChangeValueItems: function () {
-
             debugger
             var somma = 0;
             var model = this.getView().getModel("Clothing").getProperty("/sizes/sizes1");
@@ -370,6 +407,18 @@ sap.ui.define([
             var prezzo = this.getView().getModel("Clothing").getProperty("/sizes/prezzo");
             var result = sommaFinale * prezzo;
             this.getView().getModel("Clothing").setProperty("/sizes/calcolo", result.toFixed(2));
+
+            var testoColore = this.getView().byId("coloreFinale").getText();
+            var totale = this.getView().byId("totalItems2").getText();
+            if (testoColore !== "" && totale > 0) {
+                this.getView().getModel("dropDownModel").setProperty("/reviewButtonEnabled", true);
+                this.getView().getModel("dropDownModel").setProperty("/SelectedQuantitaStorico", false);
+
+            } else {
+                this.getView().getModel("dropDownModel").setProperty("/reviewButtonEnabled", false);
+            }
+            // this.getView().getModel("dropDownModel").setProperty("/SelectedQuantitaPersonalizz", totale);
+            // this.getView().getModel("dropDownModel").setProperty("/VisibleQuantitaPersonalizz", true);
 
         },
         AdvancedSearch: function () {
@@ -654,6 +703,7 @@ sap.ui.define([
         onFilterInvoices: function (oEvent) {
             debugger;
             var aFilter = [];
+            var sQuery = oEvent.getParameter("query");
             if (sQuery) {
                 aFilter.push(new Filter("ID", FilterOperator.Contains, sQuery));
             }
@@ -686,7 +736,194 @@ sap.ui.define([
             modelClothing.updateBindings(true);
 
             this._oDialogItemsHistory.close()
+        },
 
-        }
+
+
+        handleButtonsVisibility: function () {
+            debugger
+            var oModel = this.getView().getModel("dropDownModel");
+            switch (this._oWizard.getProgress()) {
+                case 1:
+                    oModel.setProperty("/nextButtonVisible", true);
+                    // oModel.setProperty("/nextButtonEnabled", false);
+                    oModel.setProperty("/backButtonVisible", false);
+                    oModel.setProperty("/reviewButtonVisible", false);
+                    oModel.setProperty("/finishButtonVisible", false);
+                    break;
+                case 2:
+                    oModel.setProperty("/DisponibilitaButtonVisible", false);
+                    oModel.setProperty("/backButtonVisible", true);
+                    oModel.setProperty("/nextButtonEnabled", false);
+                    oModel.setProperty("/nextButtonVisible", false);
+                    oModel.setProperty("/reviewButtonVisible", true)
+                    oModel.setProperty("/reviewButtonEnabled", false)
+                    break;
+                case 3:
+                    oModel.setProperty("/finishButtonVisible", true);
+                    oModel.setProperty("/backButtonVisible", false);
+                    oModel.setProperty("/PersonalizzazioneButtonVisible", false)
+                    oModel.setProperty("/reviewButtonVisible", false)
+                    break;
+                default: break;
+            }
+
+        },
+        onDialogAfterOpen: function () {
+            debugger
+
+            this._oWizard = this.byId("CreateProductWizard");
+            // this._iSelectedStepIndex = 0;
+			// this._oSelectedStep = this._oWizard.getSteps()[this._iSelectedStepIndex];
+             this._oWizard.discardProgress(this._oWizard.getSteps()[0]);
+            this.handleButtonsVisibility();
+        },
+        onDialogNextButton: function () {
+            debugger
+            if (this._oWizard.getProgressStep().getValidated()) {
+                this._oWizard.nextStep();
+            }
+
+            this.handleButtonsVisibility();
+        },
+        onDialogBackButton: function () {
+            debugger
+            this._oWizard.previousStep();
+            this.handleButtonsVisibility();
+        },
+
+        onSelectItems: function () {
+            debugger
+            this.getView().getModel("dropDownModel").setProperty("/DisponibilitaButtonVisible", true);
+            this.getView().getModel("dropDownModel").setProperty("/PersonalizzazioneButtonVisible", true);
+            this.getView().getModel("dropDownModel").setProperty("/nextButtonEnabled", true);
+            var table = this.getView().byId("idProductsTableItems")
+            var index = table.getSelectedItems()
+            var items = index[0].getBindingContext("Clothing").getObject();
+            var modelItems = this.getView().getModel("dropDownModel");
+            modelItems.setProperty("/SelectedTableCodice", items.codice)
+            modelItems.setProperty("/SelectedTableDescription", items.description)
+            modelItems.setProperty("/SelectedTableCodicePrecedente", items.codicePrecedente)
+
+
+        },
+
+        _handleMessageBoxOpen: function (sMessage, sMessageBoxType) {
+            MessageBox[sMessageBoxType](sMessage, {
+                actions: [MessageBox.Action.YES, MessageBox.Action.NO],
+                onClose: function (oAction) {
+                    if (oAction === MessageBox.Action.YES) {
+                        debugger
+                        this._oWizard.discardProgress(this._oWizard.getSteps()[0]);
+                        // this._handleNavigationToStep(0);
+                        this._oDialog.close();
+                    }
+                }.bind(this)
+            });
+        },
+        discardProgress: function () {
+            debugger
+            var oModel = this.getView().getModel();
+            this._oWizard.discardProgress(this.byId("ProductTypeStep"));
+
+            var clearContent = function (aContent) {
+                for (var i = 0; i < aContent.length; i++) {
+                    if (aContent[i].setValue) {
+                        aContent[i].setValue("");
+                    }
+
+                    if (aContent[i].getContent) {
+                        clearContent(aContent[i].getContent());
+                    }
+                }
+            };
+        },
+
+        handleWizardCancel: function () {
+            this._handleMessageBoxOpen("Are you sure you want to cancel your report?", "warning");
+        },
+        editStepOne: function () {
+            this._handleNavigationToStep(0);
+        },
+        onSelectCheckBox: function (oEvent) {
+            debugger
+            var selected = oEvent.getSource().getSelected();
+            var model = this.getView().getModel("dropDownModel");
+            if (selected === true) {
+                model.setProperty("/visibleCodice", true);
+                model.setProperty("/visibleDescrizione", true);
+                model.setProperty("/visibleCategoria", true);
+                model.setProperty("/visibleSerie", true);
+            } else {
+                model.setProperty("/visibleCodice", false);
+                model.setProperty("/visibleDescrizione", false);
+                model.setProperty("/visibleCategoria", false);
+                model.setProperty("/visibleSerie", false);
+            }
+        },
+        onFilterTable: function (oEvent) {
+            debugger;
+            var aFilter = [];
+            var sCodice = oEvent.getParameters("query").selectionSet[0].getValue();
+            var sDescrizione = oEvent.getParameters("query").selectionSet[3].getValue()
+            if (sCodice) {
+                aFilter.push(new Filter("codice", FilterOperator.Contains, sCodice));
+            }
+            if (sDescrizione) {
+                aFilter.push(new Filter("description", FilterOperator.Contains, sDescrizione));
+            }
+
+            var oTable = this.getView().byId("idProductsTableItems");
+            var oBinding = oTable.getBinding("items");
+            oBinding.filter(aFilter);
+        },
+        onSelectArticolo: function () {
+            debugger
+            var index = this.getView().byId("idProductsTable").getSelectedContexts().length
+            if (index > 0) {
+                this.getView().getModel("dropDownModel").setProperty("/reviewButtonEnabled", true);
+            } else {
+                this.getView().getModel("dropDownModel").setProperty("/reviewButtonEnabled", false);
+            }
+            var table = this.getView().byId("idProductsTable").getSelectedItem();
+            var context = table.getBindingContext("Clothing").getObject();
+            var modelItems = this.getView().getModel("dropDownModel");
+            modelItems.setProperty("/SelectedTableCodice", context.ID)
+            modelItems.setProperty("/SelectedTableDescription", context.description)
+            modelItems.setProperty("/SelectedQuantitaStorico", true)
+            modelItems.setProperty("/SelectedQuantita", context.quantity)
+            modelItems.setProperty("/prodottoList", context.listId)
+            modelItems.setProperty("/prodottoSconto", context.saleId)
+            modelItems.setProperty("/prodottoPrezzo", context.priceSaleId)
+            modelItems.setProperty("/prodottoTotale", context.totalId)
+            modelItems.setProperty("/TestoColore", context.color)
+
+        },
+
+         onAddItems: function () {
+            debugger
+            var oModelTable = this.getView().getModel("Clothing").getProperty("/catalog/clothing/categories");
+            var oModelTreeTable = this.getView().getModel("Clothing").getProperty("/catalog/clothing/itemsTreeTable");
+            var oModelSizes = this.getView().getModel("Clothing").getProperty("/sizes");
+            var codiceId = this.getView().getModel("dropDownModel").getProperty("/SelectedItems");
+            var lastOrder = this.getView().getModel("Clothing");
+              var table = this.getView().byId("idProductsTable").getSelectedItem();
+            var context = table.getBindingContext("Clothing").getObject();
+            var modelItems = this.getView().getModel("dropDownModel");
+            var descrizione = oModelTable.filter(items => items.ID == codiceId)[0]
+            var itemsSelected = this.getView().byId("idProductsTable").getSelectedItems();
+
+            for (let i = 0; i < itemsSelected.length; i++) {
+                var sPath = itemsSelected[i].getBindingContextPath()
+                var CurrentItem = lastOrder.getProperty(sPath);
+
+                oModelTreeTable.push(CurrentItem);
+            }
+            var modelClothing = this.getView().getModel("Clothing");
+            modelClothing.updateBindings(true);
+
+            this._oDialog.close()
+        },
+
     });
 });

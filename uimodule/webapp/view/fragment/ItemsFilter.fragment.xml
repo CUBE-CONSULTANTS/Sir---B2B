@@ -7,7 +7,7 @@
 		title="Dettaglio RIGA - PANTALONE SYMBOL BANDE - Codice precedente 30814AB,30814ABG,30814B,30814BG"
 		stretch="true"
 	>
-		<l:VerticalLayout
+		<!-- <l:VerticalLayout
 			class="sapUiContentPadding"
 			width="100%"
 		>
@@ -275,7 +275,7 @@
 					</HBox>
 				</VBox>
 			</Panel>
-		</l:VerticalLayout>
+		</l:VerticalLayout> -->
 		<beginButton>
 			<Button
 				type="Accept"

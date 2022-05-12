@@ -1,150 +1,182 @@
 <core:FragmentDefinition
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
-	xmlns:l="sap.ui.layout"
-	xmlns:form="sap.ui.layout.form"
 	xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified"
+	xmlns:l="sap.ui.layout"
+	xmlns:fb="sap.ui.comp.filterbar"
 >
 	<Dialog
-		title="Dettaglio RIGA"
+		id="wizardDialog"
+		showHeader="false"
+		verticalScrolling="false"
+		contentHeight="70%"
+		contentWidth="80%"
 		stretch="true"
 	>
-		<l:VerticalLayout
-			class="sapUiContentPadding"
-			width="100%"
+		<f:DynamicPage
+			toggleHeaderOnTitleClick="false"
+			class="sapUiNoContentPadding"
+			showFooter="true"
 		>
-			<l:content>
-				<Label
-					text="Articolo"
-					labelFor="filterDateRangeSelection"
-					class="sapUiSmallMarginBegin"
-				/>
-				<Panel>
-					<Input
-						width="50%"
-						class="sapUiLargeMarginEnd"
-						id="articolo1"
-						value="{/SelectedItems}"
-					/>
-					<Button
-						text="Cerca"
-						press="onOpenDialogFilterItems"
-					/>
-				</Panel>
-			</l:content>
-			<IconTabBar
-				id="idIconTabBarMulti"
-				class="sapUiResponsiveContentPadding"
-				expanded="{/RicercaAvanzata}"
-				headerMode="Inline"
-			>
-				<items>
-					<IconTabFilter
-						text="Ricerca avanzata"
-						icon="sap-icon://search"
-						design="Horizontal"
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Aggiungi articolo"/>
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+			<f:content>
+				<Wizard
+					backgroundDesign="List"
+					id="CreateProductWizard"
+					class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+					showNextButton="false"
+				>
+					<WizardStep
+						id="ProductTypeStep"
+						title="Ricerca"
 					>
-						<VBox class="sapUiSmallMargin">
-							<form:Form
-								id="FormChange"
-								editable="true"
-							>
-								<form:layout>
-									<form:ResponsiveGridLayout
-										labelSpanXL="4"
-										labelSpanL="4"
-										labelSpanM="12"
-										labelSpanS="12"
-										adjustLabelSpan="false"
-										emptySpanXL="0"
-										emptySpanL="0"
-										emptySpanM="0"
-										emptySpanS="0"
-										columnsXL="2"
-										columnsL="2"
-										columnsM="2"
-										singleContainerFullSize="false"
+						<!-- <l:VerticalLayout
+							class="sapUiContentPadding"
+							width="100%"
+						>
+							<l:content>
+								<Label
+									text="Articolo"
+									labelFor="filterDateRangeSelection"
+									class="sapUiSmallMarginBegin"
+								/>
+								<Panel>
+									<Input
+										width="50%"
+										class="sapUiLargeMarginEnd"
+										value="{/SelectedItems}"
 									/>
-								</form:layout>
-								<form:formContainers>
-									<form:FormContainer title="">
-										<form:formElements>
-											<form:FormElement label="Codice">
-												<form:fields>
-													<Input value=""/>
-												</form:fields>
-											</form:FormElement>
-											<form:FormElement label="Categoria">
-												<form:fields>
-													<Select
-														id="category"
-														selectedKey="{Country}"
-													>
-														<items>
-															<core:Item
-																text="ANTINCENDIO"
-																key="ANTINCENDIO"
-															/>
-															<core:Item
-																text="ANTIRUMORE"
-																key="ANTIRUMORE"
-															/>
-															<core:Item
-																text="ATTR. ELETTRICHE"
-																key="ATTRELETTRICHE"
-															/>
-														</items>
-													</Select>
-												</form:fields>
-											</form:FormElement>
-											<form:FormElement>
-												<form:fields>
-													<HBox
-														justifyContent="End"
-														width="46%"
-													>
-														<CheckBox
-															class="sapUiSmallMarginTop"
-															text="Con Ordini"
-														/>
-													</HBox>
-												</form:fields>
-											</form:FormElement>
-										</form:formElements>
-									</form:FormContainer>
-									<form:FormContainer>
-										<form:formElements>
-											<form:FormElement label="Descrizione">
-												<form:fields>
-													<Input value="{Url}"/>
-												</form:fields>
-											</form:FormElement>
-											<form:FormElement label="Serie">
-												<form:fields>
-													<Select
-														id="serie"
-														selectedKey=""
-													>
-														<items>
-														</items>
-													</Select>
-												</form:fields>
-											</form:FormElement>
-										</form:formElements>
-									</form:FormContainer>
-								</form:formContainers>
-							</form:Form>
-							<Button
-								text="Cerca"
-								class="sapUiSmallMarginBegin"
-								press="onSearchDetailItems"
-							/>
+								</Panel>
+							</l:content>
+							<IconTabBar
+								id="idIconTabBarMulti"
+								class="sapUiResponsiveContentPadding"
+								expanded="{/RicercaAvanzata}"
+								headerMode="Inline"
+								headerBackgroundDesign="Transparent"
+							>
+								<items>
+									<IconTabFilter
+										text="Ricerca avanzata"
+										icon="sap-icon://search"
+										design="Horizontal"
+									>
+										<form:Form
+											id="FormChange"
+											editable="true"
+										>
+											<form:layout>
+												<form:ResponsiveGridLayout
+													labelSpanXL="4"
+													labelSpanL="4"
+													labelSpanM="12"
+													labelSpanS="12"
+													adjustLabelSpan="false"
+													emptySpanXL="0"
+													emptySpanL="0"
+													emptySpanM="0"
+													emptySpanS="0"
+													columnsXL="2"
+													columnsL="2"
+													columnsM="2"
+													singleContainerFullSize="false"
+												/>
+											</form:layout>
+											<form:formContainers>
+												<form:FormContainer title="">
+													<form:formElements>
+														<form:FormElement label="Codice">
+															<form:fields>
+																<Input value="{/SelectedCodice}"/>
+															</form:fields>
+														</form:FormElement>
+														<form:FormElement label="Categoria">
+															<form:fields>
+																<Select
+																	id="category"
+																	selectedKey="{Country}"
+																	selectedItem="{/SelectedCategoria}"
+																>
+																	<items>
+																		<core:Item
+																			text="ANTINCENDIO"
+																			key="ANTINCENDIO"
+																		/>
+																		<core:Item
+																			text="ANTIRUMORE"
+																			key="ANTIRUMORE"
+																		/>
+																		<core:Item
+																			text="ATTR. ELETTRICHE"
+																			key="ATTRELETTRICHE"
+																		/>
+																	</items>
+																</Select>
+															</form:fields>
+														</form:FormElement>
+														<form:FormElement>
+															<form:fields>
+																<HBox
+																	justifyContent="End"
+																	width="46%"
+																>
+																	<CheckBox
+																		class="sapUiSmallMarginTop"
+																		text="Con Ordini"
+																	/>
+																</HBox>
+															</form:fields>
+														</form:FormElement>
+													</form:formElements>
+												</form:FormContainer>
+												<form:FormContainer>
+													<form:formElements>
+														<form:FormElement label="Descrizione">
+															<form:fields>
+																<Input value="{/SelectedDescrizione}"/>
+															</form:fields>
+														</form:FormElement>
+														<form:FormElement label="Serie">
+															<form:fields>
+																<Select
+																	id="serie"
+																	selectedKey=""
+																>
+																	<items>
+																	</items>
+																</Select>
+															</form:fields>
+														</form:FormElement>
+													</form:formElements>
+												</form:FormContainer>
+											</form:formContainers>
+										</form:Form>
+									</IconTabFilter>
+								</items>
+							</IconTabBar>
+							<HBox justifyContent="End">
+								<Button
+									text="Cerca"
+									press="onOpenDialogFilterItems"
+								/>
+							</HBox>
 							<Table
-								visible="false"
-								id="idProductsTable"
+								id="idProductsTableItems"
 								inset="false"
-								class="sapUiMediumMarginTop"
-								mode="MultiSelect"
+								class="sapUiSmallMarginTop"
+								mode="SingleSelectLeft"
+								selectionChange="onSelectItems"
+								items="{
+									path: 'Clothing>/ricercaAvanzata'
+								}"
 							>
 								<columns>
 									<Column width="12em">
@@ -167,30 +199,522 @@
 								<items>
 									<ColumnListItem vAlign="Middle">
 										<cells>
-											<Text text="FA1111"/>
-											<Text text="MASCHERINA RIGIDA CON ELASTICI"/>
-											<Text text="45101"/>
+											<Text text="{Clothing>codice}"/>
+											<Text text="{Clothing>description}"/>
+											<Text text="{Clothing>codicePrecedente}"/>
 										</cells>
 									</ColumnListItem>
 								</items>
 							</Table>
-						</VBox>
-					</IconTabFilter>
-				</items>
-			</IconTabBar>
-		</l:VerticalLayout>
-		<beginButton>
-			<Button
-				type="Accept"
-				text="Salva"
-			/>
-		</beginButton>
-		<endButton>
-			<Button
-				type="Reject"
-				text="Annulla"
-				press=".onCloseFilterOptionsDialogCancel"
-			/>
-		</endButton>
+						</l:VerticalLayout> -->
+						<l:VerticalLayout width="100%">
+							<fb:FilterBar
+								reset="onReset"
+								search="onFilterTable"
+								showRestoreButton="true"
+								showClearButton="true"
+							>
+								<fb:filterItems>
+									<fb:FilterItem
+										name="A"
+										label="Articolo"
+									>
+										<fb:control>
+											<Input value="{/SelectedItems}"/>
+										</fb:control>
+									</fb:FilterItem>
+									<fb:FilterItem
+										name="B"
+										label="Ricerca avanzata"
+									>
+										<fb:control>
+											<CheckBox select="onSelectCheckBox"/>
+										</fb:control>
+									</fb:FilterItem>
+									<fb:FilterItem
+										visible="{/visibleCodice}"
+										name="C"
+										label="Codice"
+									>
+										<fb:control>
+											<Input value="{/SelectedCodice}"/>
+										</fb:control>
+									</fb:FilterItem>
+									<fb:FilterItem
+										visible="{/visibleDescrizione}"
+										name="D"
+										label="Descrizione"
+									>
+										<fb:control>
+											<Input value="{/SelectedDescrizione}"/>
+										</fb:control>
+									</fb:FilterItem>
+									<fb:FilterItem
+										visible="{/visibleCategoria}"
+										name="E"
+										label="Categoria"
+									>
+										<fb:control>
+											<Select
+												id="slCategory"
+												change="onSelectChange"
+												forceSelection="false"
+												items="{
+													path: '/Categories'
+												}"
+											>
+												<core:Item
+													key="{id}"
+													text="{Name}"
+												/>
+											</Select>
+										</fb:control>
+									</fb:FilterItem>
+									<fb:FilterItem
+										visible="{/visibleSerie}"
+										name="F"
+										label="Serie"
+									>
+										<fb:control>
+											<Select
+												id="serie"
+												selectedKey=""
+											>
+												<items>
+												</items>
+											</Select>
+										</fb:control>
+									</fb:FilterItem>
+								</fb:filterItems>
+							</fb:FilterBar>
+							<Table
+								id="idProductsTableItems"
+								inset="false"
+								class="sapUiSmallMarginTop"
+								rememberSelections="false"
+								mode="SingleSelectLeft"
+								selectionChange="onSelectItems"
+								items="{
+									path: 'Clothing>/ricercaAvanzata'
+								}"
+							>
+								<columns>
+									<Column width="12em">
+										<Text text="Codice"/>
+									</Column>
+									<Column
+										minScreenWidth="Tablet"
+										demandPopin="true"
+									>
+										<Text text="Descrizione"/>
+									</Column>
+									<Column
+										minScreenWidth="Desktop"
+										demandPopin="true"
+										hAlign="End"
+									>
+										<Text text="Codice Precedente"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{Clothing>codice}"/>
+											<Text text="{Clothing>description}"/>
+											<Text text="{Clothing>codicePrecedente}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</l:VerticalLayout>
+					</WizardStep>
+					<WizardStep
+						id="ProductInfoStep"
+						title="Dettaglio"
+					>
+						<l:VerticalLayout
+							class="sapUiContentPadding"
+							width="100%"
+						>
+							<Panel>
+								<Text
+									class=".chooseColor sapUiTinyMarginEnd sapUiTinyMarginBottom"
+									text="Seleziona un colore"
+								/>
+								<core:Icon
+									id="colorSelected"
+									src="sap-icon://color-fill"
+									tooltip="Seleziona un colore"
+									color="{/SelectedColor}"
+									press=".onOpenColor"
+								/>
+								<Text
+									id="coloreFinale"
+									class="sapUiTinyMarginBegin"
+									text="{/SelectedName}"
+								/>
+								<CustomListItem>
+									<HBox
+										items="{
+											path: 'Clothing>/sizes/sizes1'
+										}"
+										id="idList"
+										class="sapUiTinyMargin"
+									>
+										<VBox>
+											<Text
+												class="sapUiMediumMarginBegin"
+												text=" {Clothing>key}"
+											/>
+											<StepInput
+												id="stepInput"
+												value="{Clothing>quantita}"
+												min="0"
+												max="{Clothing>max}"
+												width="10%"
+												change=".onChangeValueItems"
+											/>
+											<Text
+												class="sapUiMediumMarginBegin"
+												text="{Clothing>count}"
+											/>
+										</VBox>
+									</HBox>
+								</CustomListItem>
+								<CustomListItem>
+									<HBox
+										width="50%"
+										items="{
+											path: 'Clothing>/sizes/sizes2'
+										}"
+										id="idList2"
+										class="sapUiTinyMargin"
+									>
+										<VBox>
+											<Text
+												class="sapUiMediumMarginBegin"
+												text=" {Clothing>key}"
+											/>
+											<StepInput
+												id="stepInput2"
+												value="{Clothing>quantita}"
+												min="0"
+												max="{Clothing>max}"
+												width="10%"
+												change=".onChangeValueItems"
+											/>
+											<Text
+												class="sapUiMediumMarginBegin"
+												text="{Clothing>count}"
+											/>
+										</VBox>
+									</HBox>
+									<Text
+										text="Totale: "
+										class="sapUiSmallMarginTop sapUiSmallMarginBegin sapUiTinyMarginEnd"
+									/>
+									<Text
+										id="totalItems2"
+										text="{Clothing>/sizes/totale}"
+										class="sapUiSmallMarginTop"
+									/>
+								</CustomListItem>
+							</Panel>
+							<Panel>
+								<Label
+									design="Bold"
+									text="Articolo venduto a pacchi di 12"
+								/>
+							</Panel>
+							<Panel>
+								<HBox>
+									<Title
+										id="prezzo"
+										text="Prezzo Listino {Clothing>/sizes/prezzo}€ -  Quantità: {Clothing>/sizes/totale} Totale: {Clothing>/sizes/calcolo} "
+									/>
+								</HBox>
+							</Panel>
+							<Panel
+								class="sapUiContentPadding"
+								headerText="{i18n>ObjectCommentsTabTitle}"
+							>
+								<content>
+									<Title
+										text="Commento"
+										class="sapUiSmallMarginTop sapUiTinyMarginBottom"
+									/>
+									<FeedInput showIcon="false"/>
+								</content>
+							</Panel>
+							<IconTabBar
+								expandable="false"
+								id="idIconTabBarMulti2"
+								class="sapUiResponsiveContentPadding"
+								headerMode="Inline"
+							>
+								<items>
+									<IconTabFilter
+										text="Storico Ordini"
+										icon="sap-icon://list"
+										design="Horizontal"
+									>
+										<Label text="Ultimi ordini per questo articolo"/>
+										<Table
+											mode="MultiSelect"
+											id="idProductsTable"
+											width="auto"
+											selectionChange="onSelectArticolo"
+											items="{
+												path: 'Clothing>/lastOrder'
+											}"
+										>
+											<columns>
+												<Column width="12em">
+													<Text text="Articolo"/>
+												</Column>
+												<Column
+													minScreenWidth="Tablet"
+													demandPopin="true"
+												>
+													<Text text="Descrizione"/>
+												</Column>
+												<Column
+													minScreenWidth="Desktop"
+													demandPopin="true"
+												>
+													<Text text="Q.Tà"/>
+												</Column>
+												<Column
+													minScreenWidth="Desktop"
+													demandPopin="true"
+												>
+													<Text text="Prezzo"/>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem vAlign="Middle">
+													<cells>
+														<Text text="{Clothing>ID}"/>
+														<Text text="{Clothing>description}"/>
+														<Text text="{Clothing>quantity}"/>
+														<VBox>
+															<HBox justifyContent="SpaceBetween">
+																<Label
+																	width="100%"
+																	text="{Clothing>list}"
+																/>
+																<Text
+																	text="{Clothing>listId}"
+																	width="5rem"
+																/>
+															</HBox>
+															<HBox justifyContent="SpaceBetween">
+																<Label text="{Clothing>sale}"/>
+																<Text
+																	text="{Clothing>saleId}"
+																	width="5rem"
+																/>
+															</HBox>
+															<HBox justifyContent="SpaceBetween">
+																<Label text="{Clothing>priceSale}"/>
+																<Text
+																	text="{Clothing>priceSaleId}"
+																	width="5rem"
+																/>
+															</HBox>
+															<HBox justifyContent="SpaceBetween">
+																<Label text="{Clothing>total}"/>
+																<Text
+																	text="{Clothing>totalId}"
+																	width="5rem"
+																/>
+															</HBox>
+														</VBox>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</IconTabFilter>
+								</items>
+							</IconTabBar>
+							<Panel>
+								<VBox>
+									<Title text="Consegna"/>
+									<HBox width="100%">
+										<Text
+											text="Consegna gg"
+											id="text3"
+											class="sapUiMediumMarginEnd"
+										/>
+										<Text
+											text="Dt. rich. cons."
+											id="text4"
+										/>
+									</HBox>
+									<HBox width="12%">
+										<StepInput
+											value="0"
+											min="0"
+											max="{max}"
+											width="5%"
+											class="sapUiSmallMarginEnd"
+											id="calculateDays"
+										/>
+										<DatePicker
+											placeholder="Enter Date"
+											width="9rem"
+											displayFormat="short"
+											class="sapUiSmallMarginBottom"
+										/>
+									</HBox>
+								</VBox>
+							</Panel>
+						</l:VerticalLayout>
+					</WizardStep>
+					<WizardStep
+						id="Riepilogo"
+						activate="reviewActivate"
+						complete="reviewComplete"
+						validated="true"
+						title="Riepilogo"
+					>
+						<form:SimpleForm
+							title="Informazioni articolo"
+							minWidth="1024"
+							editable="false"
+							layout="ResponsiveGridLayout"
+						>
+							<form:content>
+								<Label text="Articolo"/>
+								<Text
+									id="idArticolo"
+									text="{/SelectedTableCodice}"
+								/>
+								<Link
+									press="editStepOne"
+									text="Edit"
+								/>
+							</form:content>
+							<form:content>
+								<Label text="Descrizione"/>
+								<Text
+									id="idDescrizione"
+									text="{/SelectedTableDescription}"
+								/>
+							</form:content>
+							<form:content>
+								<Label text="Codice Precedente"/>
+								<Text
+									id="idCodice"
+									text="{/SelectedTableCodicePrecedente}"
+								/>
+							</form:content>
+							<form:content >
+							<VBox visible="{/SelectedQuantitaStorico}">
+								<Label text="Quantità articolo"/>
+								<Text
+									id="idQuantita"
+									text="{/SelectedQuantita}"
+									visible="{/SelectedQuantitaStorico}"
+								/>
+
+								<!-- <Text
+									id="idQuantitaManuale"
+									text="{/SelectedQuantitaPersonalizz}"
+									visible="{/VisibleQuantitaPersonalizz}"
+								/> -->
+								</VBox>
+							</form:content>
+							
+							<form:content >
+							<VBox visible="{/SelectedQuantitaStorico}">
+								<Label text="Colore articolo"/>
+								<Text
+									id="idColore"
+									text="{/TestoColore}"
+								/>
+							</VBox>
+							</form:content>
+							
+						</form:SimpleForm>
+						<form:SimpleForm
+							title="Prezzo"
+							minWidth="1024"
+							editable="false"
+							layout="ResponsiveGridLayout"
+						>
+							<form:content>
+								<Label text="List."/>
+								<Text
+									id="ProductPriceChosen"
+									text="{/prodottoList}"
+								/>
+								<Link
+									press="editStepTwo"
+									text="Edit"
+								/>
+								<Label text="Sconto"/>
+								<Text
+									id="DiscountGroupChosen"
+									text="{/prodottoSconto}"
+								/>
+								<Label text="Prezzo Scontato"/>
+								<Text
+									id="ProductVATChosen"
+									text="{/prodottoPrezzo}"
+								/>
+								<Label text="Totale"/>
+								<Text text="{/prodottoTotale}"/>
+							</form:content>
+						</form:SimpleForm>
+					</WizardStep>
+				</Wizard>
+			</f:content>
+			<f:footer>
+				<OverflowToolbar>
+					<ToolbarSpacer/>
+					<Button
+						text="Disponibilità prodotto"
+						visible="{/DisponibilitaButtonVisible}"
+						press="onOpenDialogProductAvailability"
+					/>
+					<Button
+						text="Aggiungi personalizzazione"
+						visible="{/PersonalizzazioneButtonVisible}"
+						press="openFileDocument"
+					/>
+					<Button
+						text="Previous"
+						visible="{/backButtonVisible}"
+						press="onDialogBackButton"
+					/>
+					<Button
+						text="Next Step"
+						type="Emphasized"
+						enabled="{/nextButtonEnabled}"
+						visible="{/nextButtonVisible}"
+						press="onDialogNextButton"
+					/>
+					<Button
+						text="Review"
+						type="Emphasized"
+						visible="{/reviewButtonVisible}"
+						enabled="{/reviewButtonEnabled}"
+						press="onDialogNextButton"
+					/>
+					<Button
+						text="Finish"
+						type="Emphasized"
+						visible="{/finishButtonVisible}"
+						press="onAddItems"
+					/>
+					<Button
+						text="Cancel"
+						type="Transparent"
+						press="handleWizardCancel"
+					/>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
 	</Dialog>
 </core:FragmentDefinition>

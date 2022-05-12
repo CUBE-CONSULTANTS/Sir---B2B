@@ -12,6 +12,13 @@
 					title="Login Page"
 					titleAlignment="Center"
 				>
+					<HBox>
+						<Image
+							src="icon/logo.png"
+							width="100%"
+							height="100%"
+						/>
+					</HBox>
 					<content>
 						<VBox
 							fitContainer="true"
