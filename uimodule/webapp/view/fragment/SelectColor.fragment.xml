@@ -25,9 +25,7 @@
 							color="{id}"
 							height="2rem"
 						/>
-						<Text
-							text="{Name}"
-						/>
+						<Text text="{Name}"/>
 					</HBox>
 				</CustomListItem>
 			</List>

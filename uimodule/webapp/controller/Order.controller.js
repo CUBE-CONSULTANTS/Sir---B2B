@@ -157,32 +157,32 @@ sap.ui.define([
                 ],
                 "SelectedColor": "black",
                 "SelectedName": "",
-                "Colors": [
-                    {
-                        "Name": "J5 - ARANCIO (M)",
-                        "id": "darkorange"
-                    },
-                    {
-                        "Name": "K1 BIANCO (M)",
-                        "id": "white"
-                    },
-                    {
-                        "Name": "Q2 AZZURRO (M)",
-                        "id": "blue"
-                    },
-                    {
-                        "Name": "S0 VERDE (M)",
-                        "id": "green"
-                    },
-                    {
-                        "Name": "AM _ GRIGIO MELANGE (M)",
-                        "id": "grey"
-                    },
-                    {
-                        "Name": "Q7 - NAVY (M)",
-                        "id": "black"
-                    }
-                ]
+                // "Colors": [
+                //     {
+                //         "Name": "J5 - ARANCIO (M)",
+                //         "id": "darkorange"
+                //     },
+                //     {
+                //         "Name": "K1 BIANCO (M)",
+                //         "id": "white"
+                //     },
+                //     {
+                //         "Name": "Q2 AZZURRO (M)",
+                //         "id": "blue"
+                //     },
+                //     {
+                //         "Name": "S0 VERDE (M)",
+                //         "id": "green"
+                //     },
+                //     {
+                //         "Name": "AM _ GRIGIO MELANGE (M)",
+                //         "id": "grey"
+                //     },
+                //     {
+                //         "Name": "Q7 - NAVY (M)",
+                //         "id": "black"
+                //     }
+                // ]
             };
 
             var oModelDropDown = new JSONModel(oDataDropDown);
@@ -317,52 +317,6 @@ sap.ui.define([
 
             this._oDialogViewAddress
             oEvent.getSource().getParent().close();
-        },
-        onOpenColor: function (oEvent) {
-            this.getView().setModel(this.getView().getModel("dropDownModel"))
-            debugger;
-            var oButton = oEvent.getSource(),
-                oView = this.getView();
-
-            // create popover
-            if (!this._pPopover) {
-                this._pPopover = Fragment.load({
-                    id: oView.getId(),
-                    name: "com.myorg.myUI5App.view.fragment.SelectColor",
-                    controller: this
-                }).then(function (oPopover) {
-                    oView.addDependent(oPopover);
-                    return oPopover;
-                });
-            }
-            this._pPopover.then(function (oPopover) {
-                oPopover.openBy(oButton);
-            });
-        },
-        onChooseColor: function (oEvent) {
-            debugger
-            var oSelectedItem = oEvent.getSource();
-            var oContext = oSelectedItem.getBindingContext();
-            var sPath = oContext.getPath();
-            var sId = this.getView().getModel().getProperty(sPath).id;
-            this.getView().getModel().setProperty("/SelectedColor", sId);
-            var sName = this.getView().getModel().getProperty(sPath).Name;
-            this.getView().getModel().setProperty("/SelectedName", sName);
-            this.byId("colors").close();
-            var testoColore = this.getView().byId("coloreFinale").getText();
-            var totale = this.getView().byId("totalItems2").getText();
-            if (testoColore !== "" && totale > 0) {
-                this.getView().getModel("dropDownModel").setProperty("/reviewButtonEnabled", true);
-                this.getView().getModel("dropDownModel").setProperty("/SelectedQuantitaStorico", false);
-            } else {
-                this.getView().getModel("dropDownModel").setProperty("/reviewButtonEnabled", false);
-            }
-
-
-
-        },
-        onCloseColor: function () {
-            this.byId("colors").close();
         },
         _getDialogProductAvailable: function () {
             if (!this._oDialogProdAvailab) {
@@ -742,6 +696,11 @@ sap.ui.define([
 
         handleButtonsVisibility: function () {
             debugger
+            // var selected = this.byId("idProductsTableItems").getSelectedItems()
+            // if (!selected) {
+            //     this.byId("idProductsTableItems").getSelectedItems()[0].setProperty("selected", false)
+            // }
+
             var oModel = this.getView().getModel("dropDownModel");
             switch (this._oWizard.getProgress()) {
                 case 1:
@@ -774,8 +733,8 @@ sap.ui.define([
 
             this._oWizard = this.byId("CreateProductWizard");
             // this._iSelectedStepIndex = 0;
-			// this._oSelectedStep = this._oWizard.getSteps()[this._iSelectedStepIndex];
-             this._oWizard.discardProgress(this._oWizard.getSteps()[0]);
+            // this._oSelectedStep = this._oWizard.getSteps()[this._iSelectedStepIndex];
+            this._oWizard.discardProgress(this._oWizard.getSteps()[0]);
             this.handleButtonsVisibility();
         },
         onDialogNextButton: function () {
@@ -862,8 +821,8 @@ sap.ui.define([
             }
         },
         onFilterTable: function (oEvent) {
-            debugger;
             var aFilter = [];
+
             var sCodice = oEvent.getParameters("query").selectionSet[0].getValue();
             var sDescrizione = oEvent.getParameters("query").selectionSet[3].getValue()
             if (sCodice) {
@@ -900,14 +859,14 @@ sap.ui.define([
 
         },
 
-         onAddItems: function () {
+        onAddItems: function () {
             debugger
             var oModelTable = this.getView().getModel("Clothing").getProperty("/catalog/clothing/categories");
             var oModelTreeTable = this.getView().getModel("Clothing").getProperty("/catalog/clothing/itemsTreeTable");
             var oModelSizes = this.getView().getModel("Clothing").getProperty("/sizes");
             var codiceId = this.getView().getModel("dropDownModel").getProperty("/SelectedItems");
             var lastOrder = this.getView().getModel("Clothing");
-              var table = this.getView().byId("idProductsTable").getSelectedItem();
+            var table = this.getView().byId("idProductsTable").getSelectedItem();
             var context = table.getBindingContext("Clothing").getObject();
             var modelItems = this.getView().getModel("dropDownModel");
             var descrizione = oModelTable.filter(items => items.ID == codiceId)[0]
