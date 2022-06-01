@@ -72,14 +72,14 @@
         ]} 
             ],
             "ricercaAvanzata" : [
-              {"codice": "MC1151Q7", "description": "PANTALONE SYMBOL BANDE,NAVY", "codicePrecedente": "45100", "categories": [
+              {"codice": "MC1151Q7", "description": "PANTALONE SYMBOL BANDE,NAVY", "codicePrecedente": "45100", "categoria": "AI", "categories": [
                 {"ID":" MC1151Q744 ","IMG": "https://www.conbipel.com/on/demandware.static/-/Sites-conbipel_master/default/dw3f3c430a/images/12155153_01.jpg", "description": "PANTALONE SYMBOL BANDE,NAVY,44", "quantity":10, "size":44, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
                 {"ID":"MC1151Q746", "description": "PANTALONE SYMBOL BANDE,NAVY,46" , "quantity":10, "size":46, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale" , "totalId": "73,00"},
                 {"ID":"MC1151Q748", "description": "PANTALONE SYMBOL BANDE,NAVY,48" , "quantity":25, "size":48, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"},
                 {"ID":"MC1151Q750", "description": "PANTALONE SYMBOL BANDE,NAVY,50", "quantity":25, "size":50, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato", "priceSaleId" : "7,30" ,"total": "Totale", "totalId": "182,50" }
               ]},
-              {"codice": "FA1111", "description": "MASCHERINA RIGIDA CON ELASTICI", "codicePrecedente": "45101" },
-              {"codice": "MC3011J5", "description": "T-SHIRT SAMBA,ARANCIO", "codicePrecedente": "45102" }
+              {"codice": "FA1111", "description": "MASCHERINA RIGIDA CON ELASTICI", "codicePrecedente": "45101", "categoria": "AR" },
+              {"codice": "MC3011J5", "description": "T-SHIRT SAMBA,ARANCIO", "codicePrecedente": "45102", "categoria": "AE" }
             ],
    "SearchFile": [
     {
@@ -144,6 +144,7 @@
                     { "key": "62", "count": "(254)", "quantita": 0, "max": 254 }
     ]
   }
+  
 
 
   }

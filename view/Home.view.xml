@@ -116,6 +116,24 @@
 						/>
 					</customData>
 				</GenericTile>
+				<GenericTile
+					header="Ricerca Articolo e disponibilità"
+					class="testClass sapUiTinyMarginTopBottom sapUiTinyMarginBegin"
+					press="onGoToRicercaArticolo"
+				>
+					<TileContent>
+						<ImageContent
+							src="sap-icon://search"
+							class="sapUiLargeMarginBegin"
+						/>
+					</TileContent>
+					<customData>
+						<c:CustomData
+							key="go"
+							value="lista"
+						/>
+					</customData>
+				</GenericTile>
 			</Page>
 		</App>
 	</Shell>
