@@ -25,7 +25,7 @@ sap.ui.define(
              * Convenience method for setting the view model in every controller of the application.
              * @public
              * @param {sap.ui.model.Model} oModel the model instance
-             * @param {string} sName the model name
+             * @param {string} sName the model name (optional)
              * @returns {sap.ui.mvc.View} the view instance
              */
             setModel: function (oModel, sName) {
@@ -38,6 +38,7 @@ sap.ui.define(
              * @returns {sap.ui.model.resource.ResourceModel} the resourceModel of the component
              */
             getResourceBundle: function () {
+                // @ts-ignore
                 return this.getOwnerComponent().getModel("i18n").getResourceBundle();
             },
 
@@ -49,6 +50,7 @@ sap.ui.define(
              * @param {boolean} pbReplace? Defines if the hash should be replaced (no browser history entry) or set (browser history entry)
              */
             navTo: function (psTarget, pmParameters, pbReplace) {
+                // @ts-ignore
                 this.getRouter().navTo(psTarget, pmParameters, pbReplace);
             },
 
@@ -57,14 +59,22 @@ sap.ui.define(
             },
 
             onNavBack: function () {
-                debugger
                 const sPreviousHash = History.getInstance().getPreviousHash();
 
                 if (sPreviousHash !== undefined) {
+                    // @ts-ignore
                     window.history.back();
                 } else {
+                    // @ts-ignore
                     this.getRouter().navTo("Home", {}, true /* no history*/);
                 }
+            },
+            parseMessage: function (oResponse) {
+                const oBody = JSON.parse(oResponse.body);
+                return oBody.message || "Error Message";
+            },
+            parseResponseBody: function (oResponse) {
+                return JSON.parse(oResponse.body);
             },
         });
     }
