@@ -1,0 +1,194 @@
+<mvc:View
+	controllerName="com.myorg.myUI5App.controller.SearchProducts"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:fb="sap.ui.comp.filterbar"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+	<Page
+		navButtonTooltip=""
+		showNavButton="true"
+		navButtonPress="navBackHome"
+		title="Ricerca articolo e disponibilità"
+	>
+		<l:VerticalLayout width="100%">
+			<fb:FilterBar
+				reset="onReset"
+				search=".onFilterTable"
+				showRestoreButton="true"
+				showClearButton="true"
+			>
+				<fb:filterItems>
+					<fb:FilterItem
+						name="A"
+						label="Articolo"
+					>
+						<fb:control>
+							<Input
+								id="searchInput"
+								value="{dropDownModel>/SelectedItems}"
+							/>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem
+						name="B"
+						label="Ricerca avanzata"
+					>
+						<fb:control>
+							<CheckBox
+								id="checkBoxFiltro"
+								selected="{dropDownModel>/selectedCheck}"
+								select="onSelectCheckBox"
+							/>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem
+						visible="{dropDownModel>/visibleCodice}"
+						name="C"
+						label="Codice"
+					>
+						<fb:control>
+							<Input value="{dropDownModel>/SelectedCodice}"/>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem
+						visible="{dropDownModel>/visibleDescrizione}"
+						name="D"
+						label="Descrizione"
+					>
+						<fb:control>
+							<Input value="{dropDownModel>/SelectedDescrizione}"/>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem
+						visible="{dropDownModel>/visibleCategoria}"
+						name="E"
+						label="Categoria"
+					>
+						<fb:control>
+							<Select
+								id="slCategory"
+								forceSelection="false"
+								selectedKey="{dropDownModel>/selectedCategory}"
+								items="{
+									path: 'dropDownModel>/Categories'
+								}"
+							>
+								<core:Item
+									key="{id}"
+									text="{Name}"
+								/>
+							</Select>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem
+						visible="{dropDownModel>/visibleSerie}"
+						name="F"
+						label="Serie"
+					>
+						<fb:control>
+							<Select
+								id="serie"
+								selectedKey="{dropDownModel>/selectedSerie}"
+							>
+								<items>
+								</items>
+							</Select>
+						</fb:control>
+					</fb:FilterItem>
+				</fb:filterItems>
+			</fb:FilterBar>
+			<Table
+				id="idProductsTableItems"
+				class="sapUiSmallMarginTop"
+				rememberSelections="false"
+				mode="MultiSelect"
+				selectionChange="onSelectItems"
+				items="{
+					path: 'Clothing>/ricercaAvanzata',
+					sorter: {
+						path: 'codice'
+					}
+				}"
+			>
+				<headerToolbar>
+					<OverflowToolbar id="otbSubheader">
+						<ToolbarSpacer/>
+						<Button
+							text="Aggiungi al carrello"
+							id="addCart"
+							type="Transparent"
+							icon="sap-icon://cart"
+							enabled="{dropDownModel>/enabledCart}"
+						/>
+						<Button
+							text="Reset"
+							type="Transparent"
+							press="onReset"
+						/>
+						<OverflowToolbarButton
+							tooltip="Sort"
+							type="Transparent"
+							text="Sort"
+							icon="sap-icon://sort"
+							press="onSort"
+						/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="12em">
+						<Text text="Codice"/>
+					</Column>
+					<Column
+						minScreenWidth="Tablet"
+						demandPopin="true"
+					>
+						<Text text="Descrizione"/>
+					</Column>
+					<Column
+						minScreenWidth="Desktop"
+						demandPopin="true"
+					>
+						<Text text="Codice Precedente"/>
+					</Column>
+					<Column
+						width="8rem"
+						minScreenWidth="Desktop"
+						demandPopin="true"
+						hAlign="Center"
+					/>
+				</columns>
+				<items>
+					<ColumnListItem
+						vAlign="Middle"
+						visible="{dropDownModel>/columnVisible}"
+					>
+						<cells>
+							<Text text="{Clothing>codice}"/>
+							<Text text="{Clothing>description}"/>
+							<Text text="{Clothing>codicePrecedente}"/>
+							<HBox>
+								<Button
+									icon="sap-icon://customize"
+									press="openFileDocument"
+									class="sapUiSmallMarginEnd"
+									tooltip="Personalizzazione prodotto"
+								/>
+								<Button
+									icon="sap-icon://check-availability"
+									press="onOpenDialogProductAvailability"
+									tooltip="Disponibilità prodotto"
+								/>
+							</HBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</l:VerticalLayout>
+	</Page>
+</mvc:View>

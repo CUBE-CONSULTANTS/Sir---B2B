@@ -101,6 +101,13 @@
           "target": [
             "Order"
           ]
+        },
+        {
+          "name": "SearchProducts",
+          "pattern": "SearchProducts",
+          "target": [
+            "SearchProducts"
+          ]
         }
       ],
       "targets": {
@@ -124,6 +131,13 @@
           "clearControlAggregation": false,
           "viewId": "Order",
           "viewName": "Order"
+        },
+        "SearchProducts": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SearchProducts",
+          "viewName": "SearchProducts"
         }
 
       }

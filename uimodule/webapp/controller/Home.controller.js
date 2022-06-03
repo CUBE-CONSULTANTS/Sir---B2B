@@ -200,25 +200,25 @@ sap.ui.define([
                 oPopover.openBy(oButton);
             });
         },
-        _getDialog: function () {
-            debugger
-            if (!this._oDialog) {
-                Fragment.load({
-                    name: "com.myorg.myUI5App.view.fragment.SearchItems",
-                    controller: this,
-                    id: this.getView().getId()
-                }).then(function (fr) {
-                    fr.attachAfterOpen(this.onDialogAfterOpen, this);
-                    fr.setModel(this.getOwnerComponent().getModel("Clothing"), "Clothing")
-                    fr.setModel(this.getView().getModel("dropDownModel"))
-                    this._oDialog = fr
-                    fr.open();
-                }.bind(this));
-            } else {
-                this._oDialog.open();
-            }
+        // _getDialog: function () {
+        //     debugger
+        //     if (!this._oDialog) {
+        //         Fragment.load({
+        //             name: "com.myorg.myUI5App.view.fragment.SearchItems",
+        //             controller: this,
+        //             id: this.getView().getId()
+        //         }).then(function (fr) {
+        //             fr.attachAfterOpen(this.onDialogAfterOpen, this);
+        //             fr.setModel(this.getOwnerComponent().getModel("Clothing"), "Clothing")
+        //             fr.setModel(this.getView().getModel("dropDownModel"))
+        //             this._oDialog = fr
+        //             fr.open();
+        //         }.bind(this));
+        //     } else {
+        //         this._oDialog.open();
+        //     }
 
-        },
+        // },
         handleButtonsVisibility: function () {
             debugger
 
@@ -274,7 +274,12 @@ sap.ui.define([
         },
         onGoToRicercaArticolo: function () {
             debugger
-            this._getDialog();
+            this.getView().getModel("Clothing").setProperty("/catalog/clothing/itemsTreeTable", []);
+
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("SearchProducts");
+            // this._getDialog();
+
         },
         onSelectCheckBox: function (oEvent) {
             debugger
@@ -292,66 +297,7 @@ sap.ui.define([
                 model.setProperty("/visibleSerie", false);
             }
         },
-        onFilterTable: function () {
-            debugger;
-            this.getView().byId("idProductsTableItems").removeSelections()
-            var aFilter = [];
-            var model = this.getView().getModel("dropDownModel");
-            var sCodice = model.getProperty("/SelectedCodice");
-            var sDescrizione = model.getProperty("/SelectedDescrizione");
-            var sCategory = model.getProperty("/selectedCategory")
 
-            var bColumn = model.getProperty("/columnVisible")
-            if (!bColumn) {
-                model.setProperty("/columnVisible", true);
-            }
-            if (sCodice) {
-                aFilter.push(new Filter("codice", FilterOperator.Contains, sCodice));
-            }
-            if (sDescrizione) {
-                aFilter.push(new Filter("description", FilterOperator.Contains, sDescrizione));
-            }
-            if (sCategory) {
-                aFilter.push(new Filter("categoria", FilterOperator.Contains, sCategory))
-            }
-
-            var oTable = this.getView().byId("idProductsTableItems");
-            var oBinding = oTable.getBinding("items");
-            oBinding.filter(aFilter);
-        },
-        onSelectItems: function () {
-            debugger
-            this.getView().getModel("dropDownModel").setProperty("/DisponibilitaButtonVisible", true);
-            this.getView().getModel("dropDownModel").setProperty("/PersonalizzazioneButtonVisible", true);
-            this.getView().getModel("dropDownModel").setProperty("/nextButtonEnabled", true);
-            var table = this.getView().byId("idProductsTableItems")
-            var index = table.getSelectedItems()
-            var items = index[0].getBindingContext("Clothing").getObject();
-            var modelItems = this.getView().getModel("dropDownModel");
-            modelItems.setProperty("/SelectedTableCodice", items.codice)
-            modelItems.setProperty("/SelectedTableDescription", items.description)
-            modelItems.setProperty("/SelectedTableCodicePrecedente", items.codicePrecedente)
-
-
-        },
-        _getDialogProductAvailable: function () {
-            if (!this._oDialogProdAvailab) {
-                Fragment.load({
-                    name: "com.myorg.myUI5App.view.fragment.ProductAvailability",
-                    controller: this
-                }).then(function (fr) {
-                    fr.setModel(this.getOwnerComponent().getModel("Clothing"), "Clothing")
-                    fr.setModel(this.getView().getModel("dropDownModel"), "dropDown")
-                    this._oDialogProdAvailab = fr
-                    fr.open();
-                }.bind(this));
-            } else {
-                this._oDialogProdAvailab.open();
-            }
-        },
-        onOpenDialogProductAvailability: function () {
-            this._getDialogProductAvailable();
-        },
         handleWizardCancel: function () {
             debugger
             this._handleMessageBoxOpen("Are you sure you want to cancel your report?", "warning");
@@ -373,39 +319,8 @@ sap.ui.define([
             this._oDialogProdAvailab.close();
             // oEvent.getSource().getParent().close();
         },
-        _getDialogFile: function () {
-            debugger
-            if (!this._oDialogFile) {
-                Fragment.load({
-                    name: "com.myorg.myUI5App.view.fragment.FileDocument",
-                    controller: this
-                }).then(function (fr) {
-                    fr.setModel(this.getOwnerComponent().getModel("Clothing"), "Clothing")
-                    fr.setModel(this.getView().getModel("dropDownModel"), "dropDownModel")
-                    fr.setModel(this.getView().getModel("pdfModel"))
-                    this._oDialogFile = fr
-                    fr.open();
-                }.bind(this));
-            } else {
-                this._oDialogFile.open();
-            }
-        },
-        openFileDocument: function () {
-            this._getDialogFile();
-        },
-        handleLinkPress: function (oEvent) {
-            debugger
-            // oEvent.getSource().getModel().setProperty("/visible", true)
-            // oEvent.getSource().getModel().setProperty("/Source", this._sValidPath);
-            var opdfViewer = new PDFViewer();
-            this.getView().addDependent(opdfViewer);
-            var sServiceURL = oEvent.getSource().getModel().getData().Source;
-            var sSource = sServiceURL + "GetPdfSet(Serial='C0003',Filename='')/$value";
-            // var sSource = "https://drive.google.com/file/d/1Fwbo8knPzPBHIZjms291AJQYKIbgjovR/view?usp=sharing";
-            opdfViewer.setTitle("File preview")
-            opdfViewer.setSource(sSource);
-            opdfViewer.open();
-        },
+
+
         onDialogNextButton: function () {
             debugger
             if (this._oWizard.getProgressStep().getValidated()) {
@@ -444,9 +359,6 @@ sap.ui.define([
             } else {
                 this.getView().getModel("dropDownModel").setProperty("/reviewButtonEnabled", false);
             }
-            // this.getView().getModel("dropDownModel").setProperty("/SelectedQuantitaPersonalizz", totale);
-            // this.getView().getModel("dropDownModel").setProperty("/VisibleQuantitaPersonalizz", true);
-
         },
         onOpenColor: function (oEvent) {
             this.getView().setModel(this.getView().getModel("dropDownModel"))
@@ -491,7 +403,6 @@ sap.ui.define([
         onChangeDate: function () {
             debugger
             var selectedDate = this.getView().byId("daysPicker").getDateValue();
-            // var valueInput = this.getView().byId("calculateDays").getValue();
             var currentDate = new Date();
             var sDay = currentDate.getDate(); //get just the date, eg 23
             var sDaySel = selectedDate.getDate()
