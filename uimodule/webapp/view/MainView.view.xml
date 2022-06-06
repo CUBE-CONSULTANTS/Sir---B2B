@@ -1,62 +1,69 @@
-<mvc:View
-	controllerName="com.myorg.myUI5App.controller.MainView"
-	xmlns:mvc="sap.ui.core.mvc"
-	displayBlock="true"
-	xmlns="sap.m"
->
-	<Shell id="shell">
-		<App id="app">
-			<pages>
-				<Page
-					id="page2"
-					title="Login Page"
-					titleAlignment="Center"
-				>
-					<HBox>
-						<Image
-							src="icon/logo.png"
-							width="100%"
-							height="100%"
-						/>
-					</HBox>
-					<content>
-						<VBox
-							fitContainer="true"
-							justifyContent="Center"
-							alignItems="Center"
-							alignContent="Center"
-						>
-							<items>
-								<Label text="Use your credentials"/>
-								<Input
-									id="username"
-									width="12rem"
-									placeholder="Enter user name"
-								/>
-								<Input
-									id="password"
-									width="12rem"
-									placeholder="Enter password"
-									type="Password"
-								/>
-								<Button
-									width="12rem"
-									text="login"
-									type="Emphasized"
-									press="onSuccessPress"
-								/>
-							</items>
-						</VBox>
-					</content>
-					<footer>
-						<Bar>
-							<contentLeft>
-								<Text text="Hi, User"/>
-							</contentLeft>
-						</Bar>
-					</footer>
-				</Page>
-			</pages>
-		</App>
-	</Shell>
+<mvc:View xmlns:form="sap.ui.layout.form" controllerName="com.myorg.myUI5App.controller.MainView" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:core="sap.ui.core" xmlns="sap.m">
+  <Shell id="shell">
+    <App id="app">
+      <pages>
+        <Page>
+          <customHeader>
+            <Bar>
+              <contentLeft>
+                <Title text="{i18n>login.title}" />
+              </contentLeft>
+              <contentRight>
+                <Label text="{i18n>useDarkMode}" />
+                <Switch visible="false" state="{/isDarkMode}" change="onSwitchTheme" tooltip="{i18n>useDarkMode}" />
+              </contentRight>
+            </Bar>
+          </customHeader>
+          <content>
+            <form:Form class="sapUiLargeMarginBeginEnd">
+              <form:layout>
+                <form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" />
+              </form:layout>
+              <form:formContainers>
+                <form:FormContainer>
+                  <form:formElements>
+                    <form:FormElement>
+                      <form:fields>
+                        <FlexBox justifyContent="Center">
+                          <Image src="icon/logo-sirx2.png" />
+                        </FlexBox>
+                      </form:fields>
+                    </form:FormElement>
+                    <form:FormElement>
+                      <form:label>
+                        <Label text="{i18n>login.username}" labelFor="username" />
+                      </form:label>
+                      <form:fields>
+                        <Input value="{/username}" placeholder="{i18n>login.placeholder.username}" />
+                      </form:fields>
+                    </form:FormElement>
+                    <form:FormElement>
+                      <form:label>
+                        <Label text="{i18n>login.password}" labelFor="password" />
+                      </form:label>
+                      <form:fields>
+                        <Input id="password" value="{/password}" placeholder="{i18n>login.placeholder.password}" type="Password" />
+                      </form:fields>
+                    </form:FormElement>
+                    <form:FormElement>
+                      <form:fields>
+                        <Button text="{i18n>login.btn.login}" type="Emphasized" press="onLoginPress" class="sapUiResponsiveContentPadding" />
+                      </form:fields>
+                    </form:FormElement>
+                  </form:formElements>
+                </form:FormContainer>
+              </form:formContainers>
+            </form:Form>
+          </content>
+          <footer>
+            <Bar>
+              <contentLeft>
+                <Text text="Hi, User" />
+              </contentLeft>
+            </Bar>
+          </footer>
+        </Page>
+      </pages>
+    </App>
+  </Shell>
 </mvc:View>

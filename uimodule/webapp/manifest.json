@@ -9,6 +9,10 @@
       "Nationalities": {
         "uri": "model/Nationalities.json",
         "type": "JSON"
+      },
+      "unified": {
+        "type": "OData",
+        "uri": "http://localhost:3000"
       }
     },
     "id": "com.myorg.myUI5App",
@@ -61,6 +65,18 @@
       "Clothing": {
         "type": "sap.ui.model.json.JSONModel",
         "dataSource": "Clothing"
+      },
+      "oData": {
+        "type": "sap.ui.model.odata.ODataModel",
+        "dataSource": "unified",
+        "preload": false,
+        "settings": {
+          "json": false,
+          "useBatch": false,
+          "defaultCountMode": "Inline",
+          "defaultBindingMode": "TwoWay",
+          "defaultUpdateMethod": "Put"
+        }
       }
     },
     "resources": {
@@ -139,7 +155,6 @@
           "viewId": "SearchProducts",
           "viewName": "SearchProducts"
         }
-
       }
     },
     "rootView": {
