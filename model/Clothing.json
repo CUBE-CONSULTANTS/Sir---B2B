@@ -72,14 +72,21 @@
         ]} 
             ],
             "ricercaAvanzata" : [
-              {"codice": "MC1151Q7", "description": "PANTALONE SYMBOL BANDE,NAVY", "codicePrecedente": "45100", "categoria": "AI", "categories": [
+              {"codice": "MC1151Q7", "description": "PANTALONE SYMBOL BANDE,NAVY", "codicePrecedente": "45100", "categoria": "AI",  "categories": [
                 {"ID":" MC1151Q744 ","IMG": "https://www.conbipel.com/on/demandware.static/-/Sites-conbipel_master/default/dw3f3c430a/images/12155153_01.jpg", "description": "PANTALONE SYMBOL BANDE,NAVY,44", "quantity":10, "size":44, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "73,00"},
                 {"ID":"MC1151Q746", "description": "PANTALONE SYMBOL BANDE,NAVY,46" , "quantity":10, "size":46, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale" , "totalId": "73,00"},
                 {"ID":"MC1151Q748", "description": "PANTALONE SYMBOL BANDE,NAVY,48" , "quantity":25, "size":48, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.","listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato","priceSaleId" : "7,30" , "total": "Totale", "totalId": "182,50"},
                 {"ID":"MC1151Q750", "description": "PANTALONE SYMBOL BANDE,NAVY,50", "quantity":25, "size":50, "days":"Consegna gg 0", "date": "2022-04-09", "list": "List.", "listId": "25,60", "sale": "Sconto", "saleId": "71,48%", "priceSale": "Prezzo Scontato", "priceSaleId" : "7,30" ,"total": "Totale", "totalId": "182,50" }
               ]},
-              {"codice": "FA1111", "description": "MASCHERINA RIGIDA CON ELASTICI", "codicePrecedente": "45101", "categoria": "AR" },
-              {"codice": "MC3011J5", "description": "T-SHIRT SAMBA,ARANCIO", "codicePrecedente": "45102", "categoria": "AE" }
+              {"codice": "FA1111", "description": "MASCHERINA RIGIDA CON ELASTICI", "codicePrecedente": "45101", "categoria": "AI" },
+              {"codice": "MC3011J5", "description": "T-SHIRT SAMBA,ARANCIO", "codicePrecedente": "45102", "categoria": "AE" },
+              {"codice": "FA1112", "description": "MASCHERINA FACCIALE PP CONF 50 PZ", "codicePrecedente": "45121C", "categoria": "AE" },
+              {"codice": "FA1114", "description": "45121AA MASCHERINA FACCIALE PP CONF 20PZ", "codicePrecedente": "45121AA", "categoria": "AE" },
+              {"codice": "FA1219", "description": "RESPIRATORE CIRCOLARE FFP1 NR CARBONE", "codicePrecedente": "45102", "categoria": "AE" },
+              {"codice": "FA1619", "description": "FILTRO ANTIGAS A1 X-PLORE", "codicePrecedente": "45568", "categoria": "AR" },
+              {"codice": "FA1638", "description": "SEMIMASCHERA BIFILTRO X-PLORE 3300 TG M", "codicePrecedente": "45561M", "categoria": "AR" },
+              {"codice": "FA1830", "description": "MASCHERA DRAGER X-PLORE 6300", "codicePrecedente": "45970", "categoria": "AE" },
+               {"codice": "FA2013", "description": "CAPPUCCIO DRAGER PARAT 5510 CO P2", "codicePrecedente": "45985", "categoria": "AR" }
             ],
    "SearchFile": [
     {
