@@ -4,7 +4,7 @@
 >
 	<Dialog
 		id="dialogDisponibilita"
-		title="{/textDisponibilita}"
+		title="{dropDown>/textDisponibilita}"
 		stretch="true"
 	>
 		<Table
@@ -92,6 +92,9 @@
 				</ColumnListItem>
 			</items>
 		</Table>
+		    <!-- <content>
+            <Table id="reOrderTable"/>
+        </content> -->
 		<beginButton>
 			<Button
 				text="Chiudi"
