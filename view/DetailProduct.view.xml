@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:card="sap.f.cards" xmlns:f="sap.f" xmlns:l="sap.ui.layout" controllerName="com.myorg.myUI5App.controller.DetailProduct" displayBlock="true" height="100%" busyIndicatorDelay="0">
+   <Shell id="shellHome">
+      <App id="app">
+         <Page id="pageTiles" title="" showNavButton="true" navButtonPress="onBackProduct">
+            <IconTabBar selectedKey="DG"  expandable="false" id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+               <items>
+                  <IconTabFilter id="iconTabDatiGen" key="dati" text="Dati Generali">
+                     <VBox>
+                        <l:VerticalLayout id="containerLayout" width="100%">
+                           <l:BlockLayout id="BlockLayout" background="{/selectedBackground}">
+                              <l:BlockLayoutRow accentCells="Accent1">
+                                 <l:BlockLayoutCell id="Accent1" width="2">
+                                    <f:Card>
+                                       <f:layoutData>
+                                          <f:GridContainerItemLayoutData columns="4" />
+                                       </f:layoutData>
+                                       <f:header>
+                                          <card:Header iconSrc="sap-icon://product" title="{Clothing>/detail/titleProd}" />
+                                       </f:header>
+                                       <f:content>
+                                          <VBox height="115px" class="sapUiSmallMargin">
+                                             <VBox>
+                                                <Label text="Descrizione" />
+                                                <Text text="{Clothing>/detail/textDescrizione}" />
+                                             </VBox>
+                                             <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
+                                                <VBox class="sapUiMediumMarginEnd">
+                                                   <Label text="Categoria" />
+                                                   <Text text="{Clothing>/detail/categoriaText}" />
+                                                </VBox>
+                                                <VBox>
+                                                   <Label text="Serie" class="sapUiMediumMarginEnd" />
+                                                   <Text text="{Clothing>/detail/textSerie}" />
+                                                </VBox>
+                                             </HBox>
+                                          </VBox>
+                                       </f:content>
+                                    </f:Card>
+                                 </l:BlockLayoutCell>
+                                 <l:BlockLayoutCell id="Accent2" width="2">
+                                    <f:Card>
+                                       <f:layoutData>
+                                          <f:GridContainerItemLayoutData columns="4" />
+                                       </f:layoutData>
+                                       <f:header>
+                                          <card:Header iconSrc="sap-icon://palette" />
+                                       </f:header>
+                                       <f:content>
+                                            <VBox height="115px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+                                              <VBox>
+                                                <Label text="Colori" />
+                                                <Text text="{Clothing>/detail/textColore}" />
+                                             </VBox>
+                                             <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
+                                                <VBox class="sapUiMediumMarginEnd">
+                                                   <HBox >
+                                                   <Button text="Scegli colore" id="colorSelected" icon="sap-icon://megamenu" tooltip="Seleziona un colore" color="{/SelectedColor}" press=".onOpenColor" />
+                                                   <Text id="coloreFinale" class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiLargeMarginEnd" text="{/SelectedName}" />
+                                                </HBox>
+                                                </VBox>
+                                                <VBox class="sapUiLargeMarginBegin">
+                                                   <Label text="Listino 1" class="sapUiMediumMarginEnd" />
+                                                   <Text text="{Clothing>/detail/prezzoFissoModel} €" />
+                                                </VBox>
+                                                <VBox>
+                                                   <Label text="Listino 3" />
+                                                   <Text text="{Clothing>/detail/prezzoFissoModel3} €" />
+                                                </VBox>
+                                             </HBox>
+                                             <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
+                                                <VBox>
+                                                   <Label text="Gestito Web" />
+                                                   <Text text="Si" />
+                                                </VBox>
+                                                <VBox>
+                                                   <Label text="Scontabile" />
+                                                   <Text text="Si" />
+                                                </VBox>
+                                                <VBox>
+                                                   <Label text="Stato Materiale" />
+                                                   <Text text="" />
+                                                </VBox>
+                                             </HBox>
+                                          </VBox>
+                                          
+                                       </f:content>
+                                    </f:Card>
+                                 </l:BlockLayoutCell>
+                              </l:BlockLayoutRow>
+                           </l:BlockLayout>
+                        </l:VerticalLayout>
+                        <l:VerticalLayout width="100%">
+                           <l:BlockLayout background="{/selectedBackground}">
+                              <l:BlockLayoutRow accentCells="Accent1">
+                                 <l:BlockLayoutCell width="2">
+                                    <f:Card>
+                                       <f:layoutData>
+                                          <f:GridContainerItemLayoutData columns="4" />
+                                       </f:layoutData>
+                                       <f:header>
+                                          <card:Header title="Altri Dati" iconSrc="sap-icon://bar-chart" press="onPress" />
+                                       </f:header>
+                                       <f:content>
+                                          <VBox height="258px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+                                             <VBox justifyContent="SpaceBetween">
+                                                <Label text="Taglie" />
+                                                <Text text="{Clothing>/detail/textTaglie}" />
+                                             </VBox>
+                                             <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
+                                                <VBox class="sapUiMediumMarginEnd">
+                                                   <Label text="Gestito da agente" />
+                                                   <Text text="Si" />
+                                                </VBox>
+                                                <VBox>
+                                                   <Label text="Gestito a magazzino" class="sapUiMediumMarginEnd" />
+                                                   <Text text="Si" />
+                                                </VBox>
+                                                <VBox>
+                                                   <Label text="Gestito Listino" />
+                                                   <Text text="Si" />
+                                                </VBox>
+                                             </HBox>
+                                             <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
+                                                <VBox>
+                                                   <Label text="Gestito Web" />
+                                                   <Text text="Si" />
+                                                </VBox>
+                                                <VBox>
+                                                   <Label text="Scontabile" />
+                                                   <Text text="Si" />
+                                                </VBox>
+                                                <VBox>
+                                                   <Label text="Stato Materiale" />
+                                                   <Text text="" />
+                                                </VBox>
+                                             </HBox>
+                                          </VBox>
+                                       </f:content>
+                                    </f:Card>
+                                 </l:BlockLayoutCell>
+                                 <l:BlockLayoutCell width="2">
+                                    <f:Card height="23rem" width="100%">
+                                       <f:layoutData>
+                                          <f:GridContainerItemLayoutData columns="4" />
+                                       </f:layoutData>
+                                       <f:header>
+                                          <card:Header title="Pack/Consegna" iconSrc="sap-icon://shipping-status" press="onPress" />
+                                       </f:header>
+                                       <f:content>
+                                          <VBox height="115px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+                                             <VBox justifyContent="SpaceBetween">
+                                                <Label text="Unità Misura" />
+                                                <Text text="NR" class="sapUiMediumMarginBottom" />
+                                             </VBox>
+                                             <VBox>
+                                                <Label text="Cartone" />
+                                                <Text text="20" class="sapUiMediumMarginBottom" />
+                                             </VBox>
+                                             <VBox>
+                                                <Label text="Pacco" />
+                                                <Text text="1" class="sapUiMediumMarginBottom" />
+                                             </VBox>
+                                             <VBox>
+                                                <Label text="Consegna gg" />
+                                                <Text text="0" />
+                                             </VBox>
+                                          </VBox>
+                                       </f:content>
+                                    </f:Card>
+                                 </l:BlockLayoutCell>
+                              </l:BlockLayoutRow>
+                           </l:BlockLayout>
+                        </l:VerticalLayout>
+                     </VBox>
+                  </IconTabFilter>
+                  <IconTabFilter text="Dati aggiuntivi">
+                     <!-- <VBox class="sapUiMediumMarginTopBottom">
+								<VBox>
+									<Title
+										level="H1"
+										text="Dati Aggiuntivi Articolo MC1151"
+									/>
+								</VBox>
+								<VBox class="sapUiMediumMarginTop">
+									<Label text="Descrizione Corta"/>
+									<Text text="{i18n>DescrShort}"/>
+								</VBox>
+							</VBox> -->
+                     <l:VerticalLayout width="100%">
+                        <l:BlockLayout background="{/selectedBackground}">
+                           <l:BlockLayoutRow accentCells="Accent1">
+                              <l:BlockLayoutCell width="2">
+                                 <f:Card>
+                                    <f:layoutData>
+                                       <f:GridContainerItemLayoutData columns="4" />
+                                    </f:layoutData>
+                                    <f:header>
+                                       <card:Header iconSrc="sap-icon://detail-more" title="{Clothing>/detail/titleDesc}" />
+                                    </f:header>
+                                    <f:content>
+                                       <VBox height="300px" class="sapUiSmallMargin">
+                                          <VBox>
+                                             <Label text="Descrizione Corta" />
+                                             <Text text="{i18n>DescrShort}" />
+                                          </VBox>
+                                       </VBox>
+                                    </f:content>
+                                 </f:Card>
+                              </l:BlockLayoutCell>
+                              <l:BlockLayoutCell width="2">
+                                 <f:Card>
+                                    <f:layoutData>
+                                       <f:GridContainerItemLayoutData columns="4" />
+                                    </f:layoutData>
+                                    <f:header>
+                                       <card:Header iconSrc="sap-icon://detail-more" title="" />
+                                    </f:header>
+                                    <f:content>
+                                       <VBox height="300px" class="sapUiSmallMargin">
+                                          <VBox>
+                                             <Label text="Descrizione Completa" />
+                                             <Text text="{i18n>DescComp}" />
+                                             <Text text="- Il comfort del cotone offre morbidezza, traspirabilità e resistenza." class="sapUiSmallMarginTop" />
+                                             <Text text="- La natura del tessuto e la particolare attenzione alle rifiniture come le travette di rinforzo e le triple cuciture ad incastro realizzate con colore a contrasto, assicurano una durata prolungata nel tempo e sono una garanzia di elevato livello qualitativo." class="sapUiSmallMarginTop" />
+                                             <Text text="Sul capo c'è la possibilità di applicazione delle varie tipologie di bande rifrangenti: banda rifrangente prismatica gialla, prismatica arancione, prismatica grigia e classica grigia." class="sapUiSmallMarginTop" />
+                                          </VBox>
+                                       </VBox>
+                                    </f:content>
+                                 </f:Card>
+                              </l:BlockLayoutCell>
+                           </l:BlockLayoutRow>
+                        </l:BlockLayout>
+                     </l:VerticalLayout>
+                  </IconTabFilter>
+                  <IconTabFilter text="Documenti">
+                     <Table id="idProductsTableItems" class="sapUiSmallMarginTop" rememberSelections="false" selectionChange="onSelectItems">
+                        <columns>
+                           <Column width="12em">
+                              <Text text="Tipo" />
+                           </Column>
+                           <Column minScreenWidth="Tablet" demandPopin="true">
+                              <Text text="Descrizione" />
+                           </Column>
+                           <Column minScreenWidth="Desktop" demandPopin="true">
+                              <Text text="Data" />
+                           </Column>
+                           <Column width="8rem" minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+                              <Text text="Nome File" />
+                           </Column>
+                        </columns>
+                        <items />
+                     </Table>
+                  </IconTabFilter>
+                  <IconTabFilter text="Prezzo">
+                     <Title text="{Clothing>/detail/titleCodice}" class="sapUiSmallMarginTopBottom" />
+                     <CustomListItem>
+                        <HBox items="{path: 'Clothing>/detail/taglieObj'}" id="idList" class="sapUiTinyMargin" justifyContent="Center">
+                           <VBox>
+                              <Text class="sapUiMediumMarginBegin" text=" {Clothing>key}" />
+                              <StepInput id="stepInput" value="{Clothing>quantita}" min="0" max="{Clothing>max}" width="10%" change=".onChangeValueItems" />
+                              <Text class="sapUiMediumMarginBegin" text="{Clothing>count}" />
+                           </VBox>
+                        </HBox>
+                     </CustomListItem>
+                     <CustomListItem>
+                        <HBox width="50%" items="{path: 'Clothing>/detail/taglieObj1'}" id="idList2" class="sapUiTinyMargin">
+                           <VBox>
+                              <Text class="sapUiMediumMarginBegin" text=" {Clothing>key}" />
+                              <StepInput id="stepInput2" value="{Clothing>quantita}" min="0" max="{Clothing>max}" width="10%" change=".onChangeValueItems" />
+                              <Text class="sapUiMediumMarginBegin" text="{Clothing>count}" />
+                           </VBox>
+                        </HBox>
+                        <Text text="Totale: " class="sapUiSmallMarginTop sapUiSmallMarginBegin sapUiTinyMarginEnd" />
+                        <Text id="totalItems2" text="{Clothing>/detail/totale}" class="sapUiSmallMarginTopBottom" />
+                     </CustomListItem>
+                     <Panel backgroundDesign="Solid">
+                        <VBox>
+                        <HBox>
+                           <Label text="Prezzo Listino 1 -" class="sapUiMediumMarginTopBottom sapUiTinyMarginEnd" />
+                           <Label text="{Clothing>/detail/prezzoListino1}" class="sapUiMediumMarginTopBottom" />
+                        </HBox>
+                        </VBox>
+                        <HBox>
+                           <VBox>
+                              <Text text="Prezzo Scontato" class="sapUiTinyMarginBottom" />
+                              <StepInput  id="stepInput3" value="{Clothing>/detail/prezzo}" textAlign="Center" min="0" max="{Clothing>/sizes/prezzoFisso}" width="8rem" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" change=".onChangeValueItems" />
+                           </VBox>
+                           <VBox>
+                              <Text text="Sconto %" class="sapUiTinyMarginBottom" />
+                              <StepInput id="stepInput4" value="{Clothing>/detail/sconto}" textAlign="Center" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" min="0" max="{max}" width="8rem" change=".onChangeValue" />
+                           </VBox>
+                           <HBox>
+                           <Text class="sapUiMediumMarginTop sapUiTinyMarginEnd" text="Totale: "/>
+                           <Text class="sapUiMediumMarginTop" text="{Clothing>/detail/calcolo} €"/>
+                           </HBox>
+                        </HBox>
+                     </Panel>
+                     <Panel backgroundDesign="Solid">
+                        <VBox>
+                        <HBox>
+                           <Label text="Prezzo Listino 3 -" class="sapUiMediumMarginTopBottom sapUiTinyMarginEnd" />
+                           <Label text="{Clothing>/detail/prezzoListino3}" class="sapUiMediumMarginTopBottom" />
+                        </HBox>
+                        </VBox>
+                        <HBox>
+                           <VBox>
+                              <Text text="Prezzo Scontato" class="sapUiTinyMarginBottom" />
+                              <StepInput   value="{Clothing>/detail/prezzo3}" textAlign="Center" min="0" max="{Clothing>/sizes/prezzoFisso}" width="8rem" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" change=".onChangeValueItems" />
+                           </VBox>
+                           <VBox>
+                              <Text text="Sconto %" class="sapUiTinyMarginBottom" />
+                              <StepInput value="{Clothing>/detail/sconto3}" textAlign="Center" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" min="0" max="{max}" width="8rem" change=".onChangeValue3" />
+                           </VBox>
+                           <HBox>
+                           <Text class="sapUiMediumMarginTop sapUiTinyMarginEnd" text="Totale: "/>
+                           <Text class="sapUiMediumMarginTop" text="{Clothing>/detail/calcolo3} €"/>
+                           </HBox>
+                        </HBox>
+                     </Panel>
+                  </IconTabFilter>
+               </items>
+            </IconTabBar>
+         </Page>
+      </App>
+   </Shell>
+</mvc:View>

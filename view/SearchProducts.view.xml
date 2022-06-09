@@ -13,7 +13,7 @@
 	<Page
 		navButtonTooltip=""
 		showNavButton="true"
-		navButtonPress="navBackHome"
+		navButtonPress="onBackProduct"
 		title="Ricerca articolo e disponibilità"
 	>
 		<l:VerticalLayout width="100%">
@@ -25,14 +25,59 @@
 			>
 				<fb:filterItems>
 					<fb:FilterItem
-						name="A"
-						label="Articolo"
+						name="C"
+						label="Codice"
 					>
 						<fb:control>
-							<Input
-								id="searchInput"
-								value="{dropDownModel>/SelectedItems}"
-							/>
+							<Input value="{dropDownModel>/SelectedCodice}"/>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem
+						name="D"
+						label="Descrizione"
+					>
+						<fb:control>
+							<Input value="{dropDownModel>/SelectedDescrizione}"/>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem
+						name="E"
+						label="Categoria"
+					>
+						<fb:control>
+							<Select
+								id="slCategory"
+								forceSelection="false"
+								selectedKey="{dropDownModel>/SelectedCategoria}"
+								items="{
+									path: 'dropDownModel>/CategoriesInfo'
+								}"
+							>
+								<core:Item
+									key="{dropDownModel>id}"
+									text="{dropDownModel>Name}"
+								/>
+							</Select>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem
+						name="F"
+						label="Serie"
+					>
+						<fb:control>
+							<Select
+								items="{
+									path: 'dropDownModel>/SerieInfo'
+								}"
+								id="serie"
+								selectedKey="{dropDownModel>/selectedSerie}"
+								forceSelection="false"
+							>
+								<core:Item
+									key="{dropDownModel>id}"
+									text="{dropDownModel>Name}"
+								/>
+							</Select>
 						</fb:control>
 					</fb:FilterItem>
 					<fb:FilterItem
@@ -48,57 +93,15 @@
 						</fb:control>
 					</fb:FilterItem>
 					<fb:FilterItem
-						visible="{dropDownModel>/visibleCodice}"
-						name="C"
-						label="Codice"
+						name="A"
+						label="Articolo"
+						visible="{dropDownModel>/visibleArticolo}"
 					>
 						<fb:control>
-							<Input value="{dropDownModel>/SelectedCodice}"/>
-						</fb:control>
-					</fb:FilterItem>
-					<fb:FilterItem
-						visible="{dropDownModel>/visibleDescrizione}"
-						name="D"
-						label="Descrizione"
-					>
-						<fb:control>
-							<Input value="{dropDownModel>/SelectedDescrizione}"/>
-						</fb:control>
-					</fb:FilterItem>
-					<fb:FilterItem
-						visible="{dropDownModel>/visibleCategoria}"
-						name="E"
-						label="Categoria"
-					>
-						<fb:control>
-							<Select
-								id="slCategory"
-								forceSelection="false"
-								selectedKey="{dropDownModel>/selectedCategory}"
-								items="{
-									path: 'dropDownModel>/Categories'
-								}"
-							>
-								<core:Item
-									key="{id}"
-									text="{Name}"
-								/>
-							</Select>
-						</fb:control>
-					</fb:FilterItem>
-					<fb:FilterItem
-						visible="{dropDownModel>/visibleSerie}"
-						name="F"
-						label="Serie"
-					>
-						<fb:control>
-							<Select
-								id="serie"
-								selectedKey="{dropDownModel>/selectedSerie}"
-							>
-								<items>
-								</items>
-							</Select>
+							<Input
+								id="searchInput"
+								value="{dropDownModel>/SelectedItems}"
+							/>
 						</fb:control>
 					</fb:FilterItem>
 				</fb:filterItems>
@@ -107,7 +110,6 @@
 				id="idProductsTableItems"
 				class="sapUiSmallMarginTop"
 				rememberSelections="false"
-				mode="MultiSelect"
 				selectionChange="onSelectItems"
 				items="{
 					path: 'Clothing>/ricercaAvanzata',
@@ -119,13 +121,6 @@
 				<headerToolbar>
 					<OverflowToolbar id="otbSubheader">
 						<ToolbarSpacer/>
-						<Button
-							text="Aggiungi al carrello"
-							id="addCart"
-							type="Transparent"
-							icon="sap-icon://cart"
-							enabled="{dropDownModel>/enabledCart}"
-						/>
 						<Button
 							text="Reset"
 							type="Transparent"
@@ -174,10 +169,10 @@
 							<Text text="{Clothing>codicePrecedente}"/>
 							<HBox>
 								<Button
-									icon="sap-icon://customize"
-									press="openFileDocument"
+									icon="sap-icon://search"
+									press="onOpenDetailProduct"
 									class="sapUiSmallMarginEnd"
-									tooltip="Personalizzazione prodotto"
+									tooltip="Dettaglio prodotto"
 								/>
 								<Button
 									icon="sap-icon://check-availability"

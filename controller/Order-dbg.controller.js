@@ -157,32 +157,32 @@ sap.ui.define([
                 ],
                 "SelectedColor": "black",
                 "SelectedName": "",
-                // "Colors": [
-                //     {
-                //         "Name": "J5 - ARANCIO (M)",
-                //         "id": "darkorange"
-                //     },
-                //     {
-                //         "Name": "K1 BIANCO (M)",
-                //         "id": "white"
-                //     },
-                //     {
-                //         "Name": "Q2 AZZURRO (M)",
-                //         "id": "blue"
-                //     },
-                //     {
-                //         "Name": "S0 VERDE (M)",
-                //         "id": "green"
-                //     },
-                //     {
-                //         "Name": "AM _ GRIGIO MELANGE (M)",
-                //         "id": "grey"
-                //     },
-                //     {
-                //         "Name": "Q7 - NAVY (M)",
-                //         "id": "black"
-                //     }
-                // ]
+                "Colors": [
+                    {
+                        "Name": "J5 - ARANCIO (M)",
+                        "id": "darkorange"
+                    },
+                    {
+                        "Name": "K1 BIANCO (M)",
+                        "id": "white"
+                    },
+                    {
+                        "Name": "Q2 AZZURRO (M)",
+                        "id": "blue"
+                    },
+                    {
+                        "Name": "S0 VERDE (M)",
+                        "id": "green"
+                    },
+                    {
+                        "Name": "AM _ GRIGIO MELANGE (M)",
+                        "id": "grey"
+                    },
+                    {
+                        "Name": "Q7 - NAVY (M)",
+                        "id": "black"
+                    }
+                ]
             };
 
             var oModelDropDown = new JSONModel(oDataDropDown);
@@ -200,6 +200,26 @@ sap.ui.define([
 
 
         },
+        // onOpenColor: function (oEvent) {
+        //     this.getView().setModel(this.getView().getModel("dropDownModel"))
+        //     debugger;
+        //     var oButton = oEvent.getSource(),
+        //         oView = this.getView();
+        //     // create popover
+        //     if (!this._pPopover) {
+        //         this._pPopover = Fragment.load({
+        //             id: oView.getId(),
+        //             name: "com.myorg.myUI5App.view.fragment.SelectColor",
+        //             controller: this
+        //         }).then(function (oPopover) {
+        //             oView.addDependent(oPopover);
+        //             return oPopover;
+        //         });
+        //     }
+        //     this._pPopover.then(function (oPopover) {
+        //         oPopover.openBy(oButton);
+        //     });
+        // },
         constructor: function (oView) {
             this._oView = oView
         },

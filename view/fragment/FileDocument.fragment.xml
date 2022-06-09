@@ -40,29 +40,6 @@
 					</ColumnListItem>
 				</items>
 			</Table>
-			<ScrollContainer
-				height="100%"
-				width="100%"
-				horizontal="true"
-				vertical="true"
-			>
-				<FlexBox
-					direction="Column"
-					renderType="Div"
-					class="sapUiSmallMargin"
-				>
-					<PDFViewer
-						visible="{/visible}"
-						source="{/Source}"
-						title="{/Title}"
-						height="{/Height}"
-					>
-						<layoutData>
-							<FlexItemData growFactor="1"/>
-						</layoutData>
-					</PDFViewer>
-				</FlexBox>
-			</ScrollContainer>
 		</l:VerticalLayout>
 		<endButton>
 			<Button
