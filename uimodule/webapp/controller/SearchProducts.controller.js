@@ -77,17 +77,14 @@ sap.ui.define(
                 if (bColumn) {
                     model.setProperty("/columnVisible", false);
                 };
-                model.setProperty("/SelectedDescrizione", "")
-                model.setProperty("/SelectedCategoria", "")
+                model.setProperty("/SelectedDescrizione", "");
+                model.setProperty("/SelectedCategoria", "");
+                model.setProperty("/selectedSerie", "");
+                model.setProperty("/selectedCodice", "");
+                model.setProperty("/selectedCheck", false);
+                model.setProperty("/SelectedItems", "")
+                model.setProperty("/visibleArticolo", false);
 
-                // model.setProperty("/selectedCheck", false);
-                // model.setProperty("/visibleCodice", false);
-                // model.setProperty("/visibleDescrizione", false);
-                // model.setProperty("/visibleCategoria", false);
-                // model.setProperty("/visibleSerie", false);
-                // model.setProperty("/selectedCategory", "");
-                // model.setProperty("/SelectedCodice", "");
-                // model.setProperty("/SelectedDescrizione", "");
             },
 
             onFilterTable: function () {
@@ -131,25 +128,7 @@ sap.ui.define(
                 }
             },
 
-            // _getDialogFile: function () {
-            //     if (!this._oDialogFile) {
-            //         Fragment.load({
-            //             name: "com.myorg.myUI5App.view.fragment.FileDocument",
-            //             controller: this
-            //         }).then(function (fr) {
-            //             fr.setModel(this.getOwnerComponent().getModel("Clothing"), "Clothing")
-            //             fr.setModel(this.getView().getModel("dropDownModel"), "dropDownModel")
-            //             fr.setModel(this.getView().getModel("pdfModel"))
-            //             this._oDialogFile = fr
-            //             fr.open();
-            //         }.bind(this));
-            //     } else {
-            //         this._oDialogFile.open();
-            //     }
-            // },
-            // openFileDocument: function () {
-            //     this._getDialogFile();
-            // },
+
             onOpenDetailProduct: function (oEvent) {
                 debugger
                 var model = this.getModel("Clothing");
@@ -197,9 +176,16 @@ sap.ui.define(
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("DetailProduct", {}, true);
             },
-            onCloseFilterOptionsDialogCancel: function (oEvent) {
-                this._oDialogFilter
-                oEvent.getSource().getParent().close();
+            onBackProduct: function (oEvent) {
+                var oHistory = History.getInstance();
+                var sPreviousHash = oHistory.getPreviousHash();
+
+                if (sPreviousHash !== undefined) {
+                    window.history.go(-1);
+                } else {
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("Home", {}, true);
+                }
             },
 
             _getDialogProductAvailable: function () {
@@ -265,19 +251,6 @@ sap.ui.define(
                 }
                 this.byId("idProductsTableItems").getBinding("items").filter(aFilters).sort(aSorters);
             },
-            navBackHome: function () {
-                var oHistory = History.getInstance();
-                var sPreviousHash = oHistory.getPreviousHash();
-
-                if (sPreviousHash !== undefined) {
-                    window.history.go(-1);
-                } else {
-                    var oRouter = UIComponent.getRouterFor(this);
-                    oRouter.navTo("Home", {}, true);
-                }
-            },
-
-
         });
     }
 );

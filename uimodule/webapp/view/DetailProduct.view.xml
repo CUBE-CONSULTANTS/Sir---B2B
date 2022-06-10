@@ -2,7 +2,7 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:card="sap.f.cards" xmlns:f="sap.f" xmlns:l="sap.ui.layout" controllerName="com.myorg.myUI5App.controller.DetailProduct" displayBlock="true" height="100%" busyIndicatorDelay="0">
    <Shell id="shellHome">
       <App id="app">
-         <Page id="pageTiles" title="" showNavButton="true" navButtonPress="onBackProduct">
+         <Page id="pageTiles" title="" showNavButton="true" navButtonPress="onBackProductDetail">
             <IconTabBar selectedKey="DG"  expandable="false" id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
                <items>
                   <IconTabFilter id="iconTabDatiGen" key="dati" text="Dati Generali">

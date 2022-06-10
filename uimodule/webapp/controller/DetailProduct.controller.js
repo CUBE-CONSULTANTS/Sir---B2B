@@ -188,11 +188,6 @@ sap.ui.define([
                 this.getView().getModel("Clothing").setProperty("/detail/calcolo3", result4.toFixed(2));
 
             }
-
-
-
-
-
         },
         onChangeValue: function () {
             debugger
@@ -222,16 +217,10 @@ sap.ui.define([
             this.getView().getModel("Clothing").setProperty("/detail/prezzo3", prezzoSingleItem.toFixed(2));
 
         },
-        onBackProduct: function () {
-            var oHistory = History.getInstance();
-            var sPreviousHash = oHistory.getPreviousHash();
-
-            if (sPreviousHash !== undefined) {
-                window.history.go(-1);
-            } else {
-                var oRouter = UIComponent.getRouterFor(this);
-                oRouter.navTo("SearchProducts", {}, true);
-            }
+        onBackProductDetail: function () {
+            debugger
+            var oRouter = UIComponent.getRouterFor(this);
+            oRouter.navTo("SearchProducts", {}, true);
         },
         onCloseColor: function () {
             this.byId("colors").close();
