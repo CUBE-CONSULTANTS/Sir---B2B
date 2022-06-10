@@ -130,12 +130,7 @@ sap.ui.define(
                 const categories = this.getView().getModel("Clothing").getProperty("/catalog/clothing/categories");
                 this.getView().getModel("Clothing").setProperty("/catalog/clothing/itemsTreeTable", categories);
             },
-            onNavBack: function () {
-                debugger
-                const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("MainView");
-
-            },
+            goToDocument: function () {},
             goOrderDetail: function (oEvent) {
                 const oButton = oEvent.getSource(),
                     oView = this.getView();
@@ -216,7 +211,7 @@ sap.ui.define(
 
             // },
             handleButtonsVisibility: function () {
-                debugger
+                debugger;
 
                 var oModel = this.getView().getModel("dropDownModel");
                 switch (this._oWizard.getProgress()) {
@@ -232,31 +227,30 @@ sap.ui.define(
                         oModel.setProperty("/backButtonVisible", true);
                         oModel.setProperty("/nextButtonEnabled", false);
                         oModel.setProperty("/nextButtonVisible", false);
-                        oModel.setProperty("/reviewButtonVisible", true)
-                        oModel.setProperty("/reviewButtonEnabled", false)
+                        oModel.setProperty("/reviewButtonVisible", true);
+                        oModel.setProperty("/reviewButtonEnabled", false);
                         break;
                     case 3:
                         oModel.setProperty("/finishButtonVisible", true);
                         oModel.setProperty("/backButtonVisible", false);
-                        oModel.setProperty("/PersonalizzazioneButtonVisible", false)
-                        oModel.setProperty("/reviewButtonVisible", false)
+                        oModel.setProperty("/PersonalizzazioneButtonVisible", false);
+                        oModel.setProperty("/reviewButtonVisible", false);
                         break;
-                    default: break;
+                    default:
+                        break;
                 }
-
             },
 
             onGoToRicercaArticolo: function () {
-                debugger
+                debugger;
                 this.getView().getModel("Clothing").setProperty("/catalog/clothing/itemsTreeTable", []);
 
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.navTo("SearchProducts");
                 // this._getDialog();
-
             },
             onSelectCheckBox: function (oEvent) {
-                debugger
+                debugger;
                 var selected = oEvent.getSource().getSelected();
                 var model = this.getView().getModel("dropDownModel");
                 if (selected === true) {
@@ -272,14 +266,11 @@ sap.ui.define(
                 }
             },
 
-
-
             onCloseProd: function (oEvent) {
-                debugger
+                debugger;
                 this._oDialogProdAvailab.close();
                 // oEvent.getSource().getParent().close();
             },
-
 
             // onDialogNextButton: function () {
             //     debugger
@@ -470,7 +461,6 @@ sap.ui.define(
                 opdfViewer.setSource(sSource);
                 opdfViewer.open();
             },
-
 
             onChooseColor: function (oEvent) {
                 debugger;

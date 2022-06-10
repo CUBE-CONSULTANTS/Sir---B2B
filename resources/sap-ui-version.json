@@ -1,13 +1,13 @@
 {
 	"name": "myUI5App_uimodule",
 	"version": "0.0.1",
-	"buildTimestamp": "202206100941",
+	"buildTimestamp": "202206100943",
 	"scmRevision": "",
 	"libraries": [
 		{
 			"name": "sap.m",
 			"version": "1.96.0",
-			"buildTimestamp": "202206100941",
+			"buildTimestamp": "202206100943",
 			"scmRevision": "",
 			"manifestHints": {
 				"dependencies": {
@@ -26,13 +26,13 @@
 		{
 			"name": "sap.ui.core",
 			"version": "1.96.0",
-			"buildTimestamp": "202206100941",
+			"buildTimestamp": "202206100943",
 			"scmRevision": ""
 		},
 		{
 			"name": "sap.ui.layout",
 			"version": "1.96.0",
-			"buildTimestamp": "202206100941",
+			"buildTimestamp": "202206100943",
 			"scmRevision": "",
 			"manifestHints": {
 				"dependencies": {
@@ -45,7 +45,7 @@
 		{
 			"name": "sap.ui.unified",
 			"version": "1.96.0",
-			"buildTimestamp": "202206100941",
+			"buildTimestamp": "202206100943",
 			"scmRevision": "",
 			"manifestHints": {
 				"dependencies": {
