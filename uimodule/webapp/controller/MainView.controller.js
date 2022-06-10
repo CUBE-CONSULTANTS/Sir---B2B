@@ -23,21 +23,21 @@ sap.ui.define(
             onLoginPress: function () {
                 const oRouter = this.getRouter();
                 const oModel = this.getOwnerComponent().getModel("oData");
-                const { username, password } = this.getModel().getData();
+                const { username, password } = this.getModel(undefined).getData();
                 const basicAuth = `Basic ${btoa(`${username}:${password}`)}`;
                 oModel.setHeaders({ Authorization: basicAuth });
-                // oModel.read("/login", {
-                //     success: (_, oResponse) => {
-                //         const { token } = this.parseResponseBody(oResponse);
-                //         oModel.setHeaders({ Authorization: `Bearer ${token}` });
-                //         MessageToast.show("Login Successful");
-                //         oRouter.navTo("Home");
-                //     },
-                //     error: (oError) => {
-                //         MessageToast.show(this.parseMessage(oError.response) || "Login Failed");
-                //     },
-                // });
-                oRouter.navTo("Home")
+                oModel.read("/login", {
+                    success: (_, oResponse) => {
+                        const { token } = this.parseResponseBody(oResponse);
+                        oModel.setHeaders({ Authorization: `Bearer ${token}` });
+                        MessageToast.show("Login Successful");
+                        oRouter.navTo("Home");
+                    },
+                    error: (oError) => {
+                        MessageToast.show(this.parseMessage(oError.response) || "Login Failed");
+                    },
+                });
+                // oRouter.navTo("Home")
             },
             onSwitchTheme: function (_) {
                 window.history.replaceState("", "", this._updateURLTheme(window.location.href, "$sap-ui-theme", _.getParameter("state")));
