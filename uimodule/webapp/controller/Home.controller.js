@@ -4,12 +4,10 @@ sap.ui.define(
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      * @param {typeof sap.ui.core.Fragment} Fragment
      * @param {typeof sap.ui.model.json.JSONModel} JSONModel
-     * @param {typeof sap.ui.model.Filter} Filter
-     * @param {typeof sap.ui.model.FilterOperator} FilterOperator
-     * @param {typeof sap.m.MessageBox} MessageBox
-     * @param {typeof sap.m.MessageToast} MessageToast
+      * @param {typeof sap.ui.model.json.JSONModel} History
+     
      */
-    function (BaseController, Fragment, JSONModel, Filter, FilterOperator, MessageBox, MessageToast) {
+    function (BaseController, Fragment, JSONModel, History) {
         "use strict";
 
         return BaseController.extend("com.myorg.myUI5App.controller.Home", {
@@ -253,24 +251,36 @@ sap.ui.define(
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.navTo("SearchProducts");
                 // this._getDialog();
-
             },
-            onSelectCheckBox: function (oEvent) {
-                debugger
-                var selected = oEvent.getSource().getSelected();
-                var model = this.getView().getModel("dropDownModel");
-                if (selected === true) {
-                    model.setProperty("/visibleCodice", true);
-                    model.setProperty("/visibleDescrizione", true);
-                    model.setProperty("/visibleCategoria", true);
-                    model.setProperty("/visibleSerie", true);
+
+
+            goToLogin: function () {
+                var oHistory = History.getInstance();
+                var sPreviousHash = oHistory.getPreviousHash();
+
+                if (sPreviousHash !== undefined) {
+                    window.history.go(-1);
                 } else {
-                    model.setProperty("/visibleCodice", false);
-                    model.setProperty("/visibleDescrizione", false);
-                    model.setProperty("/visibleCategoria", false);
-                    model.setProperty("/visibleSerie", false);
+                    var oRouter = UIComponent.getRouterFor(this);
+                    oRouter.navTo("MainView", {}, true);
                 }
             },
+            // onSelectCheckBox: function (oEvent) {
+            //     debugger
+            //     var selected = oEvent.getSource().getSelected();
+            //     var model = this.getView().getModel("dropDownModel");
+            //     if (selected === true) {
+            //         model.setProperty("/visibleCodice", true);
+            //         model.setProperty("/visibleDescrizione", true);
+            //         model.setProperty("/visibleCategoria", true);
+            //         model.setProperty("/visibleSerie", true);
+            //     } else {
+            //         model.setProperty("/visibleCodice", false);
+            //         model.setProperty("/visibleDescrizione", false);
+            //         model.setProperty("/visibleCategoria", false);
+            //         model.setProperty("/visibleSerie", false);
+            //     }
+            // },
 
 
 

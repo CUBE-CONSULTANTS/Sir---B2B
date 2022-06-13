@@ -10,19 +10,17 @@ sap.ui.define([
     Fragment,
     UIComponent,
     History
-
 ) {
     "use strict";
 
     return Controller.extend("com.myorg.myUI5App.controller.DetailProduct", {
-
         /**
          * @override
          */
         onInit: function () {
 
             var oDataDropDown = {
-
+                "keyTabBar": "dati",
                 "SelectedColor": "black",
                 "SelectedName": "",
                 "Colors": [
@@ -56,24 +54,21 @@ sap.ui.define([
                     }
                 ]
             };
-
             var oModelDropDown = new JSONModel(oDataDropDown);
             this.getView().setModel(oModelDropDown, 'dropDownModel');
-            debugger
+
             this._oRouter = this.getOwnerComponent().getRouter();
             this._oRouter.getRoute("DetailProduct").attachPatternMatched(this._onObjectMatched, this);
         },
 
         _onObjectMatched: function () {
-            debugger
-            var key = this.byId("iconTabDatiGen").getKey();
-            this.byId("idIconTabBarNoIcons").setSelectedKey("dati");
+            var key = this.getView().getModel("dropDownModel").getProperty("/keyTabBar")
+            this.byId("idIconTabBarNoIcons").setSelectedKey(key);
         },
-
 
         onOpenColor: function (oEvent) {
             this.getView().setModel(this.getView().getModel("dropDownModel"))
-            debugger;
+                ;
             var oButton = oEvent.getSource(),
                 oView = this.getView();
             // create popover
@@ -88,47 +83,13 @@ sap.ui.define([
                     return oPopover;
                 });
             }
-            // var sData = {};
-            // var oModelHelp = new sap.ui.model.json.JSONModel({
-            //     coloreText: {}
-            // })
-            // var model = this.getView().getModel("Clothing").getProperty("/ricercaAvanzata");
-            // var aArray = [];
-            // for (let i = 0; i < model.length; i++) {
-            //     var colori = model[i].colori
-            //     aArray.push(colori);
-            // };
 
-            // var model = this.getView().getModel("Clothing").getProperty("/ricercaAvanzata");
-            // model.forEach(el => {
-            //     if (!aArray.find(item => item.colori === el.colori)) {
-            //         aArray.push(el)
-            //     }
-            // });
-            // oModelHelp.setProperty("/coloreText", aArray.filter(a => a.colori))
-
-            // var modelColor = this.getView().getModel().getProperty("/Colors");
-            // var aArray1 = [];
-            // for (let i = 0; i < modelColor.length; i++) {
-            //     var colori = modelColor[i].Name
-            //     aArray1.push(colori);
-            // };
-
-            // var intersection = aArray.filter(function (e) {
-            //     return aArray1.indexOf(e) > -1
-            // })
-            // console.log(intersection)
-
-
-            debugger
             this._pPopover.then(function (oPopover) {
                 oPopover.openBy(oButton);
             });
         },
 
-
         onChooseColor: function (oEvent) {
-            debugger
             var oSelectedItem = oEvent.getSource();
             var oContext = oSelectedItem.getBindingContext();
             var sPath = oContext.getPath();
@@ -149,6 +110,7 @@ sap.ui.define([
         },
         onChangeValueItems: function () {
             debugger
+
             var somma = 0;
             var model = this.getView().getModel("Clothing").getProperty("/detail/taglieObj");
             var model2 = this.getView().getModel("Clothing").getProperty("/detail/taglieObj1");
@@ -188,10 +150,30 @@ sap.ui.define([
                 this.getView().getModel("Clothing").setProperty("/detail/calcolo3", result4.toFixed(2));
 
             }
+            var totQuantita = this.getView().getModel("Clothing").getProperty("/detail/totale");
+            var input = this.byId("stepInput3")
+            var input3 = this.byId("stepInput5")
+            var prezzoScontato = this.getView().getModel("Clothing").getProperty("/detail/prezzoFissoModel")
+            var prezzoScontato3 = this.getView().getModel("Clothing").getProperty("/detail/prezzoFissoModel3");
+            debugger
+            Number(totQuantita);
+            if (totQuantita <= 0) {
+                this.getView().getModel("Clothing").setProperty("/detail/sconto", 0);
+                input.setValue(prezzoScontato);
+                this.getView().getModel("Clothing").setProperty("/detail/sconto3", 0)
+                input3.setValue(prezzoScontato3)
+            }
         },
         onChangeValue: function () {
             debugger
-            var prezzo = this.getView().getModel("Clothing").getProperty("/sizes/calcolo");
+            var tot = this.getView().getModel("Clothing").getProperty("/detail/calcolo");
+            Number(tot);
+            if (tot <= 0) {
+                new sap.m.MessageToast.show("Aumentare la quantità dei prodotti")
+                this.byId("stepInput4").setValue(0);
+                this.byId("stpInput3").setValue("Clothing>/detail/prezzo")
+
+            }
             var sconto = this.getView().getModel("Clothing").getProperty("/detail/sconto");
             var totaleItems = this.getView().getModel("Clothing").getProperty("/detail/totale");
             var prezzoFissoModel = this.getView().getModel("Clothing").getProperty("/detail/prezzoFissoModel");
@@ -204,21 +186,28 @@ sap.ui.define([
             this.getView().getModel("Clothing").setProperty("/detail/prezzo", prezzoSingleItem.toFixed(2));
         },
         onChangeValue3: function () {
-            debugger
-            var sconto3 = this.getView().getModel("Clothing").getProperty("/detail/sconto3");
-            var totaleItems = this.getView().getModel("Clothing").getProperty("/detail/totale");
-            var prezzoFissoModel3 = this.getView().getModel("Clothing").getProperty("/detail/prezzoFissoModel3");
-            var prezzoFisso3 = prezzoFissoModel3 * totaleItems
-            var risSconto = prezzoFisso3 * sconto3 / 100;
-            var risultato = prezzoFisso3 - risSconto
+            var tot = this.getView().getModel("Clothing").getProperty("/detail/calcolo3");
+            Number(tot);
+            if (tot <= 0) {
+                new sap.m.MessageToast.show("Aumentare la quantità dei prodotti")
+                this.byId("list3Input").setValue(0);
+                this.byId("stpInput5").setValue("Clothing>/detail/prezzo3")
+            } else {
+                var sconto3 = this.getView().getModel("Clothing").getProperty("/detail/sconto3");
+                var totaleItems = this.getView().getModel("Clothing").getProperty("/detail/totale");
+                var prezzoFissoModel3 = this.getView().getModel("Clothing").getProperty("/detail/prezzoFissoModel3");
+                var prezzoFisso3 = prezzoFissoModel3 * totaleItems
+                var risSconto = prezzoFisso3 * sconto3 / 100;
+                var risultato = prezzoFisso3 - risSconto
 
-            this.getView().getModel("Clothing").setProperty("/detail/calcolo3", risultato.toFixed(2));
-            var prezzoSingleItem = risultato / totaleItems;
-            this.getView().getModel("Clothing").setProperty("/detail/prezzo3", prezzoSingleItem.toFixed(2));
+                this.getView().getModel("Clothing").setProperty("/detail/calcolo3", risultato.toFixed(2));
+                var prezzoSingleItem = risultato / totaleItems;
+                this.getView().getModel("Clothing").setProperty("/detail/prezzo3", prezzoSingleItem.toFixed(2));
+
+            }
 
         },
         onBackProductDetail: function () {
-            debugger
             var oRouter = UIComponent.getRouterFor(this);
             oRouter.navTo("SearchProducts", {}, true);
         },
