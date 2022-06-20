@@ -1,68 +1,150 @@
-<mvc:View controllerName="com.myorg.myUI5App.controller.Home" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:c="sap.ui.core" displayBlock="true" height="100%" busyIndicatorDelay="0">
-  <Shell id="shellHome">
-    <App id="app">
-      <Page id="home">
-        <customHeader>
-          <Bar>
-            <contentRight>
-              <Image src="icon/logo-sirx2.png" height="100%" width="auto" />
-            </contentRight>
-            <!-- <contentLeft>
-              <Button icon="sap-icon://nav-back" press="onNavBack" />
-            </contentLeft> -->
-          </Bar>
-        </customHeader>
-        <FlexBox class="sapUiTinyMargin" wrap="Wrap">
-          <GenericTile header="Ordini" class="sapUiTinyMargin" press=".goOrderDetail">
-            <TileContent>
-              <ImageContent src="sap-icon://create" />
-            </TileContent>
-            <customData>
-              <c:CustomData key="go" value="lista" />
-            </customData>
-          </GenericTile>
-          <GenericTile header="Articoli" class="sapUiTinyMargin" press=".goToItemsDetail">
-            <TileContent>
-              <ImageContent src="sap-icon://suitcase" />
-            </TileContent>
-            <customData>
-              <c:CustomData key="go" value="lista" />
-            </customData>
-          </GenericTile>
-          <GenericTile header="Storico" class="sapUiTinyMargin" press="goToHistorical">
-            <TileContent>
-              <ImageContent src="sap-icon://activities" />
-            </TileContent>
-            <customData>
-              <c:CustomData key="go" value="lista" />
-            </customData>
-          </GenericTile>
-          <GenericTile header="Documenti" class="sapUiTinyMargin" press="goToDocument">
-            <TileContent>
-              <ImageContent src="sap-icon://documents" />
-            </TileContent>
-            <customData>
-              <c:CustomData key="go" value="lista" />
-            </customData>
-          </GenericTile>
-          <GenericTile header="Reportistica" class="sapUiTinyMargin">
-            <TileContent>
-              <ImageContent src="sap-icon://bar-chart" />
-            </TileContent>
-            <customData>
-              <c:CustomData key="go" value="lista" />
-            </customData>
-          </GenericTile>
-          <GenericTile header="Ricerca Articolo e disponibilità" class="sapUiTinyMargin" press="onGoToRicercaArticolo">
-            <TileContent>
-              <ImageContent src="sap-icon://search" />
-            </TileContent>
-            <customData>
-              <c:CustomData key="go" value="lista" />
-            </customData>
-          </GenericTile>
-        </FlexBox>
-      </Page>
-    </App>
-  </Shell>
+<mvc:View
+	controllerName="com.myorg.myUI5App.controller.Home"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+	<Shell id="shellHome">
+		<App id="app">
+			<Page
+				id="pageTiles"
+				title=""
+				showNavButton="true"
+				navButtonPress="onNavBack"
+			>
+				<customHeader>
+					<Bar>
+						<contentRight>
+							<Image
+								src="icon/logo-sirx2.png"
+								height="100%"
+								width="auto"
+							/>
+						</contentRight>
+						<contentLeft>
+							<Button
+								icon="sap-icon://nav-back"
+								press="onNavBack"
+							/>
+						</contentLeft>
+					</Bar>
+				</customHeader>
+				<GenericTile
+					header="{i18n>ordini}"
+					class="testClass sapUiTinyMarginTopBottom sapUiTinyMarginBegin"
+					press=".goOrderDetail"
+				>
+					<TileContent>
+						<ImageContent
+							src="sap-icon://create"
+							class="sapUiLargeMarginBegin"
+						/>
+					</TileContent>
+					<customData>
+						<c:CustomData
+							key="go"
+							value="lista"
+							writeToDom="false"
+						/>
+					</customData>
+				</GenericTile>
+				<GenericTile
+					header="{i18n>articoli}"
+					class="testClass sapUiTinyMarginTopBottom sapUiTinyMarginBegin"
+					press=".goToItemsDetail"
+				>
+					<TileContent>
+						<ImageContent
+							src="sap-icon://suitcase"
+							class="sapUiLargeMarginBegin"
+						/>
+					</TileContent>
+					<customData>
+						<c:CustomData
+							key="go"
+							value="lista"
+							writeToDom="false"
+						/>
+					</customData>
+				</GenericTile>
+				<GenericTile
+					header="{i18n>storico}"
+					class="testClass sapUiTinyMarginTopBottom sapUiTinyMarginBegin"
+					press="goToHistorical"
+				>
+					<TileContent>
+						<ImageContent
+							src="sap-icon://activities"
+							class="sapUiLargeMarginBegin"
+						/>
+					</TileContent>
+					<customData>
+						<c:CustomData
+							key="go"
+							value="lista"
+							writeToDom="false"
+						/>
+					</customData>
+				</GenericTile>
+				<GenericTile
+					header="{i18n>documenti}"
+					class="testClass sapUiTinyMarginTopBottom sapUiTinyMarginBegin"
+					press="goToDocument"
+				>
+					<TileContent>
+						<ImageContent
+							src="sap-icon://documents"
+							class="sapUiLargeMarginBegin"
+						/>
+					</TileContent>
+					<customData>
+						<c:CustomData
+							key="go"
+							value="lista"
+							writeToDom="false"
+						/>
+					</customData>
+				</GenericTile>
+				<GenericTile
+					header="{i18n>reportistica}"
+					class="testClass sapUiTinyMarginTopBottom sapUiTinyMarginBegin"
+				>
+					<TileContent>
+						<ImageContent
+							src="sap-icon://bar-chart"
+							class="sapUiLargeMarginBegin"
+						/>
+					</TileContent>
+					<customData>
+						<c:CustomData
+							key="go"
+							value="lista"
+							writeToDom="false"
+						/>
+					</customData>
+				</GenericTile>
+				<GenericTile
+					header="{i18n>ricercaArt}"
+					class="testClass sapUiTinyMarginTopBottom sapUiTinyMarginBegin"
+					press="onGoToRicercaArticolo"
+				>
+					<TileContent>
+						<ImageContent
+							src="sap-icon://search"
+							class="sapUiLargeMarginBegin"
+						/>
+					</TileContent>
+					<customData>
+						<c:CustomData
+							key="go"
+							value="lista"
+						/>
+					</customData>
+				</GenericTile>
+			</Page>
+		</App>
+	</Shell>
 </mvc:View>

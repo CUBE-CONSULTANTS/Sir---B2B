@@ -5,7 +5,7 @@
          <Page id="pageTiles" title="" showNavButton="true" navButtonPress="onBackProductDetail">
             <IconTabBar selectedKey="DG"  expandable="false" id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
                <items>
-                  <IconTabFilter id="iconTabDatiGen" key="dati" text="Dati Generali">
+                  <IconTabFilter id="iconTabDatiGen" key="{dropDownModel>/keyTabBar}" text="{i18n>datiGenerali}">
                      <VBox>
                         <l:VerticalLayout id="containerLayout" width="100%">
                            <l:BlockLayout id="BlockLayout" background="{/selectedBackground}">
@@ -21,16 +21,16 @@
                                        <f:content>
                                           <VBox height="115px" class="sapUiSmallMargin">
                                              <VBox>
-                                                <Label text="Descrizione" />
+                                                <Label text="{i18n>descr}" />
                                                 <Text text="{Clothing>/detail/textDescrizione}" />
                                              </VBox>
                                              <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
                                                 <VBox class="sapUiMediumMarginEnd">
-                                                   <Label text="Categoria" />
+                                                   <Label text="{i18n>categ}" />
                                                    <Text text="{Clothing>/detail/categoriaText}" />
                                                 </VBox>
                                                 <VBox>
-                                                   <Label text="Serie" class="sapUiMediumMarginEnd" />
+                                                   <Label text="{i18n>ser}" class="sapUiMediumMarginEnd" />
                                                    <Text text="{Clothing>/detail/textSerie}" />
                                                 </VBox>
                                              </HBox>
@@ -49,36 +49,36 @@
                                        <f:content>
                                             <VBox height="115px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
                                               <VBox>
-                                                <Label text="Colori" />
+                                                <Label text="{i18n>colori}" />
                                                 <Text text="{Clothing>/detail/textColore}" />
                                              </VBox>
                                              <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
                                                 <VBox class="sapUiMediumMarginEnd">
                                                    <HBox >
-                                                   <Button text="Scegli colore" id="colorSelected" icon="sap-icon://megamenu" tooltip="Seleziona un colore" color="{/SelectedColor}" press=".onOpenColor" />
+                                                   <Button text="{i18n>scegliColore}" id="colorSelected" icon="sap-icon://megamenu" tooltip="Seleziona un colore" color="{/SelectedColor}" press=".onOpenColor" />
                                                    <Text id="coloreFinale" class="sapUiTinyMarginBegin sapUiTinyMarginTop sapUiLargeMarginEnd" text="{/SelectedName}" />
                                                 </HBox>
                                                 </VBox>
                                                 <VBox class="sapUiLargeMarginBegin">
-                                                   <Label text="Listino 1" class="sapUiMediumMarginEnd" />
+                                                   <Label text="{i18n>listino1}" class="sapUiMediumMarginEnd" />
                                                    <Text text="{Clothing>/detail/prezzoFissoModel} €" />
                                                 </VBox>
                                                 <VBox>
-                                                   <Label text="Listino 3" />
+                                                   <Label text="{i18n>listino3}" />
                                                    <Text text="{Clothing>/detail/prezzoFissoModel3} €" />
                                                 </VBox>
                                              </HBox>
                                              <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
                                                 <VBox>
-                                                   <Label text="Gestito Web" />
+                                                   <Label text="{i18n>gestitoWeb}" />
                                                    <Text text="Si" />
                                                 </VBox>
                                                 <VBox>
-                                                   <Label text="Scontabile" />
+                                                   <Label text="{i18n>scontabile}" />
                                                    <Text text="Si" />
                                                 </VBox>
                                                 <VBox>
-                                                   <Label text="Stato Materiale" />
+                                                   <Label text="{i18n>statoMateriale}" />
                                                    <Text text="" />
                                                 </VBox>
                                              </HBox>
@@ -99,39 +99,39 @@
                                           <f:GridContainerItemLayoutData columns="4" />
                                        </f:layoutData>
                                        <f:header>
-                                          <card:Header title="Altri Dati" iconSrc="sap-icon://bar-chart" press="onPress" />
+                                          <card:Header title="{i18n>altriDatiTitle}" iconSrc="sap-icon://bar-chart" press="onPress" />
                                        </f:header>
                                        <f:content>
                                           <VBox height="258px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
                                              <VBox justifyContent="SpaceBetween">
-                                                <Label text="Taglie" />
+                                                <Label text="{i18n>taglie}"/>
                                                 <Text text="{Clothing>/detail/textTaglie}" />
                                              </VBox>
                                              <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
                                                 <VBox class="sapUiMediumMarginEnd">
-                                                   <Label text="Gestito da agente" />
+                                                   <Label text="{i18n>gestitoDaAgente}" />
                                                    <Text text="Si" />
                                                 </VBox>
                                                 <VBox>
-                                                   <Label text="Gestito a magazzino" class="sapUiMediumMarginEnd" />
+                                                   <Label text="{i18n>gestitoAMagazzino}" class="sapUiMediumMarginEnd" />
                                                    <Text text="Si" />
                                                 </VBox>
                                                 <VBox>
-                                                   <Label text="Gestito Listino" />
+                                                   <Label text="{i18n>gestitoListino}" />
                                                    <Text text="Si" />
                                                 </VBox>
                                              </HBox>
                                              <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
                                                 <VBox>
-                                                   <Label text="Gestito Web" />
+                                                   <Label text="{i18n>gestitoWeb}" />
                                                    <Text text="Si" />
                                                 </VBox>
                                                 <VBox>
-                                                   <Label text="Scontabile" />
+                                                   <Label text="{i18n>scontabile}" />
                                                    <Text text="Si" />
                                                 </VBox>
                                                 <VBox>
-                                                   <Label text="Stato Materiale" />
+                                                   <Label text="{i18n>statoMateriale}" />
                                                    <Text text="" />
                                                 </VBox>
                                              </HBox>
@@ -145,24 +145,24 @@
                                           <f:GridContainerItemLayoutData columns="4" />
                                        </f:layoutData>
                                        <f:header>
-                                          <card:Header title="Pack/Consegna" iconSrc="sap-icon://shipping-status" press="onPress" />
+                                          <card:Header title="{i18n>packConsegna}" iconSrc="sap-icon://shipping-status" press="onPress" />
                                        </f:header>
                                        <f:content>
                                           <VBox height="115px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
                                              <VBox justifyContent="SpaceBetween">
-                                                <Label text="Unità Misura" />
+                                                <Label text="{i18n>unitaMisura}" />
                                                 <Text text="NR" class="sapUiMediumMarginBottom" />
                                              </VBox>
                                              <VBox>
-                                                <Label text="Cartone" />
+                                                <Label text="{i18n>cartone}" />
                                                 <Text text="20" class="sapUiMediumMarginBottom" />
                                              </VBox>
                                              <VBox>
-                                                <Label text="Pacco" />
+                                                <Label text="{i18n>pacco}" />
                                                 <Text text="1" class="sapUiMediumMarginBottom" />
                                              </VBox>
                                              <VBox>
-                                                <Label text="Consegna gg" />
+                                                <Label text="{i18n>consegna}" />
                                                 <Text text="0" />
                                              </VBox>
                                           </VBox>
@@ -174,19 +174,7 @@
                         </l:VerticalLayout>
                      </VBox>
                   </IconTabFilter>
-                  <IconTabFilter text="Dati aggiuntivi">
-                     <!-- <VBox class="sapUiMediumMarginTopBottom">
-								<VBox>
-									<Title
-										level="H1"
-										text="Dati Aggiuntivi Articolo MC1151"
-									/>
-								</VBox>
-								<VBox class="sapUiMediumMarginTop">
-									<Label text="Descrizione Corta"/>
-									<Text text="{i18n>DescrShort}"/>
-								</VBox>
-							</VBox> -->
+                  <IconTabFilter text="{i18n>datiAggiuntivi}">
                      <l:VerticalLayout width="100%">
                         <l:BlockLayout background="{/selectedBackground}">
                            <l:BlockLayoutRow accentCells="Accent1">
@@ -201,7 +189,7 @@
                                     <f:content>
                                        <VBox height="300px" class="sapUiSmallMargin">
                                           <VBox>
-                                             <Label text="Descrizione Corta" />
+                                             <Label text="{i18n>descrizioneCorta}" />
                                              <Text text="{i18n>DescrShort}" />
                                           </VBox>
                                        </VBox>
@@ -219,7 +207,7 @@
                                     <f:content>
                                        <VBox height="300px" class="sapUiSmallMargin">
                                           <VBox>
-                                             <Label text="Descrizione Completa" />
+                                             <Label text="{i18n>descrizioneCompleta}" />
                                              <Text text="{i18n>DescComp}" />
                                              <Text text="- Il comfort del cotone offre morbidezza, traspirabilità e resistenza." class="sapUiSmallMarginTop" />
                                              <Text text="- La natura del tessuto e la particolare attenzione alle rifiniture come le travette di rinforzo e le triple cuciture ad incastro realizzate con colore a contrasto, assicurano una durata prolungata nel tempo e sono una garanzia di elevato livello qualitativo." class="sapUiSmallMarginTop" />
@@ -233,26 +221,26 @@
                         </l:BlockLayout>
                      </l:VerticalLayout>
                   </IconTabFilter>
-                  <IconTabFilter text="Documenti">
+                  <IconTabFilter text="{i18n>documenti}">
                      <Table id="idProductsTableItems" class="sapUiSmallMarginTop" rememberSelections="false" selectionChange="onSelectItems">
                         <columns>
                            <Column width="12em">
                               <Text text="Tipo" />
                            </Column>
                            <Column minScreenWidth="Tablet" demandPopin="true">
-                              <Text text="Descrizione" />
+                              <Text text="{i18n>descrizione}" />
                            </Column>
                            <Column minScreenWidth="Desktop" demandPopin="true">
-                              <Text text="Data" />
+                              <Text text="{i18n>data}" />
                            </Column>
                            <Column width="8rem" minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
-                              <Text text="Nome File" />
+                              <Text text="{i18n>nomeFile}" />
                            </Column>
                         </columns>
                         <items />
                      </Table>
                   </IconTabFilter>
-                  <IconTabFilter text="Prezzo">
+                  <IconTabFilter text="{i18n>prezzo}">
                      <Title text="{Clothing>/detail/titleCodice}" class="sapUiSmallMarginTopBottom" />
                      <CustomListItem>
                         <HBox items="{path: 'Clothing>/detail/taglieObj'}" id="idList" class="sapUiTinyMargin" justifyContent="Center">
@@ -271,27 +259,27 @@
                               <Text class="sapUiMediumMarginBegin" text="{Clothing>count}" />
                            </VBox>
                         </HBox>
-                        <Text text="Totale: " class="sapUiSmallMarginTop sapUiSmallMarginBegin sapUiTinyMarginEnd" />
+                        <Text text="{i18n>totale}" class="sapUiSmallMarginTop sapUiSmallMarginBegin sapUiTinyMarginEnd" />
                         <Text id="totalItems2" text="{Clothing>/detail/totale}" class="sapUiSmallMarginTopBottom" />
                      </CustomListItem>
                      <Panel backgroundDesign="Solid">
                         <VBox>
                         <HBox>
-                           <Label text="Prezzo Listino 1 -" class="sapUiMediumMarginTopBottom sapUiTinyMarginEnd" />
+                           <Label text="{i18n>List1}" class="sapUiMediumMarginTopBottom sapUiTinyMarginEnd" />
                            <Label text="{Clothing>/detail/prezzoListino1}" class="sapUiMediumMarginTopBottom" />
                         </HBox>
                         </VBox>
                         <HBox>
                            <VBox>
-                              <Text text="Prezzo Scontato" class="sapUiTinyMarginBottom" />
+                              <Text text="{i18n>prezScont}" class="sapUiTinyMarginBottom" />
                               <StepInput  id="stepInput3" value="{Clothing>/detail/prezzo}" textAlign="Center" min="0" max="{Clothing>/sizes/prezzoFisso}" width="8rem" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" change=".onChangeValueItems" />
                            </VBox>
                            <VBox>
-                              <Text text="Sconto %" class="sapUiTinyMarginBottom" />
+                              <Text text="{i18n>sconto}" class="sapUiTinyMarginBottom" />
                               <StepInput id="stepInput4" value="{Clothing>/detail/sconto}" textAlign="Center" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" min="0" max="{max}" width="8rem" change=".onChangeValue" />
                            </VBox>
                            <HBox>
-                           <Text class="sapUiMediumMarginTop sapUiTinyMarginEnd" text="Totale: "/>
+                           <Text class="sapUiMediumMarginTop sapUiTinyMarginEnd" text="{i18n>totSconto}"/>
                            <Text class="sapUiMediumMarginTop" text="{Clothing>/detail/calcolo} €"/>
                            </HBox>
                         </HBox>
@@ -299,21 +287,21 @@
                      <Panel backgroundDesign="Solid">
                         <VBox>
                         <HBox>
-                           <Label text="Prezzo Listino 3 -" class="sapUiMediumMarginTopBottom sapUiTinyMarginEnd" />
+                           <Label text="{i18n>prezzoList3}" class="sapUiMediumMarginTopBottom sapUiTinyMarginEnd" />
                            <Label text="{Clothing>/detail/prezzoListino3}" class="sapUiMediumMarginTopBottom" />
                         </HBox>
                         </VBox>
                         <HBox>
                            <VBox>
-                              <Text text="Prezzo Scontato" class="sapUiTinyMarginBottom" />
-                              <StepInput   value="{Clothing>/detail/prezzo3}" textAlign="Center" min="0" max="{Clothing>/sizes/prezzoFisso}" width="8rem" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" change=".onChangeValueItems" />
+                              <Text text="{i18n>prezScont}" class="sapUiTinyMarginBottom" />
+                              <StepInput id="stepInput5"  value="{Clothing>/detail/prezzo3}"  textAlign="Center" min="0" max="{Clothing>/sizes/prezzoFisso}" width="8rem" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" change=".onChangeValueItems" />
                            </VBox>
                            <VBox>
-                              <Text text="Sconto %" class="sapUiTinyMarginBottom" />
-                              <StepInput value="{Clothing>/detail/sconto3}" textAlign="Center" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" min="0" max="{max}" width="8rem" change=".onChangeValue3" />
+                              <Text text="{i18n>sconto}" class="sapUiTinyMarginBottom" />
+                              <StepInput value="{Clothing>/detail/sconto3}" id="list3Input" textAlign="Center" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" min="0" max="{max}" width="8rem" change=".onChangeValue3" />
                            </VBox>
                            <HBox>
-                           <Text class="sapUiMediumMarginTop sapUiTinyMarginEnd" text="Totale: "/>
+                           <Text class="sapUiMediumMarginTop sapUiTinyMarginEnd" text="{i18n>totSconto}"/>
                            <Text class="sapUiMediumMarginTop" text="{Clothing>/detail/calcolo3} €"/>
                            </HBox>
                         </HBox>

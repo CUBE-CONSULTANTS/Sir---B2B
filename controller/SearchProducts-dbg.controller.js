@@ -63,9 +63,6 @@ sap.ui.define(
                 var oModelDropDown = new JSONModel(oDataDropDown);
                 this.getView().setModel(oModelDropDown, 'dropDownModel');
 
-                // var oModel = this.getTableData(this);
-                // this.createDynTable(this, oModel);
-
                 this._oRouter = this.getOwnerComponent().getRouter();
                 this._oRouter.getRoute("SearchProducts").attachPatternMatched(this._onObjectMatched, this);
 
@@ -97,6 +94,8 @@ sap.ui.define(
                 var sCategory = model.getProperty("/SelectedCategoria");
                 var sSerie = model.getProperty("/selectedSerie");
                 var bColumn = model.getProperty("/columnVisible");
+                var sArticolo = model.getProperty("/SelectedItems");
+
                 if (!bColumn) {
                     model.setProperty("/columnVisible", true);
                 }
@@ -113,6 +112,17 @@ sap.ui.define(
                 if (sSerie) {
                     aFilter.push(new Filter("serie", FilterOperator.Contains, sSerie));
                 }
+                if (sArticolo) {
+                    const filterArt = new Filter({
+                        filters: [
+                            new Filter("codice", FilterOperator.Contains, sArticolo),
+                            new Filter("description", FilterOperator.Contains, sArticolo),
+                            new Filter("codicePrecedente", FilterOperator.Contains, sArticolo),
+                        ],
+                        and: false,
+                    });
+                    aFilter.push(filterArt);
+                }
 
                 var oTable = this.getView().byId("idProductsTableItems");
                 var oBinding = oTable.getBinding("items");
@@ -128,8 +138,7 @@ sap.ui.define(
                 }
             },
 
-
-            onOpenDetailProduct: function (oEvent) {
+            onOpenDetailProduct: function (oEvent, oContext) {
                 debugger
                 var model = this.getModel("Clothing");
                 var oContext = oEvent.getSource().getParent().getParent().getBindingContext("Clothing").getObject();
@@ -149,9 +158,6 @@ sap.ui.define(
                 var totale = oContext.totale
                 var prezzoFisso3 = oContext.prezzoFisso3
                 var prezzo3 = oContext.prezzo3
-
-
-
                 model.setProperty("/detail/textDescrizione", sdesc);
                 model.setProperty("/detail/textSerie", textSerie);
                 model.setProperty("/detail/categoriaText", categoriaText);
@@ -175,7 +181,11 @@ sap.ui.define(
 
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("DetailProduct", {}, true);
+                this._oRouter = this.getOwnerComponent().getRouter();
+
+                this._oRouter.getRoute("DetailProduct").attachPatternMatched(this._onObjectMatched, this);
             },
+
             onBackProduct: function (oEvent) {
                 var oHistory = History.getInstance();
                 var sPreviousHash = oHistory.getPreviousHash();
@@ -194,7 +204,6 @@ sap.ui.define(
                         name: "com.myorg.myUI5App.view.fragment.ProductAvailability",
                         controller: this
                     }).then(function (fr) {
-                        fr.attachAfterOpen(this.onDialogAfterOpen, this);
                         fr.setModel(this.getOwnerComponent().getModel("Clothing"), "Clothing")
                         fr.setModel(this.getView().getModel("dropDownModel"), "dropDown");
                         this._oDialogProdAvailab = fr
@@ -203,11 +212,6 @@ sap.ui.define(
                 } else {
                     this._oDialogProdAvailab.open();
                 }
-            },
-            onDialogAfterOpen: function () {
-                debugger
-                // var oModel = this.getTableData(this);
-                // this.createDynTable(this, oModel);
             },
             onOpenDialogProductAvailability: function (oEvent) {
                 var oContext = oEvent.getSource().getParent().getParent().getBindingContext("Clothing").getObject();
@@ -219,7 +223,6 @@ sap.ui.define(
                 this._oDialogProdAvailab.close();
             },
             onReset: function () {
-                debugger
                 this.bDescending = false;
                 var itemsSelected = this.byId("idProductsTableItems").getSelectedItems()
                 for (let i = 0; i < itemsSelected.length; i++) {
@@ -240,10 +243,8 @@ sap.ui.define(
                 this.fnApplyFiltersAndOrdering();
             },
             fnApplyFiltersAndOrdering: function () {
-
                 var aFilters = [],
                     aSorters = [];
-
                 if (this.bGrouped) {
                     aSorters.push(new Sorter("codice", this.bDescending, this._fnGroup));
                 } else {
