@@ -61,7 +61,8 @@ sap.ui.define([
             this._oRouter.getRoute("DetailProduct").attachPatternMatched(this._onObjectMatched, this);
         },
 
-        _onObjectMatched: function () {
+        _onObjectMatched: function (oContext) {
+            debugger
             var key = this.getView().getModel("dropDownModel").getProperty("/keyTabBar")
             this.byId("idIconTabBarNoIcons").setSelectedKey(key);
         },

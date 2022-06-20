@@ -138,7 +138,7 @@ sap.ui.define(
                 }
             },
 
-            onOpenDetailProduct: function (oEvent) {
+            onOpenDetailProduct: function (oEvent, oContext) {
                 debugger
                 var model = this.getModel("Clothing");
                 var oContext = oEvent.getSource().getParent().getParent().getBindingContext("Clothing").getObject();
@@ -181,6 +181,9 @@ sap.ui.define(
 
                 var oRouter = UIComponent.getRouterFor(this);
                 oRouter.navTo("DetailProduct", {}, true);
+                this._oRouter = this.getOwnerComponent().getRouter();
+
+                this._oRouter.getRoute("DetailProduct").attachPatternMatched(this._onObjectMatched, this);
             },
 
             onBackProduct: function (oEvent) {
