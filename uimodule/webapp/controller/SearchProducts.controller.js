@@ -99,7 +99,6 @@ sap.ui.define(
                 if (!bColumn) {
                     model.setProperty("/columnVisible", true);
                 }
-
                 if (sCodice) {
                     aFilter.push(new Filter("codice", FilterOperator.Contains, sCodice));
                 }
@@ -123,7 +122,6 @@ sap.ui.define(
                     });
                     aFilter.push(filterArt);
                 }
-
                 var oTable = this.getView().byId("idProductsTableItems");
                 var oBinding = oTable.getBinding("items");
                 oBinding.filter(aFilter);
@@ -189,7 +187,6 @@ sap.ui.define(
             onBackProduct: function (oEvent) {
                 var oHistory = History.getInstance();
                 var sPreviousHash = oHistory.getPreviousHash();
-
                 if (sPreviousHash !== undefined) {
                     window.history.go(-1);
                 } else {
