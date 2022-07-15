@@ -153,7 +153,6 @@ sap.ui.define(
             goToItemsDetail: function (oEvent) {
                 const oButton = oEvent.getSource(),
                     oView = this.getView();
-
                 // create popover
                 if (!this._ItemsPopover) {
                     this._ItemsPopover = Fragment.load({
@@ -191,8 +190,6 @@ sap.ui.define(
                     oPopover.openBy(oButton);
                 });
             },
-
-
             onGoToRicercaArticolo: function () {
                 debugger;
                 this.getView().getModel("Clothing").setProperty("/catalog/clothing/itemsTreeTable", []);
@@ -201,11 +198,6 @@ sap.ui.define(
                 oRouter.navTo("SearchProducts");
                 // this._getDialog();
             },
-
-
-
-
-
         });
     }
 );
