@@ -118,86 +118,38 @@ sap.ui.define(
                 });
             },
 
-            goToOrder: function () {
-                this.getView().getModel("Clothing").setProperty("/catalog/clothing/itemsTreeTable", []);
+            onTileNavigation: function(e) {
+                const oContext = e.getSource().getBindingContext("home");
 
-                const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("Order");
+                this.getRouter().navTo(oContext.getProperty("navigationPattern"));
             },
-            goToModication: function () {
-                const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("Order");
-                const categories = this.getView().getModel("Clothing").getProperty("/catalog/clothing/categories");
-                this.getView().getModel("Clothing").setProperty("/catalog/clothing/itemsTreeTable", categories);
-            },
-            goToDocument: function () { },
-            goOrderDetail: function (oEvent) {
-                const oButton = oEvent.getSource(),
-                    oView = this.getView();
 
-                // create popover
-                if (!this._pPopover) {
-                    this._pPopover = Fragment.load({
-                        id: oView.getId(),
-                        name: "com.myorg.myUI5App.view.fragment.Functionality.OrderSection",
-                        controller: this,
-                    }).then(function (oPopover) {
-                        oView.addDependent(oPopover);
-                        return oPopover;
-                    });
-                }
-                this._pPopover.then(function (oPopover) {
-                    oPopover.openBy(oButton);
-                });
-            },
-            goToItemsDetail: function (oEvent) {
-                const oButton = oEvent.getSource(),
-                    oView = this.getView();
-                // create popover
-                if (!this._ItemsPopover) {
-                    this._ItemsPopover = Fragment.load({
-                        id: oView.getId(),
-                        name: "com.myorg.myUI5App.view.fragment.Functionality.ItemsDetail",
-                        controller: this,
-                    }).then(function (oPopover) {
-                        oView.addDependent(oPopover);
-                        return oPopover;
-                    });
-                }
-                this._ItemsPopover.then(function (oPopover) {
-                    oPopover.openBy(oButton);
-                });
-            },
-            goToHistorical: function (oEvent) {
-                const oButton = oEvent.getSource(),
-                    oView = this.getView();
-
-                // create popover
-                if (!this._historicalPopover) {
-                    this._historicalPopover = Fragment.load({
-                        id: oView.getId(),
-                        name: "com.myorg.myUI5App.view.fragment.Functionality.Historical",
-                        controller: this,
-                    }).then(function (oPopover) {
-                        oView.addDependent(oPopover);
-                        return oPopover;
-                    });
-                }
-                this._historicalPopover.then(function (oPopover) {
-                    oPopover.openBy(oButton);
-                });
-                this._documentPopover.then(function (oPopover) {
-                    oPopover.openBy(oButton);
-                });
-            },
-            onGoToRicercaArticolo: function () {
-                debugger;
-                this.getView().getModel("Clothing").setProperty("/catalog/clothing/itemsTreeTable", []);
-
-                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("SearchProducts");
-                // this._getDialog();
-            },
+            factoryTiles: function(sId, context) {
+                return new sap.m.GenericTile({
+                    width: "auto",
+                    press: this.onTileNavigation.bind(this),
+                    header: this.getView().getModel("i18n").getResourceBundle().getText( context.getProperty("header") ),
+                    mode: context.getProperty("mode"),
+                    frameType: context.getProperty("frameType"),
+                    headerImage: context.getProperty("headerImage"),
+                    tileContent: [
+                        // @ts-ignore
+                        new sap.m.TileContent({
+                            content: [
+                                new sap.m.Text({
+                                    text: this.getView().getModel("i18n").getResourceBundle().getText( context.getProperty("subHeader") )
+                                })
+                            ]
+                        })
+                    ],
+                    customData: [
+                        new sap.ui.core.CustomData({
+                            key: context.getProperty("/customData/key"),
+                            value: context.getProperty("/customData/value")
+                        })
+                    ]
+                }).addStyleClass("sapUiSmallMargin")
+            }
         });
     }
 );

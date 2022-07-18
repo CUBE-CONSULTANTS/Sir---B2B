@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:fb="sap.ui.comp.filterbar"
+>
+  <fb:FilterBar
+    reset=".onReset"
+    search=".onFilterTable"
+    showClearButton="true"
+    useToolbar="false"
+		showGoOnFB="true" 
+    showClearOnFB="true" 
+    showFilterConfiguration="false"
+    filterItems="{
+      path: 'searchProducts>/filterBar/filterItems',
+      factory: '.factoryFilterBar'
+    }"
+  />
+</core:FragmentDefinition>

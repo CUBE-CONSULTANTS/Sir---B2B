@@ -16,6 +16,13 @@ framework:
     - name: themelib_sap_fiori_3
 server:
   customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: http://hana-dev-as.sirsafety.it:8000/
     - name: ui5-middleware-livereload
       afterMiddleware: compression
       configuration:
