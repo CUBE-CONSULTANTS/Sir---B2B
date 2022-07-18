@@ -10,9 +10,14 @@
         "uri": "model/Nationalities.json",
         "type": "JSON"
       },
-      "unified": {
+      "ZB2B_BP_SRV": {
         "type": "OData",
-        "uri": "http://localhost:3000"
+        "uri": "/sap/opu/odata/sap/ZB2B_BP_SRV",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
       }
     },
     "id": "com.myorg.myUI5App",
@@ -67,15 +72,10 @@
         "dataSource": "Clothing"
       },
       "oData": {
-        "type": "sap.ui.model.odata.ODataModel",
-        "dataSource": "unified",
-        "preload": false,
+        "dataSource": "ZB2B_BP_SRV",
+        "preload": true,
         "settings": {
-          "json": false,
-          "useBatch": false,
-          "defaultCountMode": "Inline",
-          "defaultBindingMode": "TwoWay",
-          "defaultUpdateMethod": "Put"
+          "useBatch": false
         }
       }
     },
@@ -98,10 +98,10 @@
       },
       "routes": [
         {
-          "name": "MainView",
-          "pattern": "MainView",
+          "name": "Login",
+          "pattern": "",
           "target": [
-            "MainView"
+            "Login"
           ]
         },
         {
@@ -134,12 +134,12 @@
         }
       ],
       "targets": {
-        "MainView": {
+        "Login": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "MainView",
-          "viewName": "MainView"
+          "viewId": "Login",
+          "viewName": "Login"
         },
         "Home": {
           "viewType": "XML",
@@ -172,10 +172,10 @@
       }
     },
     "rootView": {
-      "viewName": "com.myorg.myUI5App.view.MainView",
+      "viewName": "com.myorg.myUI5App.view.App",
       "type": "XML",
       "async": true,
-      "id": "MainView"
+      "id": "app"
     }
   }
 }

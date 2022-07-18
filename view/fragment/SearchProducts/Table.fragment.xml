@@ -1,0 +1,82 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+>
+  <Table
+    class="sapUiSmallMarginTop"
+    rememberSelections="false"
+    items="{
+      path: 'Clothing>/ricercaAvanzata',
+      sorter: {
+        path: 'codice',
+        descending: false
+      }
+    }"
+  >
+    <headerToolbar>
+      <OverflowToolbar>
+        <ToolbarSpacer/>
+        <Button
+          text="{i18n>reset}"
+          type="Transparent"
+          press="onReset"
+        />
+        <OverflowToolbarButton
+          tooltip="Ordina per codice"
+          type="Transparent"
+          text="{i18n>sort}"
+          icon="sap-icon://sort"
+          press="onSort"
+        />
+      </OverflowToolbar>
+    </headerToolbar>
+    <columns>
+      <Column width="12em">
+        <Text text="{i18n>codiceTable}"/>
+      </Column>
+      <Column
+        minScreenWidth="Tablet"
+        demandPopin="true"
+      >
+        <Text text="{i18n>descrizioneTable}"/>
+      </Column>
+      <Column
+        minScreenWidth="Desktop"
+        demandPopin="true"
+      >
+        <Text text="{i18n>codicePrecTable}"/>
+      </Column>
+      <Column
+        width="8rem"
+        minScreenWidth="Desktop"
+        demandPopin="true"
+        hAlign="Center"
+      />
+    </columns>
+    <items>
+      <ColumnListItem
+        vAlign="Middle"
+        visible="{dropDownModel>/columnVisible}"
+      >
+        <cells>
+          <Text text="{Clothing>codice}"/>
+          <Text text="{Clothing>description}"/>
+          <Text text="{Clothing>codicePrecedente}"/>
+          <HBox>
+            <Button
+              icon="sap-icon://search"
+              press="onOpenDetailProduct"
+              class="sapUiSmallMarginEnd"
+              tooltip="Dettaglio prodotto"
+            />
+            <Button
+              icon="sap-icon://check-availability"
+              press="onOpenDialogProductAvailability"
+              tooltip="Disponibilità prodotto"
+            />
+          </HBox>
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table>
+</core:FragmentDefinition>
