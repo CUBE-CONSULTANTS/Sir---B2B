@@ -2,14 +2,6 @@
   "_version": "1.12.0",
   "sap.app": {
     "dataSources": {
-      "Clothing": {
-        "uri": "model/Clothing.json",
-        "type": "JSON"
-      },
-      "Nationalities": {
-        "uri": "model/Nationalities.json",
-        "type": "JSON"
-      },
       "ZB2B_BP_SRV": {
         "type": "OData",
         "uri": "/sap/opu/odata/sap/ZB2B_BP_SRV",
@@ -67,10 +59,6 @@
           "bundleName": "com.myorg.myUI5App.i18n.i18n"
         }
       },
-      "Clothing": {
-        "type": "sap.ui.model.json.JSONModel",
-        "dataSource": "Clothing"
-      },
       "oData": {
         "dataSource": "ZB2B_BP_SRV",
         "preload": true,
@@ -112,24 +100,17 @@
           ]
         },
         {
-          "name": "Order",
-          "pattern": "Order",
-          "target": [
-            "Order"
-          ]
-        },
-        {
           "name": "SearchProducts",
-          "pattern": "SearchProducts",
+          "pattern": "Home/SearchProducts",
           "target": [
             "SearchProducts"
           ]
         },
         {
-          "name": "DetailProduct",
-          "pattern": "DetailProduct",
+          "name": "ProductDetails",
+          "pattern": "Home/SearchProducts/{ProductId}",
           "target": [
-            "DetailProduct"
+            "ProductDetails"
           ]
         }
       ],
@@ -139,6 +120,7 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "Login",
+          "viewLevel": 0,
           "viewName": "Login"
         },
         "Home": {
@@ -146,6 +128,7 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "Home",
+          "viewLevel": 1,
           "viewName": "Home"
         },
         "Order": {
@@ -160,14 +143,16 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "SearchProducts",
+          "viewLevel": 2,
           "viewName": "SearchProducts"
         },
-        "DetailProduct": {
+        "ProductDetails": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "DetailProduct",
-          "viewName": "DetailProduct"
+          "viewId": "ProductDetails",
+          "viewLevel": 3,
+          "viewName": "ProductDetails"
         }
       }
     },

@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+>
+  <Table id="idProductsTableItems" class="sapUiSmallMarginTop" rememberSelections="false" selectionChange="onSelectItems">
+    <columns>
+        <Column width="12em">
+          <Text text="Tipo" />
+        </Column>
+        <Column minScreenWidth="Tablet" demandPopin="true">
+          <Text text="{i18n>descrizione}" />
+        </Column>
+        <Column minScreenWidth="Desktop" demandPopin="true">
+          <Text text="{i18n>data}" />
+        </Column>
+        <Column width="8rem" minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+          <Text text="{i18n>nomeFile}" />
+        </Column>
+    </columns>
+    <items />
+  </Table>
+</core:FragmentDefinition>

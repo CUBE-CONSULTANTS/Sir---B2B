@@ -1,0 +1,70 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+>
+  <Title text="{Clothing>/detail/titleCodice}" class="sapUiSmallMarginTopBottom" />
+  <CustomListItem>
+    <HBox items="{path: 'Clothing>/detail/taglieObj'}" id="idList" class="sapUiTinyMargin" justifyContent="Center">
+        <VBox>
+          <Text class="sapUiMediumMarginBegin" text=" {Clothing>key}" />
+          <StepInput id="stepInput" value="{Clothing>quantita}" min="0" max="{Clothing>max}" width="10%" change=".onChangeValueItems" />
+          <Text class="sapUiMediumMarginBegin" text="{Clothing>count}" />
+        </VBox>
+    </HBox>
+  </CustomListItem>
+  <CustomListItem>
+    <HBox width="50%" items="{path: 'Clothing>/detail/taglieObj1'}" id="idList2" class="sapUiTinyMargin">
+        <VBox>
+          <Text class="sapUiMediumMarginBegin" text=" {Clothing>key}" />
+          <StepInput id="stepInput2" value="{Clothing>quantita}" min="0" max="{Clothing>max}" width="10%" change=".onChangeValueItems" />
+          <Text class="sapUiMediumMarginBegin" text="{Clothing>count}" />
+        </VBox>
+    </HBox>
+    <Text text="{i18n>totale}" class="sapUiSmallMarginTop sapUiSmallMarginBegin sapUiTinyMarginEnd" />
+    <Text id="totalItems2" text="{Clothing>/detail/totale}" class="sapUiSmallMarginTopBottom" />
+  </CustomListItem>
+  <Panel backgroundDesign="Solid">
+    <VBox>
+    <HBox>
+        <Label text="{i18n>List1}" class="sapUiMediumMarginTopBottom sapUiTinyMarginEnd" />
+        <Label text="{Clothing>/detail/prezzoListino1}" class="sapUiMediumMarginTopBottom" />
+    </HBox>
+    </VBox>
+    <HBox>
+        <VBox>
+          <Text text="{i18n>prezScont}" class="sapUiTinyMarginBottom" />
+          <StepInput  id="stepInput3" value="{Clothing>/detail/prezzo}" textAlign="Center" min="0" max="{Clothing>/sizes/prezzoFisso}" width="8rem" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" change=".onChangeValueItems" />
+        </VBox>
+        <VBox>
+          <Text text="{i18n>sconto}" class="sapUiTinyMarginBottom" />
+          <StepInput id="stepInput4" value="{Clothing>/detail/sconto}" textAlign="Center" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" min="0" max="{max}" width="8rem" change=".onChangeValue" />
+        </VBox>
+        <HBox>
+        <Text class="sapUiMediumMarginTop sapUiTinyMarginEnd" text="{i18n>totSconto}"/>
+        <Text class="sapUiMediumMarginTop" text="{Clothing>/detail/calcolo} €"/>
+        </HBox>
+    </HBox>
+  </Panel>
+  <Panel backgroundDesign="Solid">
+    <VBox>
+    <HBox>
+        <Label text="{i18n>prezzoList3}" class="sapUiMediumMarginTopBottom sapUiTinyMarginEnd" />
+        <Label text="{Clothing>/detail/prezzoListino3}" class="sapUiMediumMarginTopBottom" />
+    </HBox>
+    </VBox>
+    <HBox>
+        <VBox>
+          <Text text="{i18n>prezScont}" class="sapUiTinyMarginBottom" />
+          <StepInput id="stepInput5"  value="{Clothing>/detail/prezzo3}"  textAlign="Center" min="0" max="{Clothing>/sizes/prezzoFisso}" width="8rem" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" change=".onChangeValueItems" />
+        </VBox>
+        <VBox>
+          <Text text="{i18n>sconto}" class="sapUiTinyMarginBottom" />
+          <StepInput value="{Clothing>/detail/sconto3}" id="list3Input" textAlign="Center" class="sapUiMediumMarginEnd" step="0.01" displayValuePrecision="2" min="0" max="{max}" width="8rem" change=".onChangeValue3" />
+        </VBox>
+        <HBox>
+        <Text class="sapUiMediumMarginTop sapUiTinyMarginEnd" text="{i18n>totSconto}"/>
+        <Text class="sapUiMediumMarginTop" text="{Clothing>/detail/calcolo3} €"/>
+        </HBox>
+    </HBox>
+  </Panel>
+</core:FragmentDefinition>

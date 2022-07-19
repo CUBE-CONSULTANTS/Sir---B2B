@@ -2,41 +2,49 @@
 	controllerName="com.myorg.myUI5App.controller.Home"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
-	xmlns:c="sap.ui.core"
+	xmlns:f="sap.f"
 	displayBlock="true"
 	height="100%"
 	busyIndicatorDelay="0"
 >
-	<Page
-		id="pageTiles"
-		title=""
-		showNavButton="true"
-		navButtonPress=".onNavBack"
+	<f:DynamicPage
+		class="sapUiNoContentPadding"
 	>
-		<customHeader>
-			<Bar>
-				<contentRight>
-					<Image
-						src="icon/logo-sirx2.png"
-						height="100%"
-						width="auto"
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Image 
+						width="55px"
+						src="./public/img/logo-sirx2.png"
 					/>
-				</contentRight>
-				<contentLeft>
-					<Button
-						icon="sap-icon://nav-back"
-						press="onNavBack"
-					/>
-				</contentLeft>
-			</Bar>
-		</customHeader>
-		<content>
+				</f:heading>
+				<f:actions>
+					<HBox alignItems="Center">
+						<Button 
+							text="Logout"
+							class="sapUiTinyMarginEnd" 
+							icon="sap-icon://log" 
+							press=".onLogoutPress" 
+						/>
+					</HBox>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+		</f:header>
+		<f:content>
 			<FlexBox 
-					width="auto"
-					height="100%"
-					justifyContent="Center"
-					alignItems="Center"
+				width="auto"
+				height="100%"
+				direction="Column"
+				justifyContent="Center"
+				alignItems="Center"
 			>
+				<Image
+					width="100px"
+					src="icon/logo-sirx2.png"
+					height="100%"
+				/>
 				<FlexBox
 					width="auto"
 					wrap="Wrap"
@@ -47,6 +55,6 @@
 					}"
 				/>			
 			</FlexBox>
-		</content>
-	</Page>
+		</f:content>
+	</f:DynamicPage>
 </mvc:View>

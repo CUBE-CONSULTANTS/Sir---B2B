@@ -44,6 +44,7 @@ sap.ui.define(
                             { 
                                 name: "A", 
                                 visible: true,
+                                oDataField: "Idprodotto",
                                 label: "codice", 
                                 control: {
                                     type: "Input",
@@ -53,6 +54,7 @@ sap.ui.define(
                             { 
                                 name: "B", 
                                 visible: true,
+                                oDataField: "Descrizione",
                                 label: "descrizione", 
                                 control: {
                                     type: "Input",
@@ -62,6 +64,7 @@ sap.ui.define(
                             { 
                                 name: "C", 
                                 visible: true,
+                                oDataField: "CategoriaDpi",
                                 label: "categoria", 
                                 control: {
                                     type: "Select",
@@ -71,6 +74,7 @@ sap.ui.define(
                             { 
                                 name: "D", 
                                 visible: true,
+                                oDataField: "IdserieWeb",
                                 label: "serie", 
                                 control: {
                                     type: "Select",
@@ -79,23 +83,18 @@ sap.ui.define(
                             },
                             { 
                                 name: "E", 
-                                visible: false,
+                                visible: true,
+                                oDataField: "",
                                 label: "articolo", 
                                 control: {
                                     type: "Input",
                                     value: ""
                                 }
-                            },
-                            { 
-                                name: "F", 
-                                visible: false,
-                                label: "descrizione", 
-                                control: {
-                                    type: "Input",
-                                    value: ""
-                                }
-                            },
+                            }
                         ]
+                    },
+                    table: {
+                        items: []
                     }
                 })
             }

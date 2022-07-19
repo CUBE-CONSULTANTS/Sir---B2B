@@ -25,7 +25,7 @@
                     <form:FormElement>
                       <form:fields>
                         <FlexBox justifyContent="Center">
-                          <Image src="icon/logo-sirx2.png" />
+                          <Image src="./public/img/logo-sirx2.png" />
                         </FlexBox>
                       </form:fields>
                     </form:FormElement>

@@ -1,0 +1,53 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:card="sap.f.cards" 
+  xmlns:f="sap.f" 
+  xmlns:l="sap.ui.layout" 
+>
+  <l:VerticalLayout width="100%">
+    <l:BlockLayout background="{/selectedBackground}">
+        <l:BlockLayoutRow accentCells="Accent1">
+          <l:BlockLayoutCell width="2">
+              <f:Card>
+                <f:layoutData>
+                    <f:GridContainerItemLayoutData columns="4" />
+                </f:layoutData>
+                <f:header>
+                    <card:Header iconSrc="sap-icon://detail-more" title="{Clothing>/detail/titleDesc}" />
+                </f:header>
+                <f:content>
+                    <VBox height="300px" class="sapUiSmallMargin">
+                      <VBox>
+                          <Label text="{i18n>descrizioneCorta}" />
+                          <Text text="{i18n>DescrShort}" />
+                      </VBox>
+                    </VBox>
+                </f:content>
+              </f:Card>
+          </l:BlockLayoutCell>
+          <l:BlockLayoutCell width="2">
+              <f:Card>
+                <f:layoutData>
+                    <f:GridContainerItemLayoutData columns="4" />
+                </f:layoutData>
+                <f:header>
+                    <card:Header iconSrc="sap-icon://detail-more" title="" />
+                </f:header>
+                <f:content>
+                    <VBox height="300px" class="sapUiSmallMargin">
+                      <VBox>
+                          <Label text="{i18n>descrizioneCompleta}" />
+                          <Text text="{i18n>DescComp}" />
+                          <Text text="- Il comfort del cotone offre morbidezza, traspirabilità e resistenza." class="sapUiSmallMarginTop" />
+                          <Text text="- La natura del tessuto e la particolare attenzione alle rifiniture come le travette di rinforzo e le triple cuciture ad incastro realizzate con colore a contrasto, assicurano una durata prolungata nel tempo e sono una garanzia di elevato livello qualitativo." class="sapUiSmallMarginTop" />
+                          <Text text="Sul capo c'è la possibilità di applicazione delle varie tipologie di bande rifrangenti: banda rifrangente prismatica gialla, prismatica arancione, prismatica grigia e classica grigia." class="sapUiSmallMarginTop" />
+                      </VBox>
+                    </VBox>
+                </f:content>
+              </f:Card>
+          </l:BlockLayoutCell>
+        </l:BlockLayoutRow>
+    </l:BlockLayout>
+  </l:VerticalLayout>
+</core:FragmentDefinition>
