@@ -69,13 +69,19 @@ sap.ui.define(
                     this.getRouter().navTo("Home", {}, true /* no history*/);
                 }
             },
+
+            onLogoutPress: function(e) {
+                this.getRouter().navTo("Login");
+            },
+
             parseMessage: function (oResponse) {
                 const oBody = JSON.parse(oResponse.body);
                 return oBody.message || "Error Message";
             },
+
             parseResponseBody: function (oResponse) {
                 return JSON.parse(oResponse.body);
-            },
+            }
         });
     }
 );

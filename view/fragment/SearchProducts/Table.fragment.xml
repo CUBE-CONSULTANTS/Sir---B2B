@@ -1,68 +1,66 @@
 <core:FragmentDefinition
   xmlns="sap.m"
   xmlns:core="sap.ui.core"
+  xmlns:ui="sap.ui.table"
 >
-  <Table
+  <ui:Table
     class="sapUiSmallMarginTop"
-    rememberSelections="false"
-    items="{
-      path: 'Clothing>/ricercaAvanzata',
+    visibleRowCount="15"
+    rows="{
+      path: 'searchProducts>/table/items',
       sorter: {
-        path: 'codice',
+        path: 'Idprodotto',
         descending: false
       }
     }"
   >
-    <headerToolbar>
+    <ui:extension>
       <OverflowToolbar>
+        <Title text="Articoli: {= ${searchProducts>/table/items} ? ${searchProducts>/table/items}.length : '0'}" />
         <ToolbarSpacer/>
-        <Button
-          text="{i18n>reset}"
-          type="Transparent"
-          press="onReset"
-        />
-        <OverflowToolbarButton
-          tooltip="Ordina per codice"
-          type="Transparent"
-          text="{i18n>sort}"
-          icon="sap-icon://sort"
-          press="onSort"
+        <Button 
+          enabled="false" 
+          text="Aggiungi al Carrello" 
+          icon="sap-icon://cart-4" 
         />
       </OverflowToolbar>
-    </headerToolbar>
-    <columns>
-      <Column width="12em">
-        <Text text="{i18n>codiceTable}"/>
-      </Column>
-      <Column
-        minScreenWidth="Tablet"
-        demandPopin="true"
+    </ui:extension>
+    <ui:columns>
+      <ui:Column 
+        filterProperty="Idprodotto"
+        sortProperty="Idprodotto"
+        width="auto"
       >
-        <Text text="{i18n>descrizioneTable}"/>
-      </Column>
-      <Column
-        minScreenWidth="Desktop"
-        demandPopin="true"
+        <Label text="{i18n>codiceTable}" />
+        <ui:template>
+          <Text text="{searchProducts>Idprodotto}"/>
+        </ui:template>
+      </ui:Column>
+      <ui:Column
+        filterProperty="Nome"
+        sortProperty="Nome"
+        width="auto"
       >
-        <Text text="{i18n>codicePrecTable}"/>
-      </Column>
-      <Column
-        width="8rem"
-        minScreenWidth="Desktop"
-        demandPopin="true"
-        hAlign="Center"
-      />
-    </columns>
-    <items>
-      <ColumnListItem
-        vAlign="Middle"
-        visible="{dropDownModel>/columnVisible}"
+        <Label text="{i18n>descrizioneTable}"/>
+        <ui:template>
+          <Text text="{searchProducts>Nome}"/>
+        </ui:template>
+      </ui:Column>
+      <ui:Column
+        filterProperty="IdprodottoVecchio"
+        sortProperty="IdprodottoVecchio"
+        width="auto"
       >
-        <cells>
-          <Text text="{Clothing>codice}"/>
-          <Text text="{Clothing>description}"/>
-          <Text text="{Clothing>codicePrecedente}"/>
-          <HBox>
+        <Label text="{i18n>codicePrecTable}"/>
+        <ui:template>
+          <Text text="{searchProducts>IdprodottoVecchio}"/>
+        </ui:template>
+      </ui:Column>
+      <ui:Column
+        width="auto"
+      >
+        <ui:template>
+          <HBox justifyContent="Center">
             <Button
               icon="sap-icon://search"
               press="onOpenDetailProduct"
@@ -75,8 +73,8 @@
               tooltip="Disponibilità prodotto"
             />
           </HBox>
-        </cells>
-      </ColumnListItem>
-    </items>
-  </Table>
+        </ui:template>
+      </ui:Column>
+    </ui:columns>
+  </ui:Table>
 </core:FragmentDefinition>

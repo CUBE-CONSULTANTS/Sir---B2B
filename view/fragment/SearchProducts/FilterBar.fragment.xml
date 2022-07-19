@@ -5,7 +5,7 @@
 >
   <fb:FilterBar
     reset=".onReset"
-    search=".onFilterTable"
+    search=".onFilterBarSearch"
     showClearButton="true"
     useToolbar="false"
 		showGoOnFB="true" 

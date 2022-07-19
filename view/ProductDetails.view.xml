@@ -1,0 +1,75 @@
+<mvc:View 
+   controllerName="com.myorg.myUI5App.controller.ProductDetails" 
+   xmlns="sap.m" 
+   xmlns:f="sap.f"
+   xmlns:l="sap.ui.layout"
+   xmlns:mvc="sap.ui.core.mvc" 
+   xmlns:core="sap.ui.core"
+   displayBlock="true" 
+   height="100%" 
+   busyIndicatorDelay="0"
+>
+   <f:DynamicPage 
+      class="sapUiNoContentPadding"
+   >
+      <f:title>
+         <f:DynamicPageTitle>
+            <f:heading>
+               <HBox alignItems="Center">
+                  <Button class="sapUiTinyMarginEnd" icon="sap-icon://nav-back" press=".onNavBack" />
+                  <Title class="sapUiTinyMarginTop" text="Product Details" />
+               </HBox>
+            </f:heading>
+         </f:DynamicPageTitle>
+      </f:title>
+      <f:header>
+         <f:DynamicPageHeader pinnable="true">
+            <l:HorizontalLayout allowWrapping="true">
+               <l:HorizontalLayout class="sapUiContentPadding">
+                  <HBox alignItems="Center">
+                     <core:Icon 
+                        size="4rem"
+                        src="sap-icon://product"
+                     />
+                     <Title class="sapUiSmallMarginBegin" text="Product01" />
+                  </HBox>
+               </l:HorizontalLayout>
+
+               <l:VerticalLayout class="sapUiSmallMargin">
+                  <ObjectAttribute title="Location" text="Warehouse A"/>
+                  <ObjectAttribute title="Halway" text="23L"/>
+                  <ObjectAttribute title="Rack" text="34"/>
+               </l:VerticalLayout>
+
+               <l:VerticalLayout class="sapUiSmallMargin">
+                  <ObjectAttribute title="Availability"/>
+                  <ObjectStatus text="In Stock" state="Success" />
+               </l:VerticalLayout>
+            </l:HorizontalLayout>
+         </f:DynamicPageHeader>
+      </f:header>
+      <f:content>
+         <IconTabBar 
+            selectedKey="DG"  
+            expandable="false"
+            expanded="{device>/isNoPhone}" 
+            class="sapUiResponsiveContentPadding"
+         >
+            <items>
+               <IconTabFilter key="general" text="{i18n>datiGenerali}">
+                  <core:Fragment fragmentName="com.myorg.myUI5App.view.fragment.ProductDetails.GeneralData" type="XML" />
+               </IconTabFilter>
+               <IconTabFilter key="additional" text="{i18n>datiAggiuntivi}">
+                  <core:Fragment fragmentName="com.myorg.myUI5App.view.fragment.ProductDetails.AdditionalData" type="XML" />
+               </IconTabFilter>
+               <IconTabFilter  key="documents" text="{i18n>documenti}">
+                  <core:Fragment fragmentName="com.myorg.myUI5App.view.fragment.ProductDetails.Documents" type="XML" />
+               </IconTabFilter>
+               <IconTabFilter key="price" text="{i18n>prezzo}">
+                  <core:Fragment fragmentName="com.myorg.myUI5App.view.fragment.ProductDetails.Price" type="XML" />
+               </IconTabFilter>
+            </items>
+         </IconTabBar>
+      </f:content>
+   </f:DynamicPage>
+</mvc:View>

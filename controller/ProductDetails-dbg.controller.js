@@ -1,84 +1,49 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "./BaseController",
     "sap/ui/model/json/JSONModel",
-    'sap/ui/core/Fragment',
-    "sap/ui/core/UIComponent",
-    "sap/ui/core/routing/History",
+    "sap/ui/core/Fragment",
+    "../model/API"
 ], function (
-    Controller,
+    BaseController,
     JSONModel,
     Fragment,
-    UIComponent,
-    History
+    API
 ) {
     "use strict";
 
-    return Controller.extend("com.myorg.myUI5App.controller.DetailProduct", {
+    return BaseController.extend("com.myorg.myUI5App.controller.ProductDetails", {
         /**
          * @override
          */
         onInit: function () {
-            var oDataDropDown = {
-                "keyTabBar": "dati",
-                "SelectedColor": "black",
-                "SelectedName": "",
-                "Colors": [
-                    {
-                        "Name": "ARANCIO HV",
-                        "id": "darkorange"
-                    },
-                    {
-                        "Name": "BIANCO",
-                        "id": "white"
-                    },
-                    {
-                        "Name": "AZZURRO",
-                        "id": "blue"
-                    },
-                    {
-                        "Name": "VERDE",
-                        "id": "green"
-                    },
-                    {
-                        "Name": "GRIGIO MELANGE",
-                        "id": "grey"
-                    },
-                    {
-                        "Name": "NAVY",
-                        "id": "black"
-                    },
-                    {
-                        "Name": "GIALLO HV",
-                        "id": "yellow"
-                    }
-                ]
-            };
-            var oModelDropDown = new JSONModel(oDataDropDown);
-            this.getView().setModel(oModelDropDown, 'dropDownModel');
-
-            this._oRouter = this.getOwnerComponent().getRouter();
-            this._oRouter.getRoute("DetailProduct").attachPatternMatched(this._onObjectMatched, this);
+            this.getRouter().getRoute("ProductDetails").attachPatternMatched(this._onRouteMatched, this);
         },
 
-        _onObjectMatched: function (oContext) {
-            debugger
-            var key = this.getView().getModel("dropDownModel").getProperty("/keyTabBar")
-            this.byId("idIconTabBarNoIcons").setSelectedKey(key);
+        _onRouteMatched: function (e) {
+            const oDataModel = this.getModel("oData");
+            const oParameters = { P_MATNR: "MC1415M3", P_LANGU: "IT" };
+            const getArticoloDetails = async () => await API.getArticoloDetails(oDataModel, oParameters);
+
+            getArticoloDetails()
+                .then(res => {
+                    
+                })
+                .catch(res => {
+                    
+                })
         },
 
-        onOpenColor: function (oEvent) {
-            this.getView().setModel(this.getView().getModel("dropDownModel"));
-            var oButton = oEvent.getSource(),
-                oView = this.getView();
+        onOpenColor: function (e) {
             // create popover
+            const oButton = e.getSource();
+
             if (!this._pPopover) {
                 this._pPopover = Fragment.load({
-
-                    id: oView.getId(),
-                    name: "com.myorg.myUI5App.view.fragment.SelectColor",
+                    id: this.getView().getId(),
+                    name: "com.myorg.myUI5App.view.fragment.ProductDetails.SelectColor",
                     controller: this
-                }).then(function (oPopover) {
-                    oView.addDependent(oPopover);
+                }).then(oPopover => {
+                    this.getView().addDependent(oPopover);
                     return oPopover;
                 });
             }
@@ -198,12 +163,9 @@ sap.ui.define([
                 model.setProperty("/detail/prezzo3", prezzoSingleItem.toFixed(2));
             }
         },
-        onBackProductDetail: function () {
-            var oRouter = UIComponent.getRouterFor(this);
-            oRouter.navTo("SearchProducts", {}, true);
-        },
-        onCloseColor: function () {
-            this.byId("colors").close();
+
+        onCloseColor: function (e) {
+            e.getSource().getParent().close();
         },
     });
 });
