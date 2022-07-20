@@ -24,26 +24,58 @@
       </f:title>
       <f:header>
          <f:DynamicPageHeader pinnable="true">
+            <HBox width="100%" justifyContent="End">
+               <Title text="CODICE PRECEDENTE: 00021839 - NUOVO CODICE: 20022" />
+            </HBox>
             <l:HorizontalLayout allowWrapping="true">
-               <l:HorizontalLayout class="sapUiContentPadding">
-                  <HBox alignItems="Center">
-                     <core:Icon 
-                        size="4rem"
-                        src="sap-icon://product"
-                     />
-                     <Title class="sapUiSmallMarginBegin" text="Product01" />
+               <l:VerticalLayout class="sapUiSmallMargin sapUiContentPadding">
+                  <VBox>
+                     <Label text="{i18n>descr}" />
+                     <Text text="GIACCA" />
+                  </VBox>
+                  <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginTop">
+                     <VBox class="sapUiMediumMarginEnd">
+                        <Label text="{i18n>categ}" />
+                        <Text text="INDUMENTI" />
+                     </VBox>
+                     <VBox>
+                        <Label text="{i18n>ser}" />
+                        <Text text="INDUMENTI SERIE SYMBOL" />
+                     </VBox>
                   </HBox>
-               </l:HorizontalLayout>
-
-               <l:VerticalLayout class="sapUiSmallMargin">
-                  <ObjectAttribute title="Location" text="Warehouse A"/>
-                  <ObjectAttribute title="Halway" text="23L"/>
-                  <ObjectAttribute title="Rack" text="34"/>
                </l:VerticalLayout>
 
-               <l:VerticalLayout class="sapUiSmallMargin">
-                  <ObjectAttribute title="Availability"/>
-                  <ObjectStatus text="In Stock" state="Success" />
+               <l:VerticalLayout class="sapUiSmallMargin sapUiContentPadding">
+                  <VBox>
+                     <Label text="{i18n>norma}" />
+                     <Text text="EN ISO 13688" />
+                  </VBox>
+                  <VBox class="sapUiSmallMarginTop">
+                     <Label text="{i18n>listino}" />
+                     <Text text="Listino 1  27€ - Listino 3  27€" />
+                  </VBox>
+               </l:VerticalLayout>
+
+               <l:VerticalLayout class="sapUiLargeMargin" />
+
+               <l:VerticalLayout class="sapUiSmallMargin sapUiContentPadding">
+                  <HBox class="sapUiContentPadding">
+                     <VBox>
+                        <core:Icon 
+                           size="2rem"
+                           src="sap-icon://palette"
+                        />
+                        <Label text="{i18n>colori}" />
+                     </VBox>
+                     <ColorPalette />
+                  </HBox>
+               </l:VerticalLayout>
+
+               <l:VerticalLayout class="sapUiSmallMargin sapUiContentPadding">
+                  <Image
+                     width="6rem"
+                     src="./public/img/Giacca.png"
+                  />
                </l:VerticalLayout>
             </l:HorizontalLayout>
          </f:DynamicPageHeader>
